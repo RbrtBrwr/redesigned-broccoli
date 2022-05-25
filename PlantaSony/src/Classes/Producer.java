@@ -4,11 +4,54 @@
  */
 package Classes;
 import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author rober
  */
 public class Producer extends Thread{
+    private final ProductionLine productLine;
+    
+    private final int productionTime;
+    private final int breakTime;
+    public String currentStatus;
+    
+    Producer(ProductionLine productLine, int dayLength, int daysPerProduct){
+        this.breakTime = dayLength / 12;
+        this.productionTime = 20 / daysPerProduct;
+        this.productLine = productLine;
+    }
+    
+    public void timeForWork(){
+        this.currentStatus = "Ocioso";
+        try {   
+            this.productLine.capacitySem.acquire();
+            this.currentStatus = "Trabajando";
+            Thread.sleep(this.productionTime);
+            this.productLine.addToStock();
+            this.timeForBreak();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
+    public void timeForBreak(){
+        this.currentStatus = "Descanso";
+        try {
+            Thread.sleep(this.breakTime);
+            this.timeForWork();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @Override 
+    public void run(){
+        while (true){
+            this.timeForWork();
+        }
+            
+    }
 }
