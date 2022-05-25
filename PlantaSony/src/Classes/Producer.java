@@ -14,13 +14,15 @@ import java.util.logging.Logger;
 public class Producer extends Thread{
     private final ProductionLine productLine;
     
-    private final int productionTime;
+    private final long productionTime;
     private final int breakTime;
     public String currentStatus;
     
-    Producer(ProductionLine productLine, int dayLength, int daysPerProduct){
+    public String whereTo;
+    
+    Producer(ProductionLine productLine, int dayLength, float daysPerProduct){
         this.breakTime = dayLength / 12;
-        this.productionTime = 20 / daysPerProduct;
+        this.productionTime = (long) (20 / daysPerProduct);
         this.productLine = productLine;
     }
     

@@ -19,16 +19,20 @@ public class ProductionLine {
     public Semaphore capacitySem;
     public Semaphore stockSem = new Semaphore(1);
     
-    ProductionLine(int capacity, int stock){
+    public String whereTo;
+    
+    ProductionLine(int capacity, int stock, String whereTo){
         this.capacity = capacity;
         this.stock = stock;
         this.capacitySem = new Semaphore(capacity);
+        this.whereTo = whereTo;
     }
     
     public void addToStock(){
         try {
             this.stockSem.acquire();
             this.stock++;
+            System.out.println(whereTo + ":" + this.stock);
             this.stockSem.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(ProductionLine.class.getName()).log(Level.SEVERE, null, ex);
