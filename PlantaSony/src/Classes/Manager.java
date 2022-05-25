@@ -9,22 +9,5 @@ package Classes;
  * @author rober
  */
 public class Manager extends Thread{
-    private String status;
-    private int earningPerDay;
-    
-    private void checkOnBoss(Boss boss){
-        
-    }
-    
-    private void checkCalendar(){
-        
-    }
-    
-    private void dispatchPhones(){
-        
-    }
-    
-    @Override 
-    public void run(){
-    }
+
 }

@@ -9,7 +9,5 @@ package Classes;
  * @author rober
  */
 public class ProductionLine {
-    private Producer[] producers;
-    private int maxStock;
-    private volatile int currentStock;
+
 }
