@@ -11,7 +11,7 @@ import java.util.concurrent.Semaphore;
  * @author rober
  */
 public class Main {
-    public static Semaphore assemblerRetrieveingSem = new Semaphore(1);
+//    public static Semaphore assemblerRetrieveingSem = new Semaphore(1);
 
     /**
      * @param args the command line arguments

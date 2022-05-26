@@ -46,18 +46,13 @@ public class Assembler extends Thread{
     }
     
     public void getParts(){
-        try {
-            Main.assemblerRetrieveingSem.acquire();
-            this.currentStatus = "Esperando Partes";
-            this.buttonLine.retrieveFromStock(buttonsNeeded);
-            this.pinLine.retrieveFromStock(pinsNeeded);
-            this.cameraLine.retrieveFromStock(camerasNeeded);
-            this.screenLine.retrieveFromStock(screensNeeded);
-            Main.assemblerRetrieveingSem.release();
-            this.assemblersAssemble();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Assembler.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.currentStatus = "Esperando Partes";
+        this.buttonLine.retrieveFromStock(buttonsNeeded);
+        this.pinLine.retrieveFromStock(pinsNeeded);
+        this.cameraLine.retrieveFromStock(camerasNeeded);
+        this.screenLine.retrieveFromStock(screensNeeded);
+        this.assemblersAssemble();
+
     }
     
     public void assemblersAssemble(){
