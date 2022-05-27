@@ -41,6 +41,17 @@ public class ProductionLine {
             this.stock++;
             this.retrieveSem.release();
             System.out.println(whereTo + ":" + this.stock);
+            switch(whereTo){
+                case "Pin":
+                    Main.interfazGrafica.aumentarNumeroPinesListos();
+                case "Boton":
+                    Main.interfazGrafica.aumentarNumeroBotonesListos();
+                case "Pantalla":
+                    Main.interfazGrafica.aumentarNumeroPantallasListas();
+                case "Camara":
+                    Main.interfazGrafica.aumentarNumeroCamarasListas();
+                    
+            }
             this.stockSem.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(ProductionLine.class.getName()).log(Level.SEVERE, null, ex);
@@ -54,6 +65,16 @@ public class ProductionLine {
             this.retrieveSem.acquire(numNeeded);
             this.stockSem.acquire();
             this.stock -= numNeeded;
+            switch (whereTo){
+                case "Pin":
+                    Main.interfazGrafica.setNumeroPinesListos(this.stock);
+                case "Boton":
+                    Main.interfazGrafica.setNumeroBotonesListos(this.stock);
+                case "Pantalla":
+                    Main.interfazGrafica.setNumeroPantallasListas(this.stock);
+                case "Camara":
+                    Main.interfazGrafica.setNumeroCamarasListas(this.stock);
+            }
             System.out.println(whereTo + ":" + this.stock);
             this.stockSem.release();
             this.capacitySem.release(numNeeded);

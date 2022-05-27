@@ -12,20 +12,28 @@ import java.util.concurrent.Semaphore;
  */
 public class Main {
 //    public static Semaphore assemblerRetrieveingSem = new Semaphore(1);
-
+    public static InterfazGraficaPlanta interfazGrafica = new InterfazGraficaPlanta();
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+//        InterfazGraficaPlanta interfazGrafica = new InterfazGraficaPlanta();
         
-        ProductionLine camaras = new ProductionLine(15, 0, "Camara");
-        ProductionLine pantallas = new ProductionLine(10, 0, "Pantalla");
-        ProductionLine botones = new ProductionLine(20, 0, "Boton");
-        ProductionLine pines = new ProductionLine(12, 0, "Pin");
+        interfazGrafica.setVisible(true);
+
+        int maxCamaras = 15;
+        int maxPantallas = 10;
+        int maxBotones = 20;
+        int maxPines = 12;
+        
+        ProductionLine camaras = new ProductionLine(maxCamaras, 0, "Camara");
+        ProductionLine pantallas = new ProductionLine(maxPantallas, 0, "Pantalla");
+        ProductionLine botones = new ProductionLine(maxBotones, 0, "Boton");
+        ProductionLine pines = new ProductionLine(maxPines, 0, "Pin");
         ProductionLine assemblyLine = new ProductionLine(999, 0, "Assembled");
         
-        int segundosEnDia = 4;
-        int msecDia = segundosEnDia * 100;
+        int segundosEnDia = 9;
+        int msecDia = segundosEnDia * 1000;
         
         float diasCamara = 1;
         float diasBoton = 1;
@@ -44,6 +52,11 @@ public class Main {
         int numeroProductoresPantallas = 5;
         int numeroProductoresPines = 3;
         int numeroEnsambladores = 3;
+        
+        interfazGrafica.setNumeroProductoresBotones(numeroProductoresBotones);
+        interfazGrafica.setNumeroProductoresCamaras(numeroProductoresCamaras);
+        interfazGrafica.setNumeroProductoresPantallas(numeroProductoresPantallas);
+        interfazGrafica.setNumeroProductoresPines(numeroProductoresPines);
         
         for (int i = 0; i < numeroProductoresBotones; i++){
             productoresBotones[i] = new Producer(botones, msecDia, diasBoton);
