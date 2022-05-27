@@ -15,39 +15,30 @@ public class Producer extends Thread{
     private final ProductionLine productLine;
     
     private final long productionTime;
-    private final int breakTime;
     public String currentStatus;
-    
+    public boolean working = false;
     public String whereTo;
     
     Producer(ProductionLine productLine, int dayLength, float daysPerProduct){
-        this.breakTime = dayLength / 12;
-        this.productionTime = (long) (20 / daysPerProduct);
+        this.productionTime = (long) (24 / daysPerProduct);
         this.productLine = productLine;
     }
     
     public void timeForWork(){
         this.currentStatus = "Ocioso";
+        working = false;
         try {   
             this.productLine.capacitySem.acquire();
+            working = true;
             this.currentStatus = "Trabajando";
             Thread.sleep(this.productionTime);
             this.productLine.addToStock();
-            this.timeForBreak();
+            timeForWork();
         } catch (InterruptedException ex) {
             Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void timeForBreak(){
-        this.currentStatus = "Descanso";
-        try {
-            Thread.sleep(this.breakTime);
-            this.timeForWork();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
     
     @Override 
     public void run(){
