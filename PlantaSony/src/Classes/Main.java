@@ -32,15 +32,15 @@ public class Main {
         ProductionLine pines = new ProductionLine(maxPines, 0, "Pin");
         ProductionLine assemblyLine = new ProductionLine(999, 0, "Assembled");
         
-        int segundosEnDia = 9;
+        int segundosEnDia = 1;
         int msecDia = segundosEnDia * 1000;
         
-        float diasCamara = 1;
-        float diasBoton = 1;
-        float diasPantalla = 3;
-        float diasPines = 3;
-        float diasEnsamblaje = 3;
-        
+        int tiempoProduccionCamara = msecDia / 2;
+        int tiempoProduccionBoton = msecDia / 2;
+        int tiempoProduccionPantalla = msecDia * 3;
+        int tiempoProduccionPines = msecDia * 3;
+        int tiempoProduccionTelefono = msecDia * 3;
+
         Producer[] productoresCamaras = new Producer[11];
         Producer[] productoresPantallas = new Producer[11];
         Producer[] productoresBotones = new Producer[11];
@@ -57,25 +57,26 @@ public class Main {
         interfazGrafica.setNumeroProductoresCamaras(numeroProductoresCamaras);
         interfazGrafica.setNumeroProductoresPantallas(numeroProductoresPantallas);
         interfazGrafica.setNumeroProductoresPines(numeroProductoresPines);
+        interfazGrafica.setNumeroEnsambladores(numeroEnsambladores);
         
         for (int i = 0; i < numeroProductoresBotones; i++){
-            productoresBotones[i] = new Producer(botones, msecDia, diasBoton);
+            productoresBotones[i] = new Producer(botones, tiempoProduccionBoton);
             productoresBotones[i].start();
         }
         for (int i = 0; i < numeroProductoresCamaras; i++){
-            productoresCamaras[i] = new Producer(camaras, msecDia, diasCamara);
+            productoresCamaras[i] = new Producer(camaras, tiempoProduccionCamara);
             productoresCamaras[i].start();
         }
         for (int i = 0; i < numeroProductoresPantallas; i++){
-            productoresPantallas[i] = new Producer(pantallas, msecDia, diasPantalla);
+            productoresPantallas[i] = new Producer(pantallas, tiempoProduccionPantalla);
             productoresPantallas[i].start();
         }
         for (int i = 0; i < numeroProductoresPines; i++){
-            productoresPines[i] = new Producer(pines, msecDia, diasPines);
+            productoresPines[i] = new Producer(pines, tiempoProduccionPines);
             productoresPines[i].start();
         }
         for (int i = 0; i < numeroEnsambladores; i++){
-            ensambladores[i] = new Assembler(assemblyLine, msecDia, diasEnsamblaje, camaras, botones, pines, pantallas);
+            ensambladores[i] = new Assembler(assemblyLine, tiempoProduccionTelefono, camaras, botones, pines, pantallas);
             ensambladores[i].start();
         }
     }

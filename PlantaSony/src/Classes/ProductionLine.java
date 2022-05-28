@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  */
 public class ProductionLine {
     private int capacity;
-    private int stock;
+    private volatile int stock;
     
     public Semaphore capacitySem;
     public Semaphore stockSem = new Semaphore(1);
@@ -39,19 +39,21 @@ public class ProductionLine {
         try {
             this.stockSem.acquire();
             this.stock++;
-            this.retrieveSem.release();
-            System.out.println(whereTo + ":" + this.stock);
             switch(whereTo){
                 case "Pin":
-                    Main.interfazGrafica.aumentarNumeroPinesListos();
+                    Main.interfazGrafica.setNumeroPinesListos(this.stock);
                 case "Boton":
-                    Main.interfazGrafica.aumentarNumeroBotonesListos();
+                    Main.interfazGrafica.setNumeroBotonesListos(this.stock);
                 case "Pantalla":
-                    Main.interfazGrafica.aumentarNumeroPantallasListas();
+                    Main.interfazGrafica.setNumeroPantallasListas(this.stock);
                 case "Camara":
-                    Main.interfazGrafica.aumentarNumeroCamarasListas();
+                    Main.interfazGrafica.setNumeroCamarasListas(this.stock);
+                case "Assembled":
+                    Main.interfazGrafica.setNumeroTelefonos(this.stock);
                     
             }
+            this.retrieveSem.release();
+            System.out.println(whereTo + ":" + this.stock);
             this.stockSem.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(ProductionLine.class.getName()).log(Level.SEVERE, null, ex);

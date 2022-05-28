@@ -19,8 +19,8 @@ public class Producer extends Thread{
     public boolean working = false;
     public String whereTo;
     
-    Producer(ProductionLine productLine, int dayLength, float daysPerProduct){
-        this.productionTime = (long) (24 / daysPerProduct);
+    Producer(ProductionLine productLine, int tiempoProduccion){
+        this.productionTime = tiempoProduccion;
         this.productLine = productLine;
     }
     

@@ -23,17 +23,15 @@ public class Assembler extends Thread{
     private final int screensNeeded = 2;
     
     
-    private final long assemblyTime;
-    private final int breakTime;
+    private final int assemblyTime;
     public String currentStatus;
     
     public String whereTo;
     
-    Assembler(ProductionLine phoneLine, int dayLength, float daysPerProduct,
+    Assembler(ProductionLine phoneLine, int assemblyTime,
             ProductionLine cameraLine, ProductionLine buttonLine, ProductionLine pinLine, 
             ProductionLine screenLine){
-        this.breakTime = dayLength / 12;
-        this.assemblyTime = (long) (20 / daysPerProduct);
+        this.assemblyTime = assemblyTime;
         this.phoneLine = phoneLine;
         this.cameraLine = cameraLine;
         this.buttonLine = buttonLine;
@@ -67,15 +65,6 @@ public class Assembler extends Thread{
         this.getParts();
     }
 
-    public void timeForBreak(){
-        this.currentStatus = "Descanso";
-        try {
-            Thread.sleep(this.breakTime);
-            this.timeForWork();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
     
     @Override 
     public void run(){
