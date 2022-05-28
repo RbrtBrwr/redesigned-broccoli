@@ -4,18 +4,81 @@
  */
 package Classes;
 
+import java.util.concurrent.Semaphore;
+
 /**
  *
  * @author rober
  */
 public class Main {
-
+//    public static Semaphore assemblerRetrieveingSem = new Semaphore(1);
+    public static InterfazGraficaPlanta interfazGrafica = new InterfazGraficaPlanta();
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ProductionPlant prueba1 = new ProductionPlant();
+//        InterfazGraficaPlanta interfazGrafica = new InterfazGraficaPlanta();
         
+        interfazGrafica.setVisible(true);
+
+        int maxCamaras = 15;
+        int maxPantallas = 10;
+        int maxBotones = 20;
+        int maxPines = 12;
+        
+        ProductionLine camaras = new ProductionLine(maxCamaras, 0, "Camara");
+        ProductionLine pantallas = new ProductionLine(maxPantallas, 0, "Pantalla");
+        ProductionLine botones = new ProductionLine(maxBotones, 0, "Boton");
+        ProductionLine pines = new ProductionLine(maxPines, 0, "Pin");
+        ProductionLine assemblyLine = new ProductionLine(999, 0, "Assembled");
+        
+        int segundosEnDia = 1;
+        int msecDia = segundosEnDia * 1000;
+        
+        int tiempoProduccionCamara = msecDia / 2;
+        int tiempoProduccionBoton = msecDia / 2;
+        int tiempoProduccionPantalla = msecDia * 3;
+        int tiempoProduccionPines = msecDia * 3;
+        int tiempoProduccionTelefono = msecDia * 3;
+
+        Producer[] productoresCamaras = new Producer[11];
+        Producer[] productoresPantallas = new Producer[11];
+        Producer[] productoresBotones = new Producer[11];
+        Producer[] productoresPines = new Producer[11];
+        Assembler[] ensambladores = new Assembler[11];
+        
+        int numeroProductoresBotones = 2;
+        int numeroProductoresCamaras = 2;
+        int numeroProductoresPantallas = 5;
+        int numeroProductoresPines = 3;
+        int numeroEnsambladores = 3;
+        
+        interfazGrafica.setNumeroProductoresBotones(numeroProductoresBotones);
+        interfazGrafica.setNumeroProductoresCamaras(numeroProductoresCamaras);
+        interfazGrafica.setNumeroProductoresPantallas(numeroProductoresPantallas);
+        interfazGrafica.setNumeroProductoresPines(numeroProductoresPines);
+        interfazGrafica.setNumeroEnsambladores(numeroEnsambladores);
+        
+        for (int i = 0; i < numeroProductoresBotones; i++){
+            productoresBotones[i] = new Producer(botones, tiempoProduccionBoton);
+            productoresBotones[i].start();
+        }
+        for (int i = 0; i < numeroProductoresCamaras; i++){
+            productoresCamaras[i] = new Producer(camaras, tiempoProduccionCamara);
+            productoresCamaras[i].start();
+        }
+        for (int i = 0; i < numeroProductoresPantallas; i++){
+            productoresPantallas[i] = new Producer(pantallas, tiempoProduccionPantalla);
+            productoresPantallas[i].start();
+        }
+        for (int i = 0; i < numeroProductoresPines; i++){
+            productoresPines[i] = new Producer(pines, tiempoProduccionPines);
+            productoresPines[i].start();
+        }
+        for (int i = 0; i < numeroEnsambladores; i++){
+            ensambladores[i] = new Assembler(assemblyLine, tiempoProduccionTelefono, camaras, botones, pines, pantallas);
+            ensambladores[i].start();
+        }
     }
     
 }

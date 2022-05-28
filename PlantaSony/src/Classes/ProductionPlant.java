@@ -30,11 +30,7 @@ public class ProductionPlant {
     private boolean unlimitedStock;
     
 //    TODO DE AQUI EN ADELANTE ES PARA PRUEBAS POR AHORA
-    
-    public ProductionLine screenProduction = new ProductionLine(3, 10, 2, "Screen");
-    public ProductionLine buttonProduction = new ProductionLine(3, 10, 2, "Button");
-    public ProductionLine pinProduction = new ProductionLine(3, 10, 2, "Pin");
-    public ProductionLine cameraProduction = new ProductionLine(3, 10, 2, "Camera");
+
     public ProductionLine phoneAssembly;
     
     public static volatile int dayTime = 1000;

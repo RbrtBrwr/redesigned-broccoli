@@ -9,17 +9,5 @@ package Classes;
  * @author rober
  */
 public class Boss extends Thread{
-    private String status;
-    private int breakTime;
-    private int earningPerDay;
-    private int totalEarning;
-    
-    public void adjustCalendar(){
-        
-    }
-    
-    @Override
-    public void run(){
-        
-    }
+
 }
