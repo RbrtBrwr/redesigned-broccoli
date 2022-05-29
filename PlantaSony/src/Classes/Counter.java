@@ -33,6 +33,15 @@ public class Counter {
             Logger.getLogger(Counter.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void checkCounter(){
+        try {
+            accessCounter.acquire();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Counter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        accessCounter.release();
+    }
 }
 
 

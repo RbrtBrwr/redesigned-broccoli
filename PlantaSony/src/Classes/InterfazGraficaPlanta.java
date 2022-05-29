@@ -19,6 +19,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     private final Semaphore semaforoNumeroCamaras = new Semaphore(1);
     private final Semaphore semaforoNumeroPines = new Semaphore(1);
     private final Semaphore semaforoNumeroTelefonos = new Semaphore(1);
+    public int day = 1;
     /**
      * Creates new form InterfazGraficaPlanta
      */
@@ -84,12 +85,16 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         cambiarNumeroEnsambladores = new javax.swing.JSlider();
         mostradorNumEnsambladores = new javax.swing.JTextField();
+        dayCounter = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        remainingTimeInDay = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Produccion Pines");
@@ -183,7 +188,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel4.setText("Produccion Pantallas");
 
@@ -273,7 +278,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel7.setText("Productores");
 
@@ -366,7 +371,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                     .addContainerGap(307, Short.MAX_VALUE)))
         );
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel6.setText("Productores");
 
@@ -458,7 +463,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -471,7 +476,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -484,7 +489,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
             .addGap(0, 98, Short.MAX_VALUE)
         );
 
-        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -501,7 +506,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
 
         stopButton.setText("STOP");
 
-        jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         sliderTelefonos.setMaximum(999);
         sliderTelefonos.setToolTipText("");
@@ -565,6 +570,22 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                 .addGap(12, 12, 12))
         );
 
+        dayCounter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dayCounterActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setText("Dia");
+
+        remainingTimeInDay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                remainingTimeInDayActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setText("Tiempo restante");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -572,22 +593,32 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(36, 36, 36)
+                                .addContainerGap()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(stopButton)
-                                    .addComponent(startButton))))
-                        .addGap(0, 17, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(22, 22, 22)
+                                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(23, 23, 23)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel16)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(stopButton)
+                                                .addComponent(startButton)
+                                                .addComponent(dayCounter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(remainingTimeInDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(0, 18, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -614,7 +645,15 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(startButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(stopButton))
+                        .addComponent(stopButton)
+                        .addGap(44, 44, 44)
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dayCounter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel16)
+                        .addGap(18, 18, 18)
+                        .addComponent(remainingTimeInDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -662,6 +701,14 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     private void numeritoCamarasListasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeritoCamarasListasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_numeritoCamarasListasActionPerformed
+
+    private void dayCounterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dayCounterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dayCounterActionPerformed
+
+    private void remainingTimeInDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remainingTimeInDayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_remainingTimeInDayActionPerformed
 
     /**
      * @param args the command line arguments
@@ -848,6 +895,12 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
             Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    //Setear dias que pasan
+    
+    public void setDias(int n){
+        this.dayCounter.setText(Integer.toString(n));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSlider cambiarNumeroEnsambladores;
@@ -855,12 +908,15 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     private javax.swing.JSlider cambiarNumeroProductoresCamaras;
     private javax.swing.JSlider cambiarNumeroProductoresPantallas;
     private javax.swing.JSlider cambiarNumeroProductoresPines;
+    private javax.swing.JTextField dayCounter;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -892,6 +948,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     private javax.swing.JTextField numeritoPantallasListas;
     private javax.swing.JTextField numeritoPinesListos;
     private javax.swing.JTextField numeritoTelefonos;
+    private javax.swing.JTextField remainingTimeInDay;
     private javax.swing.JSlider sliderBotonesListos;
     private javax.swing.JSlider sliderCamarasListas;
     private javax.swing.JSlider sliderPantallasListas;

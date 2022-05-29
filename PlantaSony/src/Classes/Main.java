@@ -20,6 +20,7 @@ public class Main {
 //        InterfazGraficaPlanta interfazGrafica = new InterfazGraficaPlanta();
         
         interfazGrafica.setVisible(true);
+        
 
         int maxCamaras = 20;
         int maxPantallas = 40;
@@ -40,7 +41,6 @@ public class Main {
         int tiempoProduccionPantalla = msecDia * 3;
         int tiempoProduccionPines = msecDia * 3;
         int tiempoProduccionTelefono = msecDia * 3;
-        int bossReduceCounterTime = msecDia / 4;
         
         Counter counter = new Counter();
 
@@ -49,7 +49,7 @@ public class Main {
         Producer[] productoresBotones = new Producer[11];
         Producer[] productoresPines = new Producer[11];
         Assembler[] ensambladores = new Assembler[11];
-        Boss jefe = new Boss(7, bossReduceCounterTime, counter);
+        Boss jefe = new Boss(counter);
         
         int numeroProductoresBotones = 2;
         int numeroProductoresCamaras = 2;
@@ -62,6 +62,7 @@ public class Main {
         interfazGrafica.setNumeroProductoresPantallas(numeroProductoresPantallas);
         interfazGrafica.setNumeroProductoresPines(numeroProductoresPines);
         interfazGrafica.setNumeroEnsambladores(numeroEnsambladores);
+        interfazGrafica.setDias(1);
         
         for (int i = 0; i < numeroProductoresBotones; i++){
             productoresBotones[i] = new Producer(botones, tiempoProduccionBoton);
