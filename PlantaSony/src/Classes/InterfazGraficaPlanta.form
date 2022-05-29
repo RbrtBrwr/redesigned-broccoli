@@ -74,10 +74,10 @@
                                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="stopButton" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="startButton" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="dayCounter" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="dayCounter" max="32767" attributes="0"/>
+                                                  <Component id="stopButton" max="32767" attributes="0"/>
+                                                  <Component id="startButton" max="32767" attributes="0"/>
                                                   <Component id="remainingTimeInDay" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
@@ -128,8 +128,8 @@
                           <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                           <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="dayCounter" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="dayCounter" min="-2" pref="32" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="remainingTimeInDay" min="-2" max="-2" attributes="0"/>

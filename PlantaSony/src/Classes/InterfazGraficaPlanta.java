@@ -19,7 +19,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     private final Semaphore semaforoNumeroCamaras = new Semaphore(1);
     private final Semaphore semaforoNumeroPines = new Semaphore(1);
     private final Semaphore semaforoNumeroTelefonos = new Semaphore(1);
-    public int day = 1;
+    public int currentDay = 1;
     /**
      * Creates new form InterfazGraficaPlanta
      */
@@ -608,10 +608,10 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                                         .addGap(23, 23, 23)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(jLabel16)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(stopButton)
-                                                .addComponent(startButton)
-                                                .addComponent(dayCounter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(dayCounter)
+                                                .addComponent(stopButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(startButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(remainingTimeInDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addGap(0, 18, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
@@ -649,8 +649,8 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                         .addGap(44, 44, 44)
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dayCounter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
+                        .addComponent(dayCounter, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel16)
                         .addGap(18, 18, 18)
                         .addComponent(remainingTimeInDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -898,8 +898,14 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     
     //Setear dias que pasan
     
-    public void setDias(int n){
+    public void setCurrentDay(int n){
         this.dayCounter.setText(Integer.toString(n));
+    }
+    
+    public void addDay(){
+        int newCurrentDay = Integer.parseInt(this.dayCounter.getText());
+        newCurrentDay++;
+        this.dayCounter.setText(Integer.toString(newCurrentDay));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

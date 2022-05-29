@@ -28,6 +28,7 @@ public class Counter {
         try {
             accessCounter.acquire();
             daysRemaining--;
+            System.out.println("QUEDAN " + daysRemaining + " DIAS");
             accessCounter.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(Counter.class.getName()).log(Level.SEVERE, null, ex);
@@ -37,6 +38,7 @@ public class Counter {
     public void checkCounter(){
         try {
             accessCounter.acquire();
+            System.out.println("ESTOY VIENDO EL COUNTER");
         } catch (InterruptedException ex) {
             Logger.getLogger(Counter.class.getName()).log(Level.SEVERE, null, ex);
         }
