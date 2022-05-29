@@ -28,6 +28,7 @@ public class Counter {
         try {
             accessCounter.acquire();
             daysRemaining--;
+            Main.interfazGrafica.setCountdown(daysRemaining);
             System.out.println("QUEDAN " + daysRemaining + " DIAS");
             accessCounter.release();
         } catch (InterruptedException ex) {

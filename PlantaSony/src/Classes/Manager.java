@@ -39,6 +39,7 @@ public class Manager extends Thread{
     public void checkOnBoss(){
         if(this.boss.isPlaying){
             this.boss.salary -= 2;
+            Main.interfazGrafica.setBossSalary(this.boss.salary);
             System.out.println("TE CACHE MALDITO. Ahora te voy a pagar " + this.boss.salary);
         }
         try {
@@ -76,16 +77,21 @@ public class Manager extends Thread{
         }
         
     };
+        
+        TimerTask resetCounterAndDeliverPhones = new TimerTask(){
+        @Override
+        public void run() {
+            deliverPhones();
+            resetCounter();
+        }
+                
+                };
     
     @Override
     public void run(){
-        if(this.counter.daysRemaining == 0){
-            deliverPhones();
-        } else{
         timer.schedule(checkCounterTimer, 0, 1000);
         timer.schedule(checkOnBossTimer, 0, getRandomInt(500, 750));
-        }
-        
+        timer.schedule(resetCounterAndDeliverPhones, 30000, 30000);
     }
     
     
