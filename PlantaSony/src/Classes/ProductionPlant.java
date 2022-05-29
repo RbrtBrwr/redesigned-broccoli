@@ -10,40 +10,5 @@ import java.util.concurrent.Semaphore;
  * @author rober
  */
 public class ProductionPlant {
-//    private ProductionLine screenProduction;
-//    private ProductionLine buttonProduction;
-//    private ProductionLine pinProduction;
-//    private ProductionLine cameraProduction;
-//    private ProductionLine phoneAssembly;
-    
-    private Boss boss;
-    private Manager manager;
-    
-//    private int dayTime;
-    private int countdown;
-    private int totalExpense;
-    private int totalEarning;
-    
-    private Semaphore countdownSem;
-    private Semaphore revenueSem;
-    
-    private boolean unlimitedStock;
-    
-//    TODO DE AQUI EN ADELANTE ES PARA PRUEBAS POR AHORA
 
-    public ProductionLine phoneAssembly;
-    
-    public static volatile int dayTime = 1000;
-    
-    public static volatile int countDown = 30;
-    public static volatile int screenCount = 0;
-    public static volatile int buttonCount = 0;
-    public static volatile int pinCount = 0;
-    public static volatile int cameraCount = 0;
-    
-    public static Semaphore screenSemaphore = new Semaphore(15);
-    public static Semaphore buttonSemaphore = new Semaphore(15);
-    public static Semaphore pinSemaphore = new Semaphore(15);
-    public static Semaphore cameraSemaphore = new Semaphore(15);
-    
 }

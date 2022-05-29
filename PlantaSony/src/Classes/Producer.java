@@ -12,7 +12,6 @@ import java.util.logging.Logger;
  * @author rober
  */
 public class Producer extends Thread{
-        
     private final ProductionLine productLine;
     
     private final long productionTime;

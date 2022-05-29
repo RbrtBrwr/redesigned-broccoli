@@ -13,7 +13,6 @@ import java.util.logging.Logger;
  * @author rober
  */
 public class ProductionLine {
-    
     private int capacity;
     private volatile int stock;
     
