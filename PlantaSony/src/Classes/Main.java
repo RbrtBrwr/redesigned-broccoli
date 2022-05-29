@@ -4,6 +4,7 @@
  */
 package Classes;
 
+
 import java.util.concurrent.Semaphore;
 
 /**
@@ -20,12 +21,14 @@ public class Main {
 //        InterfazGraficaPlanta interfazGrafica = new InterfazGraficaPlanta();
         
         interfazGrafica.setVisible(true);
-        
+
 
         int maxCamaras = 20;
         int maxPantallas = 40;
         int maxBotones = 45;
         int maxPines = 15;
+       
+        
         
         ProductionLine camaras = new ProductionLine(maxCamaras, 0, "Camara");
         ProductionLine pantallas = new ProductionLine(maxPantallas, 0, "Pantalla");
@@ -50,6 +53,7 @@ public class Main {
         Producer[] productoresPines = new Producer[11];
         Assembler[] ensambladores = new Assembler[11];
         Boss jefe = new Boss(counter);
+        Manager gerente = new Manager(counter, jefe);
         
         int numeroProductoresBotones = 2;
         int numeroProductoresCamaras = 2;
@@ -57,12 +61,16 @@ public class Main {
         int numeroProductoresPines = 3;
         int numeroEnsambladores = 3;
         
+        int startingDay = 1;
+        
         interfazGrafica.setNumeroProductoresBotones(numeroProductoresBotones);
         interfazGrafica.setNumeroProductoresCamaras(numeroProductoresCamaras);
         interfazGrafica.setNumeroProductoresPantallas(numeroProductoresPantallas);
         interfazGrafica.setNumeroProductoresPines(numeroProductoresPines);
         interfazGrafica.setNumeroEnsambladores(numeroEnsambladores);
-        interfazGrafica.setDias(1);
+        interfazGrafica.setCurrentDay(startingDay);
+        interfazGrafica.setCountdown(counter.daysRemaining);
+        interfazGrafica.setBossSalary(jefe.salary);
         
         for (int i = 0; i < numeroProductoresBotones; i++){
             productoresBotones[i] = new Producer(botones, tiempoProduccionBoton);
@@ -84,6 +92,9 @@ public class Main {
             ensambladores[i] = new Assembler(assemblyLine, tiempoProduccionTelefono, camaras, botones, pines, pantallas);
             ensambladores[i].start();
         }
+        
+        jefe.start();
+        gerente.start();
     }
     
 }
