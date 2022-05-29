@@ -21,10 +21,10 @@ public class Main {
         
         interfazGrafica.setVisible(true);
 
-        int maxCamaras = 15;
-        int maxPantallas = 10;
-        int maxBotones = 20;
-        int maxPines = 12;
+        int maxCamaras = 20;
+        int maxPantallas = 40;
+        int maxBotones = 45;
+        int maxPines = 15;
         
         ProductionLine camaras = new ProductionLine(maxCamaras, 0, "Camara");
         ProductionLine pantallas = new ProductionLine(maxPantallas, 0, "Pantalla");
@@ -40,12 +40,16 @@ public class Main {
         int tiempoProduccionPantalla = msecDia * 3;
         int tiempoProduccionPines = msecDia * 3;
         int tiempoProduccionTelefono = msecDia * 3;
+        int bossReduceCounterTime = msecDia / 4;
+        
+        Counter counter = new Counter();
 
         Producer[] productoresCamaras = new Producer[11];
         Producer[] productoresPantallas = new Producer[11];
         Producer[] productoresBotones = new Producer[11];
         Producer[] productoresPines = new Producer[11];
         Assembler[] ensambladores = new Assembler[11];
+        Boss jefe = new Boss(7, bossReduceCounterTime, counter);
         
         int numeroProductoresBotones = 2;
         int numeroProductoresCamaras = 2;
