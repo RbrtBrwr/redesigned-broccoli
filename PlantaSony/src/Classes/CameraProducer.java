@@ -12,6 +12,8 @@ import java.util.logging.Logger;
  * @author rober
  */
 public class CameraProducer extends Thread{
+    public boolean running = false;
+    
     protected CameraProductionLine productLine;
     
     protected long productionTime;
@@ -23,9 +25,14 @@ public class CameraProducer extends Thread{
         this.productLine = productLine;
     }
     
+    public void stopRun(){
+        this.running = false;
+    }
+    
     @Override
     public void run(){
-        while (true){
+        running = true;
+        while (running){
             this.currentStatus = "Ocioso";
             working = false;
             try {   
@@ -38,5 +45,6 @@ public class CameraProducer extends Thread{
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        this.interrupt();
     }
 }

@@ -59,7 +59,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         mostradorNumProductoresBotones = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         numeritoBotonesListos = new javax.swing.JTextField();
-        cambiarNumeroProductoresBotones1 = new javax.swing.JSlider();
+        cambiarNumeroProductoresBotones = new javax.swing.JSlider();
         jProgressBar3 = new javax.swing.JProgressBar();
         jPanel5 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -77,7 +77,6 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         startButton = new javax.swing.JButton();
         stopButton = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
-        sliderTelefonos = new javax.swing.JSlider();
         numeritoTelefonos = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -100,12 +99,14 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
 
         jLabel2.setText("Productores");
 
+        mostradorNumProductoresPines.setEditable(false);
         mostradorNumProductoresPines.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         mostradorNumProductoresPines.setText("1");
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Pines Listos");
 
+        numeritoPinesListos.setEditable(false);
         numeritoPinesListos.setText("0");
         numeritoPinesListos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,11 +115,15 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         });
 
         cambiarNumeroProductoresPines.setMaximum(11);
-        cambiarNumeroProductoresPines.setMinimum(1);
         cambiarNumeroProductoresPines.setMinorTickSpacing(1);
         cambiarNumeroProductoresPines.setPaintTicks(true);
         cambiarNumeroProductoresPines.setSnapToTicks(true);
         cambiarNumeroProductoresPines.setValue(1);
+        cambiarNumeroProductoresPines.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                cambiarNumeroProductoresPinesStateChanged(evt);
+            }
+        });
 
         jProgressBar1.setMaximum(15);
 
@@ -184,18 +189,24 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         jLabel5.setText("Productores");
 
         cambiarNumeroProductoresPantallas.setMaximum(11);
-        cambiarNumeroProductoresPantallas.setMinimum(1);
         cambiarNumeroProductoresPantallas.setMinorTickSpacing(1);
         cambiarNumeroProductoresPantallas.setPaintTicks(true);
         cambiarNumeroProductoresPantallas.setSnapToTicks(true);
         cambiarNumeroProductoresPantallas.setValue(1);
+        cambiarNumeroProductoresPantallas.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                cambiarNumeroProductoresPantallasStateChanged(evt);
+            }
+        });
 
+        mostradorNumProductoresPantallas.setEditable(false);
         mostradorNumProductoresPantallas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         mostradorNumProductoresPantallas.setText("1");
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Pantallas Listas");
 
+        numeritoPantallasListas.setEditable(false);
         numeritoPantallasListas.setText("0");
         numeritoPantallasListas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -255,7 +266,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jProgressBar4, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -264,12 +275,14 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
 
         jLabel8.setText("Produccion Botones");
 
+        mostradorNumProductoresBotones.setEditable(false);
         mostradorNumProductoresBotones.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         mostradorNumProductoresBotones.setText("1");
 
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Botones Listos");
 
+        numeritoBotonesListos.setEditable(false);
         numeritoBotonesListos.setText("0");
         numeritoBotonesListos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -277,12 +290,16 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
             }
         });
 
-        cambiarNumeroProductoresBotones1.setMaximum(11);
-        cambiarNumeroProductoresBotones1.setMinimum(1);
-        cambiarNumeroProductoresBotones1.setMinorTickSpacing(1);
-        cambiarNumeroProductoresBotones1.setPaintTicks(true);
-        cambiarNumeroProductoresBotones1.setSnapToTicks(true);
-        cambiarNumeroProductoresBotones1.setValue(1);
+        cambiarNumeroProductoresBotones.setMaximum(11);
+        cambiarNumeroProductoresBotones.setMinorTickSpacing(1);
+        cambiarNumeroProductoresBotones.setPaintTicks(true);
+        cambiarNumeroProductoresBotones.setSnapToTicks(true);
+        cambiarNumeroProductoresBotones.setValue(1);
+        cambiarNumeroProductoresBotones.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                cambiarNumeroProductoresBotonesStateChanged(evt);
+            }
+        });
 
         jProgressBar3.setMaximum(45);
 
@@ -292,9 +309,6 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel7))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel8))
@@ -307,25 +321,29 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                             .addComponent(mostradorNumProductoresBotones, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(32, 32, 32)
-                                .addComponent(numeritoBotonesListos, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(numeritoBotonesListos, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(cambiarNumeroProductoresBotones, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel7))))
                 .addContainerGap(27, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                    .addContainerGap(16, Short.MAX_VALUE)
-                    .addComponent(cambiarNumeroProductoresBotones1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jProgressBar3, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel7)
-                        .addGap(40, 40, 40)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cambiarNumeroProductoresBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jProgressBar3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addComponent(mostradorNumProductoresBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel11)
@@ -333,11 +351,6 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                         .addComponent(numeritoBotonesListos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(85, 85, 85)))
                 .addContainerGap(223, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel4Layout.createSequentialGroup()
-                    .addGap(67, 67, 67)
-                    .addComponent(cambiarNumeroProductoresBotones1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(307, Short.MAX_VALUE)))
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -347,18 +360,29 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         jLabel9.setText("Produccion Camaras");
 
         cambiarNumeroProductoresCamaras.setMaximum(11);
-        cambiarNumeroProductoresCamaras.setMinimum(1);
         cambiarNumeroProductoresCamaras.setMinorTickSpacing(1);
         cambiarNumeroProductoresCamaras.setPaintTicks(true);
         cambiarNumeroProductoresCamaras.setSnapToTicks(true);
         cambiarNumeroProductoresCamaras.setValue(1);
+        cambiarNumeroProductoresCamaras.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                cambiarNumeroProductoresCamarasStateChanged(evt);
+            }
+        });
 
+        mostradorNumProductoresCamaras.setEditable(false);
         mostradorNumProductoresCamaras.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         mostradorNumProductoresCamaras.setText("1");
+        mostradorNumProductoresCamaras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostradorNumProductoresCamarasActionPerformed(evt);
+            }
+        });
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Camaras Listas");
 
+        numeritoCamarasListas.setEditable(false);
         numeritoCamarasListas.setText("0");
         numeritoCamarasListas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -376,14 +400,9 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cambiarNumeroProductoresCamaras, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel9))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel6))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(29, 29, 29)
                                 .addComponent(mostradorNumProductoresCamaras, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -395,7 +414,12 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                                     .addComponent(jLabel12)
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addGap(26, 26, 26)
-                                        .addComponent(numeritoCamarasListas, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(numeritoCamarasListas, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cambiarNumeroProductoresCamaras, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -483,15 +507,17 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         );
 
         startButton.setText("START");
+        startButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startButtonActionPerformed(evt);
+            }
+        });
 
         stopButton.setText("STOP");
 
         jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        sliderTelefonos.setMaximum(999);
-        sliderTelefonos.setToolTipText("");
-        sliderTelefonos.setValue(0);
-
+        numeritoTelefonos.setEditable(false);
         numeritoTelefonos.setText("0");
         numeritoTelefonos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -504,12 +530,17 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         jLabel14.setText("Ensambladores");
 
         cambiarNumeroEnsambladores.setMaximum(11);
-        cambiarNumeroEnsambladores.setMinimum(1);
         cambiarNumeroEnsambladores.setMinorTickSpacing(1);
         cambiarNumeroEnsambladores.setPaintTicks(true);
         cambiarNumeroEnsambladores.setSnapToTicks(true);
         cambiarNumeroEnsambladores.setValue(1);
+        cambiarNumeroEnsambladores.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                cambiarNumeroEnsambladoresStateChanged(evt);
+            }
+        });
 
+        mostradorNumEnsambladores.setEditable(false);
         mostradorNumEnsambladores.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         mostradorNumEnsambladores.setText("1");
 
@@ -524,9 +555,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                     .addComponent(cambiarNumeroEnsambladores, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mostradorNumEnsambladores, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(sliderTelefonos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addComponent(numeritoTelefonos, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
             .addGroup(jPanel9Layout.createSequentialGroup()
@@ -542,9 +571,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(sliderTelefonos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(numeritoTelefonos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(numeritoTelefonos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addComponent(jLabel14)
@@ -605,7 +632,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bossSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -614,7 +641,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(47, 47, 47)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -701,6 +728,139 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_numeritoTelefonosActionPerformed
 
+    private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
+        Main.getInputFromInterface();
+    }//GEN-LAST:event_startButtonActionPerformed
+
+    private void mostradorNumProductoresCamarasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostradorNumProductoresCamarasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mostradorNumProductoresCamarasActionPerformed
+
+    private void cambiarNumeroProductoresCamarasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_cambiarNumeroProductoresCamarasStateChanged
+        int numeroPrev = Main.numeroProductoresCamaras;
+        this.mostradorNumProductoresCamaras.setText(Integer.toString(cambiarNumeroProductoresCamaras.getValue()));
+        int numeroActual = this.getNumeroProductoresCamaras();
+        if (Main.checkValidInputs()){
+            if (numeroPrev > numeroActual){
+                for (int i = numeroActual; i < numeroPrev; i++){
+                    try{
+                        Main.productoresCamaras[i].stopRun();
+                    } catch (NullPointerException ex){
+                        System.out.println("whoops");
+                    }
+                }
+            } else {
+                for (int i = numeroPrev + 1; i < numeroActual; i++){
+                    Main.productoresCamaras[i].start();
+                }
+            }
+            Main.numeroProductoresCamaras = numeroActual;
+        } else {
+            this.mostradorNumProductoresCamaras.setText(Integer.toString(numeroPrev));
+            this.cambiarNumeroProductoresCamaras.setValue(numeroPrev);
+        }
+    }//GEN-LAST:event_cambiarNumeroProductoresCamarasStateChanged
+
+    private void cambiarNumeroProductoresBotonesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_cambiarNumeroProductoresBotonesStateChanged
+        int numeroPrev = Main.numeroProductoresBotones;
+        this.mostradorNumProductoresBotones.setText(Integer.toString(cambiarNumeroProductoresBotones.getValue()));
+        int numeroActual = this.getNumeroProductoresBotones();
+        if (Main.checkValidInputs()){
+            if (numeroPrev > numeroActual){
+                for (int i = numeroActual; i < numeroPrev; i++){
+                    try{
+                        Main.productoresBotones[i].stopRun();
+                    } catch (NullPointerException ex){
+                        System.out.println("whoops");
+                    }
+                }
+            } else {
+                for (int i = numeroPrev + 1; i < numeroActual; i++){
+                    Main.productoresBotones[i].start();
+                }
+            }
+            Main.numeroProductoresBotones = numeroActual;
+        } else {
+            this.mostradorNumProductoresBotones.setText(Integer.toString(numeroPrev));
+            this.cambiarNumeroProductoresBotones.setValue(numeroPrev);
+        }
+    }//GEN-LAST:event_cambiarNumeroProductoresBotonesStateChanged
+
+    private void cambiarNumeroProductoresPantallasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_cambiarNumeroProductoresPantallasStateChanged
+        int numeroPrev = Main.numeroProductoresPantallas;
+        this.mostradorNumProductoresPantallas.setText(Integer.toString(cambiarNumeroProductoresPantallas.getValue()));
+        int numeroActual = this.getNumeroProductoresPantallas();
+        if (Main.checkValidInputs()){
+            if (numeroPrev > numeroActual){
+                for (int i = numeroActual; i < numeroPrev; i++){
+                    try{
+                        Main.productoresPantallas[i].stopRun();
+                    } catch (NullPointerException ex){
+                        System.out.println("whoops");
+                    }
+                }
+            } else {
+                for (int i = numeroPrev + 1; i < numeroActual; i++){
+                    Main.productoresPantallas[i].start();
+                }
+            }
+            Main.numeroProductoresPantallas = numeroActual;
+        } else {
+            this.mostradorNumProductoresPantallas.setText(Integer.toString(numeroPrev));
+            this.cambiarNumeroProductoresPantallas.setValue(numeroPrev);
+        }
+    }//GEN-LAST:event_cambiarNumeroProductoresPantallasStateChanged
+
+    private void cambiarNumeroProductoresPinesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_cambiarNumeroProductoresPinesStateChanged
+        int numeroPrev = Main.numeroProductoresPines;
+        this.mostradorNumProductoresPines.setText(Integer.toString(cambiarNumeroProductoresPines.getValue()));
+        int numeroActual = this.getNumeroProductoresPines();
+        if (Main.checkValidInputs()){
+            if (numeroPrev > numeroActual){
+                for (int i = numeroActual; i < numeroPrev; i++){
+                    try{
+                        Main.productoresPines[i].stopRun();
+                    } catch (NullPointerException ex){
+                        System.out.println("whoops");
+                    }
+                }
+            } else {
+                for (int i = numeroPrev + 1; i < numeroActual; i++){
+                    Main.productoresPines[i].start();
+                }
+            }
+            Main.numeroProductoresPines = numeroActual;
+        } else {
+            this.mostradorNumProductoresPines.setText(Integer.toString(numeroPrev));
+            this.cambiarNumeroProductoresPines.setValue(numeroPrev);
+        }
+    }//GEN-LAST:event_cambiarNumeroProductoresPinesStateChanged
+
+    private void cambiarNumeroEnsambladoresStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_cambiarNumeroEnsambladoresStateChanged
+        int numeroPrev = Main.numeroEnsambladores;
+        this.mostradorNumEnsambladores.setText(Integer.toString(cambiarNumeroEnsambladores.getValue()));
+        int numeroActual = this.getNumeroEnsambladores();
+        if (Main.checkValidInputs()){
+            if (numeroPrev > numeroActual){
+                for (int i = numeroActual; i < numeroPrev; i++){
+                    try{
+                        Main.ensambladores[i].stopRun();
+                    } catch (NullPointerException ex){
+                        System.out.println("whoops");
+                    }
+                }
+            } else {
+                for (int i = numeroPrev + 1; i < numeroActual; i++){
+                    Main.ensambladores[i].start();
+                }
+            }
+            Main.numeroEnsambladores = numeroActual;
+        } else {
+            this.mostradorNumEnsambladores.setText(Integer.toString(numeroPrev));
+            this.cambiarNumeroEnsambladores.setValue(numeroPrev);
+        }
+    }//GEN-LAST:event_cambiarNumeroEnsambladoresStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -760,6 +920,26 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         this.mostradorNumEnsambladores.setText(Integer.toString(n));
         this.cambiarNumeroEnsambladores.setValue(n);
     }
+    public int getNumeroProductoresPines(){
+        return Integer.parseInt(this.mostradorNumProductoresPines.getText());
+    }
+    
+    public int getNumeroProductoresPantallas(){
+        return Integer.parseInt(this.mostradorNumProductoresPantallas.getText());
+    }
+    
+    public int getNumeroProductoresBotones(){
+        return Integer.parseInt(this.mostradorNumProductoresBotones.getText());
+    }
+    
+    public int getNumeroProductoresCamaras(){
+        return Integer.parseInt(this.mostradorNumProductoresCamaras.getText());
+    }
+    
+    public int getNumeroEnsambladores(){
+        return Integer.parseInt(this.mostradorNumEnsambladores.getText());
+    }
+    
     
 //    NUMERO PARTES LISTAS
     public void setNumeroPinesListos(int n){
@@ -814,66 +994,6 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         try {
             semaforoNumeroTelefonos.acquire();
             this.numeritoTelefonos.setText(Integer.toString(n));
-            this.sliderTelefonos.setValue(n);
-            semaforoNumeroTelefonos.release();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    public void aumentarNumeroPinesListos(){
-        try {
-            semaforoNumeroPines.acquire();
-            int actual = Integer.parseInt(this.numeritoPinesListos.getText());
-            actual++;
-            this.numeritoPinesListos.setText(Integer.toString(actual));
-            semaforoNumeroPines.release();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    public void aumentarNumeroBotonesListos(){
-        try {
-            semaforoNumeroBotones.acquire();
-            int actual = Integer.parseInt(this.numeritoBotonesListos.getText());
-            actual++;
-            this.numeritoBotonesListos.setText(Integer.toString(actual));
-            semaforoNumeroBotones.release();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    public void aumentarNumeroCamarasListas(){
-        try {
-            semaforoNumeroCamaras.acquire();
-            int actual = Integer.parseInt(this.numeritoCamarasListas.getText());
-            actual++;
-            this.numeritoCamarasListas.setText(Integer.toString(actual));
-            semaforoNumeroCamaras.release();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    public void aumentarNumeroPantallasListas(){
-        try {
-            semaforoNumeroPantallas.acquire();
-            int actual = Integer.parseInt(this.numeritoPantallasListas.getText());
-            actual++;
-            this.numeritoPantallasListas.setText(Integer.toString(actual));
-            semaforoNumeroPantallas.release();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    public void aumentarNumeroTelefonos(){
-        try {
-            semaforoNumeroTelefonos.acquire();
-            int actualTelefonos = Integer.parseInt(this.numeritoTelefonos.getText());
-            actualTelefonos++;
-            this.numeritoTelefonos.setText(Integer.toString(actualTelefonos));
-            this.sliderTelefonos.setValue(actualTelefonos);
-            System.out.println("Agregando " + actualTelefonos + " telefonos");
             semaforoNumeroTelefonos.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
@@ -907,7 +1027,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bossSalary;
     private javax.swing.JSlider cambiarNumeroEnsambladores;
-    private javax.swing.JSlider cambiarNumeroProductoresBotones1;
+    private javax.swing.JSlider cambiarNumeroProductoresBotones;
     private javax.swing.JSlider cambiarNumeroProductoresCamaras;
     private javax.swing.JSlider cambiarNumeroProductoresPantallas;
     private javax.swing.JSlider cambiarNumeroProductoresPines;
@@ -954,7 +1074,6 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     private javax.swing.JTextField numeritoPantallasListas;
     private javax.swing.JTextField numeritoPinesListos;
     private javax.swing.JTextField numeritoTelefonos;
-    private javax.swing.JSlider sliderTelefonos;
     private javax.swing.JButton startButton;
     private javax.swing.JButton stopButton;
     // End of variables declaration//GEN-END:variables

@@ -12,6 +12,7 @@ import java.util.logging.Logger;
  * @author rober
  */
 public class ButtonProducer extends Thread{
+    public boolean running = false;
     protected ButtonProductionLine productLine;
     
     protected long productionTime;
@@ -23,9 +24,14 @@ public class ButtonProducer extends Thread{
         this.productLine = productLine;
     }
     
+    public void stopRun(){
+        running = false;
+    }
+    
     @Override 
     public void run(){
-        while (true){
+        running = true;
+        while (running){
             this.currentStatus = "Ocioso";
             working = false;
             try {   
@@ -38,5 +44,6 @@ public class ButtonProducer extends Thread{
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        this.interrupt();
     }
 }

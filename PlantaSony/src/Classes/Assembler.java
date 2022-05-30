@@ -11,6 +11,8 @@ import java.util.logging.Logger;
  * @author rober
  */
 public class Assembler extends Thread{
+    public boolean running = false;
+    
     private final CameraProductionLine cameraLine;
     private final ButtonProductionLine buttonLine;
     private final PinProductionLine pinLine;
@@ -49,7 +51,6 @@ public class Assembler extends Thread{
         this.pinLine.retrieveFromStock(pinsNeeded);
         this.cameraLine.retrieveFromStock(camerasNeeded);
         this.screenLine.retrieveFromStock(screensNeeded);
-        this.assemblersAssemble();
 
     }
     
@@ -62,15 +63,20 @@ public class Assembler extends Thread{
         } catch (InterruptedException ex) {
             Logger.getLogger(Assembler.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.getParts();
     }
 
+    public void stopRun(){
+        running = false;
+    }
     
     @Override 
     public void run(){
-        while (true){
-            this.timeForWork();
+        running = true;
+        while (running){
+            getParts();
+            assemblersAssemble();
         }
+        this.interrupt();
             
     }
 }
