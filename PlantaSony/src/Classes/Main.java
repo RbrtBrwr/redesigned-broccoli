@@ -5,8 +5,6 @@
 package Classes;
 
 
-import java.util.concurrent.Semaphore;
-
 /**
  *
  * @author rober
@@ -18,7 +16,6 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        InterfazGraficaPlanta interfazGrafica = new InterfazGraficaPlanta();
         
         interfazGrafica.setVisible(true);
 
@@ -27,9 +24,8 @@ public class Main {
         int maxPantallas = 40;
         int maxBotones = 45;
         int maxPines = 15;
-       
         
-        
+
         ProductionLine camaras = new ProductionLine(maxCamaras, 0, "Camara");
         ProductionLine pantallas = new ProductionLine(maxPantallas, 0, "Pantalla");
         ProductionLine botones = new ProductionLine(maxBotones, 0, "Boton");
@@ -93,8 +89,8 @@ public class Main {
             ensambladores[i].start();
         }
         
-//        jefe.start();
-//        gerente.start();
+        jefe.start();
+        gerente.start();
     }
     
 }

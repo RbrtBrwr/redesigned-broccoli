@@ -18,7 +18,7 @@ public class ProductionLine {
     
     public Semaphore capacitySem;
     public Semaphore stockSem = new Semaphore(1);
-    public Semaphore retrieveSem;
+    public Semaphore retrieveSem = new Semaphore(0);
     
     public String whereTo;
     
@@ -27,12 +27,6 @@ public class ProductionLine {
         this.stock = stock;
         this.capacitySem = new Semaphore(capacity);
         this.whereTo = whereTo;
-        this.retrieveSem = new Semaphore(capacity);
-        try {
-            this.retrieveSem.acquire(capacity);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(ProductionLine.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
     
     public void addToStock(){
@@ -51,21 +45,55 @@ public class ProductionLine {
 
                     Main.interfazGrafica.setNumeroTelefonos(this.stock);
             }
-//            switch(this.whereTo){
-//                case "Pin":
-//                    Main.interfazGrafica.setNumeroPinesListos(this.stock);
-//                case "Boton":
-//                    Main.interfazGrafica.setNumeroBotonesListos(this.stock);
-//                case "Pantalla":
-//                    Main.interfazGrafica.setNumeroPantallasListas(this.stock);
-//                case "Camara":
-//                    Main.interfazGrafica.setNumeroCamarasListas(this.stock);
-//                case "Assembled":
-////                    Main.interfazGrafica.aumentarNumeroTelefonos();
-//                    System.out.println("Entre en addStock y mi stock esta en: " + this.stock);
-//                    Main.interfazGrafica.setNumeroTelefonos(this.stock);
-//                    
-//            }
+
+            this.retrieveSem.release();
+            System.out.println(whereTo + ":" + this.stock);
+            this.stockSem.release();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ProductionLine.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void addToButtonStock(){
+        try {
+            this.stockSem.acquire();
+            this.stock++;
+            Main.interfazGrafica.setNumeroBotonesListos(this.stock);
+            this.retrieveSem.release();
+            System.out.println(whereTo + ":" + this.stock);
+            this.stockSem.release();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ProductionLine.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void addToPinStock(){
+        try {
+            this.stockSem.acquire();
+            this.stock++;
+            Main.interfazGrafica.setNumeroPinesListos(this.stock);
+            this.retrieveSem.release();
+            System.out.println(whereTo + ":" + this.stock);
+            this.stockSem.release();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ProductionLine.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void addToScreenStock(){
+        try {
+            this.stockSem.acquire();
+            this.stock++;
+            Main.interfazGrafica.setNumeroPantallasListas(this.stock);
+            this.retrieveSem.release();
+            System.out.println(whereTo + ":" + this.stock);
+            this.stockSem.release();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ProductionLine.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void addToCameraStock(){
+        try {
+            this.stockSem.acquire();
+            this.stock++;
+            Main.interfazGrafica.setNumeroCamarasListas(this.stock);
             this.retrieveSem.release();
             System.out.println(whereTo + ":" + this.stock);
             this.stockSem.release();

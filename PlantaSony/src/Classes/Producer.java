@@ -12,9 +12,9 @@ import java.util.logging.Logger;
  * @author rober
  */
 public class Producer extends Thread{
-    private final ProductionLine productLine;
+    protected final ProductionLine productLine;
     
-    private final long productionTime;
+    protected final long productionTime;
     public String currentStatus;
     public boolean working = false;
     public String whereTo;
