@@ -39,19 +39,33 @@ public class ProductionLine {
         try {
             this.stockSem.acquire();
             this.stock++;
-            switch(whereTo){
-                case "Pin":
-                    Main.interfazGrafica.setNumeroPinesListos(this.stock);
-                case "Boton":
-                    Main.interfazGrafica.setNumeroBotonesListos(this.stock);
-                case "Pantalla":
-                    Main.interfazGrafica.setNumeroPantallasListas(this.stock);
-                case "Camara":
-                    Main.interfazGrafica.setNumeroCamarasListas(this.stock);
-                case "Assembled":
+            if(this.whereTo == "Pin"){
+                Main.interfazGrafica.setNumeroPinesListos(this.stock);
+            } else if(this.whereTo == "Boton"){
+                Main.interfazGrafica.setNumeroBotonesListos(this.stock);
+            } else if(this.whereTo == "Pantalla"){
+                Main.interfazGrafica.setNumeroPantallasListas(this.stock);
+            } else if(this.whereTo == "Camara"){
+                Main.interfazGrafica.setNumeroCamarasListas(this.stock);
+            } else{
+
                     Main.interfazGrafica.setNumeroTelefonos(this.stock);
-                    
             }
+//            switch(this.whereTo){
+//                case "Pin":
+//                    Main.interfazGrafica.setNumeroPinesListos(this.stock);
+//                case "Boton":
+//                    Main.interfazGrafica.setNumeroBotonesListos(this.stock);
+//                case "Pantalla":
+//                    Main.interfazGrafica.setNumeroPantallasListas(this.stock);
+//                case "Camara":
+//                    Main.interfazGrafica.setNumeroCamarasListas(this.stock);
+//                case "Assembled":
+////                    Main.interfazGrafica.aumentarNumeroTelefonos();
+//                    System.out.println("Entre en addStock y mi stock esta en: " + this.stock);
+//                    Main.interfazGrafica.setNumeroTelefonos(this.stock);
+//                    
+//            }
             this.retrieveSem.release();
             System.out.println(whereTo + ":" + this.stock);
             this.stockSem.release();

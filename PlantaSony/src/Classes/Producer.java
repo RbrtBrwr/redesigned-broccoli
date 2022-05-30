@@ -43,7 +43,7 @@ public class Producer extends Thread{
     @Override 
     public void run(){
         while (true){
-            this.timeForWork();
+               this.timeForWork();
         }
             
     }

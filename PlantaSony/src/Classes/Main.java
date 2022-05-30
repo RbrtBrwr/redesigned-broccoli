@@ -39,11 +39,11 @@ public class Main {
         int segundosEnDia = 1;
         int msecDia = segundosEnDia * 1000;
         
-        int tiempoProduccionCamara = msecDia / 2;
-        int tiempoProduccionBoton = msecDia / 2;
-        int tiempoProduccionPantalla = msecDia * 3;
-        int tiempoProduccionPines = msecDia * 3;
-        int tiempoProduccionTelefono = msecDia * 3;
+        int tiempoProduccionCamara = 3000;
+        int tiempoProduccionBoton = 500;
+        int tiempoProduccionPantalla = 500;
+        int tiempoProduccionPines = 3000;
+        int tiempoProduccionTelefono = 2000;
         
         Counter counter = new Counter();
 
@@ -93,8 +93,8 @@ public class Main {
             ensambladores[i].start();
         }
         
-        jefe.start();
-        gerente.start();
+//        jefe.start();
+//        gerente.start();
     }
     
 }

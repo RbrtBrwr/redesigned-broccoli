@@ -42,7 +42,6 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         mostradorNumProductoresPines = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        sliderPinesListos = new javax.swing.JSlider();
         numeritoPinesListos = new javax.swing.JTextField();
         cambiarNumeroProductoresPines = new javax.swing.JSlider();
         jProgressBar1 = new javax.swing.JProgressBar();
@@ -52,7 +51,6 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         cambiarNumeroProductoresPantallas = new javax.swing.JSlider();
         mostradorNumProductoresPantallas = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        sliderPantallasListas = new javax.swing.JSlider();
         numeritoPantallasListas = new javax.swing.JTextField();
         jProgressBar4 = new javax.swing.JProgressBar();
         jPanel4 = new javax.swing.JPanel();
@@ -60,7 +58,6 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         mostradorNumProductoresBotones = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        sliderBotonesListos = new javax.swing.JSlider();
         numeritoBotonesListos = new javax.swing.JTextField();
         cambiarNumeroProductoresBotones1 = new javax.swing.JSlider();
         jProgressBar3 = new javax.swing.JProgressBar();
@@ -70,7 +67,6 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         cambiarNumeroProductoresCamaras = new javax.swing.JSlider();
         mostradorNumProductoresCamaras = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        sliderCamarasListas = new javax.swing.JSlider();
         numeritoCamarasListas = new javax.swing.JTextField();
         jProgressBar2 = new javax.swing.JProgressBar();
         jPanel6 = new javax.swing.JPanel();
@@ -110,12 +106,6 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Pines Listos");
 
-        sliderPinesListos.setMaximum(15);
-        sliderPinesListos.setOrientation(javax.swing.JSlider.VERTICAL);
-        sliderPinesListos.setPaintLabels(true);
-        sliderPinesListos.setValue(0);
-        sliderPinesListos.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
-
         numeritoPinesListos.setText("0");
         numeritoPinesListos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,9 +144,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(sliderPinesListos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(38, 38, 38)
                                 .addComponent(numeritoPinesListos, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(38, 38, 38))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -180,15 +168,13 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                 .addComponent(mostradorNumProductoresPines, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(numeritoPinesListos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sliderPinesListos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(216, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(95, 95, 95)
+                .addComponent(numeritoPinesListos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(199, Short.MAX_VALUE)
+                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(200, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -209,12 +195,6 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Pantallas Listas");
-
-        sliderPantallasListas.setMaximum(40);
-        sliderPantallasListas.setOrientation(javax.swing.JSlider.VERTICAL);
-        sliderPantallasListas.setPaintLabels(true);
-        sliderPantallasListas.setValue(0);
-        sliderPantallasListas.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
 
         numeritoPantallasListas.setText("0");
         numeritoPantallasListas.addActionListener(new java.awt.event.ActionListener() {
@@ -250,8 +230,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                             .addComponent(jLabel10)
                             .addComponent(mostradorNumProductoresPantallas, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(sliderPantallasListas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(32, 32, 32)
                                 .addComponent(numeritoPantallasListas, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 36, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -275,10 +254,8 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                         .addComponent(numeritoPantallasListas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jProgressBar4, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(sliderPantallasListas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jProgressBar4, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -292,12 +269,6 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
 
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Botones Listos");
-
-        sliderBotonesListos.setMaximum(45);
-        sliderBotonesListos.setOrientation(javax.swing.JSlider.VERTICAL);
-        sliderBotonesListos.setPaintLabels(true);
-        sliderBotonesListos.setValue(0);
-        sliderBotonesListos.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
 
         numeritoBotonesListos.setText("0");
         numeritoBotonesListos.addActionListener(new java.awt.event.ActionListener() {
@@ -335,8 +306,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                             .addComponent(jLabel11)
                             .addComponent(mostradorNumProductoresBotones, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(sliderBotonesListos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(32, 32, 32)
                                 .addComponent(numeritoBotonesListos, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(27, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -359,14 +329,10 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                         .addComponent(mostradorNumProductoresBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel11)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(sliderBotonesListos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(111, 111, 111)
-                                .addComponent(numeritoBotonesListos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(111, 111, 111)
+                        .addComponent(numeritoBotonesListos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(85, 85, 85)))
+                .addContainerGap(223, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addGap(67, 67, 67)
@@ -392,12 +358,6 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Camaras Listas");
-
-        sliderCamarasListas.setMaximum(20);
-        sliderCamarasListas.setOrientation(javax.swing.JSlider.VERTICAL);
-        sliderCamarasListas.setPaintLabels(true);
-        sliderCamarasListas.setValue(0);
-        sliderCamarasListas.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
 
         numeritoCamarasListas.setText("0");
         numeritoCamarasListas.addActionListener(new java.awt.event.ActionListener() {
@@ -434,8 +394,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel12)
                                     .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(sliderCamarasListas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGap(26, 26, 26)
                                         .addComponent(numeritoCamarasListas, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -455,15 +414,12 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                 .addComponent(jLabel12)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(sliderCamarasListas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(113, 113, 113)
                         .addComponent(numeritoCamarasListas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(14, 14, 14)
                         .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(237, Short.MAX_VALUE))
         );
 
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -537,6 +493,11 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         sliderTelefonos.setValue(0);
 
         numeritoTelefonos.setText("0");
+        numeritoTelefonos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numeritoTelefonosActionPerformed(evt);
+            }
+        });
 
         jLabel13.setText("Ensamblaje de Telefonos");
 
@@ -736,6 +697,10 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_countdownActionPerformed
 
+    private void numeritoTelefonosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeritoTelefonosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numeritoTelefonosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -801,7 +766,6 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         try {
             semaforoNumeroPines.acquire();
             this.numeritoPinesListos.setText(Integer.toString(n));
-            this.sliderPinesListos.setValue(n);
             this.jProgressBar1.setOrientation(SwingConstants.VERTICAL);
             this.jProgressBar1.setValue(n);
             semaforoNumeroPines.release();
@@ -814,7 +778,6 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         try {
             semaforoNumeroBotones.acquire();
             this.numeritoBotonesListos.setText(Integer.toString(n));
-            this.sliderBotonesListos.setValue(n);
             this.jProgressBar3.setOrientation(SwingConstants.VERTICAL);
             this.jProgressBar3.setValue(n);
             semaforoNumeroBotones.release();
@@ -827,7 +790,6 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         try {
             semaforoNumeroCamaras.acquire();
             this.numeritoCamarasListas.setText(Integer.toString(n));
-            this.sliderCamarasListas.setValue(n);
             this.jProgressBar2.setOrientation(SwingConstants.VERTICAL);
             this.jProgressBar2.setValue(n);
             semaforoNumeroCamaras.release();
@@ -840,7 +802,6 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         try {
             semaforoNumeroPantallas.acquire();
             this.numeritoPantallasListas.setText(Integer.toString(n));
-            this.sliderPantallasListas.setValue(n);
             this.jProgressBar4.setOrientation(SwingConstants.VERTICAL);
             this.jProgressBar4.setValue(n);
             semaforoNumeroPantallas.release();
@@ -866,7 +827,6 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
             int actual = Integer.parseInt(this.numeritoPinesListos.getText());
             actual++;
             this.numeritoPinesListos.setText(Integer.toString(actual));
-            this.sliderPinesListos.setValue(actual);
             semaforoNumeroPines.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
@@ -878,7 +838,6 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
             int actual = Integer.parseInt(this.numeritoBotonesListos.getText());
             actual++;
             this.numeritoBotonesListos.setText(Integer.toString(actual));
-            this.sliderBotonesListos.setValue(actual);
             semaforoNumeroBotones.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
@@ -890,7 +849,6 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
             int actual = Integer.parseInt(this.numeritoCamarasListas.getText());
             actual++;
             this.numeritoCamarasListas.setText(Integer.toString(actual));
-            this.sliderCamarasListas.setValue(actual);
             semaforoNumeroCamaras.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
@@ -902,7 +860,6 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
             int actual = Integer.parseInt(this.numeritoPantallasListas.getText());
             actual++;
             this.numeritoPantallasListas.setText(Integer.toString(actual));
-            this.sliderPantallasListas.setValue(actual);
             semaforoNumeroPantallas.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
@@ -916,6 +873,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
             actualTelefonos++;
             this.numeritoTelefonos.setText(Integer.toString(actualTelefonos));
             this.sliderTelefonos.setValue(actualTelefonos);
+            System.out.println("Agregando " + actualTelefonos + " telefonos");
             semaforoNumeroTelefonos.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
@@ -996,10 +954,6 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     private javax.swing.JTextField numeritoPantallasListas;
     private javax.swing.JTextField numeritoPinesListos;
     private javax.swing.JTextField numeritoTelefonos;
-    private javax.swing.JSlider sliderBotonesListos;
-    private javax.swing.JSlider sliderCamarasListas;
-    private javax.swing.JSlider sliderPantallasListas;
-    private javax.swing.JSlider sliderPinesListos;
     private javax.swing.JSlider sliderTelefonos;
     private javax.swing.JButton startButton;
     private javax.swing.JButton stopButton;

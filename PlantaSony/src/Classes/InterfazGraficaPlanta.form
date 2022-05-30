@@ -193,9 +193,7 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Component id="jProgressBar1" min="-2" pref="29" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="sliderPinesListos" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                                       <Component id="numeritoPinesListos" min="-2" pref="57" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                                   </Group>
@@ -227,17 +225,14 @@
                       <Component id="mostradorNumProductoresPines" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="numeritoPinesListos" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="sliderPinesListos" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="216" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+                      <Component id="numeritoPinesListos" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="199" max="32767" attributes="0"/>
                       <Component id="jProgressBar1" min="-2" pref="183" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="200" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -264,17 +259,6 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Pines Listos"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JSlider" name="sliderPinesListos">
-              <Properties>
-                <Property name="maximum" type="int" value="15"/>
-                <Property name="orientation" type="int" value="1"/>
-                <Property name="paintLabels" type="boolean" value="true"/>
-                <Property name="value" type="int" value="0"/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Wait Cursor"/>
-                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="numeritoPinesListos">
@@ -339,8 +323,7 @@
                                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                   <Component id="mostradorNumProductoresPantallas" min="-2" pref="71" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="sliderPantallasListas" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                                       <Component id="numeritoPantallasListas" min="-2" pref="57" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -371,13 +354,10 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jProgressBar4" alignment="0" min="-2" pref="215" max="-2" attributes="0"/>
-                                  <Component id="sliderPantallasListas" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jProgressBar4" min="-2" pref="215" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="174" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -413,17 +393,6 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Pantallas Listas"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JSlider" name="sliderPantallasListas">
-              <Properties>
-                <Property name="maximum" type="int" value="40"/>
-                <Property name="orientation" type="int" value="1"/>
-                <Property name="paintLabels" type="boolean" value="true"/>
-                <Property name="value" type="int" value="0"/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Wait Cursor"/>
-                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="numeritoPantallasListas">
@@ -471,8 +440,7 @@
                                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                   <Component id="mostradorNumProductoresBotones" min="-2" pref="71" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="sliderBotonesListos" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                                       <Component id="numeritoBotonesListos" min="-2" pref="57" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -503,19 +471,12 @@
                               <Component id="mostradorNumProductoresBotones" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="sliderBotonesListos" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
-                                      <Component id="numeritoBotonesListos" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
+                              <Component id="numeritoBotonesListos" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="223" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
@@ -548,17 +509,6 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Botones Listos"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JSlider" name="sliderBotonesListos">
-              <Properties>
-                <Property name="maximum" type="int" value="45"/>
-                <Property name="orientation" type="int" value="1"/>
-                <Property name="paintLabels" type="boolean" value="true"/>
-                <Property name="value" type="int" value="0"/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Wait Cursor"/>
-                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="numeritoBotonesListos">
@@ -624,8 +574,7 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="sliderCamarasListas" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                               <Component id="numeritoCamarasListas" min="-2" pref="57" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -653,19 +602,15 @@
                       <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="sliderCamarasListas" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
                               <Component id="numeritoCamarasListas" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                               <Component id="jProgressBar2" min="-2" pref="192" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="237" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -701,17 +646,6 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Camaras Listas"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JSlider" name="sliderCamarasListas">
-              <Properties>
-                <Property name="maximum" type="int" value="20"/>
-                <Property name="orientation" type="int" value="1"/>
-                <Property name="paintLabels" type="boolean" value="true"/>
-                <Property name="value" type="int" value="0"/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Wait Cursor"/>
-                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="numeritoCamarasListas">
@@ -908,6 +842,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="0"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="numeritoTelefonosActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel13">
               <Properties>

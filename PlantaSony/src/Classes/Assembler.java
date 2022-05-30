@@ -17,10 +17,10 @@ public class Assembler extends Thread{
     private final ProductionLine screenLine;
     private final ProductionLine phoneLine;
     
-    private final int camerasNeeded = 3;
-    private final int buttonsNeeded = 3;
+    private final int camerasNeeded = 2;
+    private final int buttonsNeeded = 2;
     private final int pinsNeeded = 1;
-    private final int screensNeeded = 2;
+    private final int screensNeeded = 1;
     
     
     private final int assemblyTime;
