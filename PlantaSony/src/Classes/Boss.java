@@ -35,7 +35,7 @@ public class Boss extends Thread{
     public void playCrashRoyale(){
         this.isPlaying = true;
         try {
-            System.out.println("Estoy jugando Clash Royale");
+//            System.out.println("Estoy jugando Clash Royale");
             Thread.sleep((long) this.clashTime);
         } catch (InterruptedException ex) {
             Logger.getLogger(Boss.class.getName()).log(Level.SEVERE, null, ex);
@@ -46,7 +46,7 @@ public class Boss extends Thread{
     public void checkPapers(){
         this.isPapering = true;
         try {
-            System.out.println("Estoy revisando papeles");
+//            System.out.println("Estoy revisando papeles");
             Thread.sleep((long) this.papersTime);
         } catch (InterruptedException ex) {
             Logger.getLogger(Boss.class.getName()).log(Level.SEVERE, null, ex);

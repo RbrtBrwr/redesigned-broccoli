@@ -26,11 +26,11 @@ public class Main {
         int maxPines = 15;
         
 
-        ProductionLine camaras = new ProductionLine(maxCamaras, 0, "Camara");
-        ProductionLine pantallas = new ProductionLine(maxPantallas, 0, "Pantalla");
-        ProductionLine botones = new ProductionLine(maxBotones, 0, "Boton");
-        ProductionLine pines = new ProductionLine(maxPines, 0, "Pin");
-        ProductionLine assemblyLine = new ProductionLine(999, 0, "Assembled");
+        CameraProductionLine camaras = new CameraProductionLine(maxCamaras, 0);
+        ScreenProductionLine pantallas = new ScreenProductionLine(maxPantallas, 0);
+        ButtonProductionLine botones = new ButtonProductionLine(maxBotones, 0);
+        PinProductionLine pines = new PinProductionLine(maxPines, 0);
+        AssemblyLine assemblyLine = new AssemblyLine(999, 0);
         
         int segundosEnDia = 1;
         int msecDia = segundosEnDia * 1000;
@@ -43,17 +43,17 @@ public class Main {
         
         Counter counter = new Counter();
 
-        Producer[] productoresCamaras = new Producer[11];
-        Producer[] productoresPantallas = new Producer[11];
-        Producer[] productoresBotones = new Producer[11];
-        Producer[] productoresPines = new Producer[11];
+        CameraProducer[] productoresCamaras = new CameraProducer[11];
+        ScreenProducer[] productoresPantallas = new ScreenProducer[11];
+        ButtonProducer[] productoresBotones = new ButtonProducer[11];
+        PinProducer[] productoresPines = new PinProducer[11];
         Assembler[] ensambladores = new Assembler[11];
         Boss jefe = new Boss(counter);
         Manager gerente = new Manager(counter, jefe);
         
         int numeroProductoresBotones = 2;
-        int numeroProductoresCamaras = 2;
-        int numeroProductoresPantallas = 5;
+        int numeroProductoresCamaras = 3;
+        int numeroProductoresPantallas = 4;
         int numeroProductoresPines = 3;
         int numeroEnsambladores = 3;
         
@@ -69,19 +69,19 @@ public class Main {
         interfazGrafica.setBossSalary(jefe.salary);
         
         for (int i = 0; i < numeroProductoresBotones; i++){
-            productoresBotones[i] = new Producer(botones, tiempoProduccionBoton);
+            productoresBotones[i] = new ButtonProducer(botones, tiempoProduccionBoton);
             productoresBotones[i].start();
         }
         for (int i = 0; i < numeroProductoresCamaras; i++){
-            productoresCamaras[i] = new Producer(camaras, tiempoProduccionCamara);
+            productoresCamaras[i] = new CameraProducer(camaras, tiempoProduccionCamara);
             productoresCamaras[i].start();
         }
         for (int i = 0; i < numeroProductoresPantallas; i++){
-            productoresPantallas[i] = new Producer(pantallas, tiempoProduccionPantalla);
+            productoresPantallas[i] = new ScreenProducer(pantallas, tiempoProduccionPantalla);
             productoresPantallas[i].start();
         }
         for (int i = 0; i < numeroProductoresPines; i++){
-            productoresPines[i] = new Producer(pines, tiempoProduccionPines);
+            productoresPines[i] = new PinProducer(pines, tiempoProduccionPines);
             productoresPines[i].start();
         }
         for (int i = 0; i < numeroEnsambladores; i++){

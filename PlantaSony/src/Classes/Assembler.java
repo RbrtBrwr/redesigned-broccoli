@@ -11,11 +11,11 @@ import java.util.logging.Logger;
  * @author rober
  */
 public class Assembler extends Thread{
-    private final ProductionLine cameraLine;
-    private final ProductionLine buttonLine;
-    private final ProductionLine pinLine;
-    private final ProductionLine screenLine;
-    private final ProductionLine phoneLine;
+    private final CameraProductionLine cameraLine;
+    private final ButtonProductionLine buttonLine;
+    private final PinProductionLine pinLine;
+    private final ScreenProductionLine screenLine;
+    private final AssemblyLine phoneLine;
     
     private final int camerasNeeded = 2;
     private final int buttonsNeeded = 2;
@@ -28,9 +28,9 @@ public class Assembler extends Thread{
     
     public String whereTo;
     
-    Assembler(ProductionLine phoneLine, int assemblyTime,
-            ProductionLine cameraLine, ProductionLine buttonLine, ProductionLine pinLine, 
-            ProductionLine screenLine){
+    Assembler(AssemblyLine phoneLine, int assemblyTime,
+            CameraProductionLine cameraLine, ButtonProductionLine buttonLine, PinProductionLine pinLine, 
+            ScreenProductionLine screenLine){
         this.assemblyTime = assemblyTime;
         this.phoneLine = phoneLine;
         this.cameraLine = cameraLine;
