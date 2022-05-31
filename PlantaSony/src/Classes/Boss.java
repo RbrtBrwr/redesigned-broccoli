@@ -34,6 +34,7 @@ public class Boss extends Thread{
     
     public void playCrashRoyale(){
         this.isPlaying = true;
+        Main.interfazGrafica.showPlaying();
         try {
 //            System.out.println("Estoy jugando Clash Royale");
             Thread.sleep((long) this.clashTime);
@@ -41,10 +42,12 @@ public class Boss extends Thread{
             Logger.getLogger(Boss.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.isPlaying = false;
+        Main.interfazGrafica.hidePlaying();
     }
     
     public void checkPapers(){
         this.isPapering = true;
+        Main.interfazGrafica.showPapers();
         try {
 //            System.out.println("Estoy revisando papeles");
             Thread.sleep((long) this.papersTime);
@@ -52,10 +55,12 @@ public class Boss extends Thread{
             Logger.getLogger(Boss.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.isPapering = false;
+        Main.interfazGrafica.hidePapers();
     }
     
     public void reduceCounter(){
         this.isReducingTime = true;
+        Main.interfazGrafica.showCalendar();
         try {
             this.counter.reduceCounter();
             Main.interfazGrafica.addDay();
@@ -64,6 +69,7 @@ public class Boss extends Thread{
             Logger.getLogger(Boss.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.isReducingTime = false;
+        Main.interfazGrafica.hideCalendar();
         
     }
     

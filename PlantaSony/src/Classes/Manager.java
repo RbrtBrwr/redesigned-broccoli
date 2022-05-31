@@ -37,11 +37,14 @@ public class Manager extends Thread{
     }
     
     public void checkOnBoss(){
+        Main.interfazGrafica.hideEgging();
+        Main.interfazGrafica.showPolicing();
         if(this.boss.isPlaying){
             this.boss.salary -= 2;
             Main.interfazGrafica.setBossSalary(this.boss.salary);
             System.out.println("TE CACHE MALDITO. Ahora te voy a pagar " + this.boss.salary);
         }
+        Main.interfazGrafica.hidePolicing();
         try {
             Thread.sleep(getRandomInt(21,63));
         } catch (InterruptedException ex) {
@@ -50,7 +53,10 @@ public class Manager extends Thread{
     }
     
     public void checkCounter(){
+        Main.interfazGrafica.hideEgging();
+        Main.interfazGrafica.showCalendarManager();
         this.counter.checkCounter();
+        Main.interfazGrafica.hideCalendarManager();
     }
     
     public void resetCounter(){
@@ -58,8 +64,11 @@ public class Manager extends Thread{
     }
     
     public void deliverPhones(){
+        Main.interfazGrafica.hideEgging();
+        Main.interfazGrafica.showDispatching();
         //Aqui simplemente guardariamos el numero de telefonos que se hicieron ese dia en el CSV y seteamos a 0 para el nuevo dia
         Main.interfazGrafica.setNumeroTelefonos(0);
+        Main.interfazGrafica.hideDispatching();
     }
     
     TimerTask checkOnBossTimer = new TimerTask(){
