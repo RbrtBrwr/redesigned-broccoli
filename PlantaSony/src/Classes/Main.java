@@ -18,6 +18,8 @@ public class Main {
     public static void main(String[] args) {
         
         interfazGrafica.setVisible(true);
+        
+        CSVReaderWriter.writeCsvFile("tetas");
 
 
         int maxCamaras = 20;
