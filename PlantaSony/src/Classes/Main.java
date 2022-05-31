@@ -4,6 +4,8 @@
  */
 package Classes;
 
+import org.json.simple.parser.ParseException;
+
 
 /**
  *
@@ -15,10 +17,12 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         
         interfazGrafica.setVisible(true);
         
+        JSONWriterReader.write();
+        JSONWriterReader.read();
 
 
         int maxCamaras = 20;
