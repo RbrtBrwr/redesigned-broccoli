@@ -19,7 +19,6 @@ public class Main {
         
         interfazGrafica.setVisible(true);
         
-        CSVReaderWriter.writeCsvFile("tetas");
 
 
         int maxCamaras = 20;
