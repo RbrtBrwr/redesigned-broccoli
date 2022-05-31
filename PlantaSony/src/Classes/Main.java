@@ -19,10 +19,11 @@ public class Main {
      */
     public static void main(String[] args) throws ParseException {
         
+//        JSONWriterReader.read();
+        
         interfazGrafica.setVisible(true);
         
-        JSONWriterReader.write();
-        JSONWriterReader.read();
+
 
 
         int maxCamaras = 20;
@@ -96,6 +97,15 @@ public class Main {
         
         jefe.start();
         gerente.start();
+        
+        //Para guardar data cada vez que termine el programa
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
+            public void run(){
+//                JSONWriterReader.write();
+                System.out.println("Exiting");
+            }
+        });
     }
     
 }

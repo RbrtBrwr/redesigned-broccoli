@@ -23,10 +23,11 @@ public class JSONWriterReader {
 
         public static void write(){
             //First Employee
+            int i = 1;
         JSONObject employeeDetails = new JSONObject();
         employeeDetails.put("firstName", "Lokesh");
         employeeDetails.put("lastName", "Gupta");
-        employeeDetails.put("website", "howtodoinjava.com");
+        employeeDetails.put("website", "howtodoinjava");
          
         JSONObject employeeObject = new JSONObject(); 
         employeeObject.put("employee", employeeDetails);
@@ -45,9 +46,10 @@ public class JSONWriterReader {
         employeeList.add(employeeObject);
         employeeList.add(employeeObject2);
         //Write JSON file
-        try (FileWriter file = new FileWriter("employees.json")) {
+        try (FileWriter file = new FileWriter("corridas.json", true)) {
             //We can write any JSONArray or JSONObject instance to the file
             file.write(employeeList.toJSONString()); 
+            file.write(System.getProperty("line.separator"));
             file.flush();
  
         } catch (IOException e) {
@@ -59,7 +61,7 @@ public class JSONWriterReader {
             //JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
          
-        try (FileReader reader = new FileReader("employees.json"))
+        try (FileReader reader = new FileReader("employees1.json"))
         {
             //Read JSON file
             Object obj = jsonParser.parse(reader);

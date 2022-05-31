@@ -1017,6 +1017,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     }
     
     public void addDay(){
+        this.currentDay++;
         int newCurrentDay = Integer.parseInt(this.dayCounter.getText());
         newCurrentDay++;
         this.dayCounter.setText(Integer.toString(newCurrentDay));

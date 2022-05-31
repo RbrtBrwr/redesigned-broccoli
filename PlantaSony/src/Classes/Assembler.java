@@ -26,6 +26,9 @@ public class Assembler extends Thread{
     private final int assemblyTime;
     public String currentStatus;
     
+    public int salary;
+    public long eggingTime;
+    
     public String whereTo;
     
     Assembler(AssemblyLine phoneLine, int assemblyTime,
@@ -37,6 +40,8 @@ public class Assembler extends Thread{
         this.buttonLine = buttonLine;
         this.pinLine = pinLine;
         this.screenLine = screenLine;
+        this.salary = 6;
+        this.eggingTime = 0;
     }
     
     public void timeForWork(){
@@ -69,7 +74,11 @@ public class Assembler extends Thread{
     @Override 
     public void run(){
         while (true){
+            long start = System.currentTimeMillis();
             this.timeForWork();
+            long end = System.currentTimeMillis();
+            long difference = end - start - this.assemblyTime;
+            this.eggingTime += difference;
         }
             
     }

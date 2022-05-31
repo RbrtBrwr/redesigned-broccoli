@@ -17,15 +17,20 @@ public class CameraProducer extends Thread{
     protected long productionTime;
     public String currentStatus;
     public boolean working = false;
+    public int salary;
+    public long eggingTime;
     
     CameraProducer(CameraProductionLine productLine, int tiempoProduccion){
         this.productionTime = tiempoProduccion;
         this.productLine = productLine;
+        this.eggingTime = 0;
+        this.salary = 5;
     }
     
     @Override
     public void run(){
         while (true){
+            long start = System.currentTimeMillis();
             this.currentStatus = "Ocioso";
             working = false;
             try {   
@@ -34,6 +39,9 @@ public class CameraProducer extends Thread{
                 this.currentStatus = "Trabajando";
                 Thread.sleep(this.productionTime);
                 this.productLine.addToStock();
+                long end = System.currentTimeMillis();
+                long difference = end - start - this.productionTime;
+                this.eggingTime += difference;
             } catch (InterruptedException ex) {
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }
