@@ -14,7 +14,26 @@ import javax.swing.JOptionPane;
  * @author rober
  */
 public class Main {
-//    public static Semaphore assemblerRetrieveingSem = new Semaphore(1);
+
+    // SALARIOS DIARIOS, MULTIPLIQUE POR 10 PORQUE ME DIERON LASTIMA 
+    public static final int SALARIO_PRODUCTOR_CAMARAS = 50;
+    public static final int SALARIO_PRODUCTOR_BOTONES = 40;
+    public static final int SALARIO_PRODUCTOR_PANTALLAS = 30;
+    public static final int SALARIO_PRODUCTOR_PINES = 50;
+    public static final int SALARIO_ENSAMBLADOR = 60;
+    public static final int SALARIO_JEFE = 70;
+    public static final int SALARIO_GERENTE = 180;
+    
+    public static int salario_total_linea_camaras = 0;
+    public static int salario_total_linea_botones = 0;
+    public static int salario_total_linea_pantallas = 0;
+    public static int salario_total_linea_pines = 0;
+    public static int salario_total_linea_ensamblaje = 0;
+    public static int salario_total_jefe = 0;
+    public static int salario_total_gerente = 0;
+    public static int salario_total_planta = 0;
+    
+    
     public static InterfazGraficaPlanta interfazGrafica = new InterfazGraficaPlanta();
     
     public static int maxCamaras;
@@ -79,42 +98,6 @@ public class Main {
         
         interfazGrafica.setVisible(true);
 
-
-//        maxCamaras = 20;
-//        maxPantallas = 40;
-//        maxBotones = 45;
-//        maxPines = 15;
-        
-
-//        camaras = new CameraProductionLine(maxCamaras, 0);
-//        pantallas = new ScreenProductionLine(maxPantallas, 0);
-//        botones = new ButtonProductionLine(maxBotones, 0);
-//        pines = new PinProductionLine(maxPines, 0);
-//        assemblyLine = new AssemblyLine(999, 0);
-//        
-////        segundosEnDia = 1;
-////        msecDia = segundosEnDia * 1000;
-//        
-//        tiempoProduccionCamara = 3000;
-//        tiempoProduccionBoton = 500;
-//        tiempoProduccionPantalla = 500;
-//        tiempoProduccionPines = 3000;
-//        tiempoProduccionTelefono = 2000;
-
-//        
-//        numeroProductoresBotones = 2;
-//        numeroProductoresCamaras = 3;
-//        numeroProductoresPantallas = 4;
-//        numeroProductoresPines = 3;
-//        numeroEnsambladores = 3;
-//        
-//        startingDay = 1;
-//        
-//        interfazGrafica.setNumeroProductoresBotones(numeroProductoresBotones);
-//        interfazGrafica.setNumeroProductoresCamaras(numeroProductoresCamaras);
-//        interfazGrafica.setNumeroProductoresPantallas(numeroProductoresPantallas);
-//        interfazGrafica.setNumeroProductoresPines(numeroProductoresPines);
-//        interfazGrafica.setNumeroEnsambladores(numeroEnsambladores);
         interfazGrafica.setCurrentDay(startingDay);
         interfazGrafica.setCountdown(counter.daysRemaining);
         interfazGrafica.setBossSalary(jefe.salary);
