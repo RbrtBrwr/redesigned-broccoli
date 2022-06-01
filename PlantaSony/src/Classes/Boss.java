@@ -15,9 +15,7 @@ import java.util.logging.Logger;
  */
 public class Boss extends Thread{
     public int salary;
-    public boolean isPlaying;
-    public boolean isReducingTime; 
-    public boolean isPapering;
+    public String status;
     private final long counterReduceTime;
     private final Counter counter;
     private final double  clashTime;
@@ -27,35 +25,36 @@ public class Boss extends Thread{
     public Boss(Counter counter){
         this.salary = 7;
         this.counterReduceTime = 250;
-        this.isPlaying = this.isReducingTime = this.isPapering = false;
+        this.status = "Ocioso";
         this.counter = counter;
         this.clashTime = this.papersTime = 13.8888889;
     }
     
     public void playCrashRoyale(){
-        this.isPlaying = true;
+        this.status = "Jugando Clash Royale";
+        Main.interfazGrafica.setBossStatus(this.status);
         try {
 //            System.out.println("Estoy jugando Clash Royale");
             Thread.sleep((long) this.clashTime);
         } catch (InterruptedException ex) {
             Logger.getLogger(Boss.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.isPlaying = false;
     }
     
     public void checkPapers(){
-        this.isPapering = true;
+        this.status = "Chequeando papeles";
+        Main.interfazGrafica.setBossStatus(this.status);
         try {
 //            System.out.println("Estoy revisando papeles");
             Thread.sleep((long) this.papersTime);
         } catch (InterruptedException ex) {
             Logger.getLogger(Boss.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.isPapering = false;
     }
     
     public void reduceCounter(){
-        this.isReducingTime = true;
+        this.status = "Reduciendo countdown";
+        Main.interfazGrafica.setBossStatus(this.status);
         try {
             this.counter.reduceCounter();
             Main.interfazGrafica.addDay();
@@ -63,7 +62,6 @@ public class Boss extends Thread{
         } catch (InterruptedException ex) {
             Logger.getLogger(Boss.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.isReducingTime = false;
         
     }
     

@@ -173,6 +173,15 @@ public class Main {
         
         jefe.start();
         gerente.start(); 
+        
+        //Para guardar data cada vez que termine el programa
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
+            public void run(){
+//                JSONWriterReader.write();
+                System.out.println("Exiting");
+            }
+        });
     }
     
 }

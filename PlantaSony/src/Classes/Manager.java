@@ -21,12 +21,13 @@ public class Manager extends Thread{
     private final Counter counter;
     public Boss boss;
     Timer timer = new Timer();
+    public String status;
     
     public Manager(Counter counter, Boss boss){
         this.salary = 180;
         this.counter = counter;
         this.boss = boss;
-        
+        this.status = "Ocioso";
     }
     
     public int getRandomInt(int min, int max){
@@ -37,7 +38,9 @@ public class Manager extends Thread{
     }
     
     public void checkOnBoss(){
-        if(this.boss.isPlaying){
+        this.status = "Chequeando al jefe";
+        Main.interfazGrafica.setManagerStatus(this.status);
+        if(this.boss.status == "Jugando Clash Royale"){
             this.boss.salary -= 2;
             Main.interfazGrafica.setBossSalary(this.boss.salary);
             System.out.println("TE CACHE MALDITO. Ahora te voy a pagar " + this.boss.salary);
@@ -50,14 +53,20 @@ public class Manager extends Thread{
     }
     
     public void checkCounter(){
+        this.status = "Revisando counter";
+        Main.interfazGrafica.setManagerStatus(this.status);
         this.counter.checkCounter();
     }
     
     public void resetCounter(){
+        this.status = "Reseteando counter";
+        Main.interfazGrafica.setManagerStatus(this.status);
         this.counter.daysRemaining = 30;
     }
     
     public void deliverPhones(){
+        this.status = "Despachando telefonos";
+        Main.interfazGrafica.setManagerStatus(this.status);
         //Aqui simplemente guardariamos el numero de telefonos que se hicieron ese dia en el CSV y seteamos a 0 para el nuevo dia
         Main.interfazGrafica.setNumeroTelefonos(0);
     }
