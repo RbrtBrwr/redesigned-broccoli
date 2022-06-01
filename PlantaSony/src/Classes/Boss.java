@@ -14,6 +14,7 @@ import java.util.logging.Logger;
  * @author rober
  */
 public class Boss extends Thread{
+//    private boolean running = false;
     public int salary;
     public boolean isPlaying;
     public boolean isReducingTime; 
@@ -65,6 +66,10 @@ public class Boss extends Thread{
         }
         this.isReducingTime = false;
         
+    }
+    
+    public void stopRun(){
+        this.interrupt();
     }
     
     TimerTask playClashRoyaleTimer = new TimerTask(){

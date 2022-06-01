@@ -4,6 +4,8 @@
  */
 package Classes;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -25,6 +27,8 @@ public class Main {
     public static ButtonProductionLine botones;
     public static PinProductionLine pines;
     public static AssemblyLine assemblyLine;
+    
+    public static String selectedPlant = "";
     
     public static int segundosEnDia = 1;
     public static int msecDia = segundosEnDia * 1000;
@@ -54,6 +58,9 @@ public class Main {
     public static int totalTrabajadores;
 
     public static int startingDay = 1;
+    
+    public static boolean executing = false;
+    public static boolean pausado = false;
     /**
      * @param args the command line arguments
      */
@@ -113,7 +120,8 @@ public class Main {
     }
     
     public static void getInputFromInterface(){
-        if (checkValidInputs()){
+        if (checkValidInputs() && checkPlant()){
+            executing = true;
             startAllThreads(); 
         }
     }
@@ -131,7 +139,17 @@ public class Main {
             JOptionPane.showMessageDialog(null, "No se pueden tener 0 productores en ninguna linea de produccion\nEl numero de empleados no puede exceder los 15");
             return false;
         }
+
         
+        return true;
+    }
+    
+    public static boolean checkPlant(){
+        if ("".equals(selectedPlant)){
+            JOptionPane.showMessageDialog(null, "Por favor seleccione una planta");
+            return false;
+        }
+        selectedPlant = interfazGrafica.getSelectedPlant();
         return true;
     }
     
@@ -173,6 +191,57 @@ public class Main {
         
         jefe.start();
         gerente.start(); 
+    }
+    
+    public static void terminateExec(){
+//        Esto se esta pausando, pero el timer no se frena ????
+        executing = false;
+        jefe.stopRun();
+        gerente.stopRun();
+        for (int i = 0; i < 11; i++){
+            productoresBotones[i].stopRun();
+            productoresCamaras[i].stopRun();
+            productoresPantallas[i].stopRun();
+            productoresPines[i].stopRun();
+            ensambladores[i].stopRun();
+            
+        }
+        try {
+            counter.wait();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void pauseExec(){
+        pausado = true;
+        try {
+            jefe.wait();
+            gerente.wait();
+            for (int i = 0; i < 11; i++){
+                    productoresBotones[i].wait();
+                    productoresCamaras[i].wait();
+                    productoresPantallas[i].wait();
+                    productoresPines[i].wait();
+                    ensambladores[i].wait();
+
+            }
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void resumeExec(){
+        jefe.notify();
+        gerente.notify();
+        for (int i = 0; i < 11; i++){
+            productoresBotones[i].notify();
+            productoresCamaras[i].notify();
+            productoresPantallas[i].notify();
+            productoresPines[i].notify();
+            ensambladores[i].notify();
+            
+        }
     }
     
 }
