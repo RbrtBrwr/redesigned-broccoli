@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Classes;
-import java.util.concurrent.Semaphore;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,27 +11,26 @@ import java.util.logging.Logger;
  *
  * @author rober
  */
-public class Producer extends Thread{
+public class ButtonProducer extends Thread{
     public boolean running = false;
-    
-    protected AssemblyLine productLine;
+    protected ButtonProductionLine productLine;
     
     protected long productionTime;
     public String currentStatus;
     public boolean working = false;
     
-    Producer(AssemblyLine productLine, int tiempoProduccion){
+    ButtonProducer(ButtonProductionLine productLine, int tiempoProduccion){
         this.productionTime = tiempoProduccion;
         this.productLine = productLine;
     }
     
     public void stopRun(){
-        this.running = false;
+        running = false;
     }
     
     @Override 
     public void run(){
-        this.running = true;
+        running = true;
         while (running){
             this.currentStatus = "Ocioso";
             working = false;
@@ -46,6 +45,5 @@ public class Producer extends Thread{
             }
         }
         this.interrupt();
-            
     }
 }

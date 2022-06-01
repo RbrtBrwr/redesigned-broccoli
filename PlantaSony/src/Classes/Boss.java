@@ -4,6 +4,8 @@
  */
 package Classes;
 
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,12 +22,12 @@ public class Boss extends Thread{
     private final Counter counter;
     private final double  clashTime;
     private final double papersTime;
+    Timer timer = new Timer();
     
     public Boss(Counter counter){
         this.salary = 7;
         this.counterReduceTime = 250;
-        this.isPlaying = false;
-        this.isReducingTime = false;
+        this.isPlaying = this.isReducingTime = this.isPapering = false;
         this.counter = counter;
         this.clashTime = this.papersTime = 13.8888889;
     }
@@ -33,6 +35,7 @@ public class Boss extends Thread{
     public void playCrashRoyale(){
         this.isPlaying = true;
         try {
+//            System.out.println("Estoy jugando Clash Royale");
             Thread.sleep((long) this.clashTime);
         } catch (InterruptedException ex) {
             Logger.getLogger(Boss.class.getName()).log(Level.SEVERE, null, ex);
@@ -43,6 +46,7 @@ public class Boss extends Thread{
     public void checkPapers(){
         this.isPapering = true;
         try {
+//            System.out.println("Estoy revisando papeles");
             Thread.sleep((long) this.papersTime);
         } catch (InterruptedException ex) {
             Logger.getLogger(Boss.class.getName()).log(Level.SEVERE, null, ex);
@@ -53,6 +57,8 @@ public class Boss extends Thread{
     public void reduceCounter(){
         this.isReducingTime = true;
         try {
+            this.counter.reduceCounter();
+            Main.interfazGrafica.addDay();
             Thread.sleep(this.counterReduceTime);
         } catch (InterruptedException ex) {
             Logger.getLogger(Boss.class.getName()).log(Level.SEVERE, null, ex);
@@ -61,22 +67,33 @@ public class Boss extends Thread{
         
     }
     
+    TimerTask playClashRoyaleTimer = new TimerTask(){
+        @Override
+        public void run() {
+            playCrashRoyale();
+        }   
+    };
+    
+    TimerTask reduceCounterTimer = new TimerTask(){
+        @Override
+        public void run() {
+            reduceCounter();
+        }   
+    };
+    
+        TimerTask checkPapersTimer = new TimerTask(){
+        @Override
+        public void run() {
+            checkPapers();
+        }   
+    };
+    
     @Override
-    public void run(){
-        while(true){
-            if(){
-                while(remainingTimeInDay != 0){
-                    this.playCrashRoyale();
-                    this.checkPapers();
-                }
-            } else{
-                this.reduceCounter();
-                while(remainingTimeInDay != 0){
-                    this.playCrashRoyale();
-                    this.checkPapers();
-                }
-            }
+        public void run(){
+            //Esto significa que va a esperar 1 segundo para ejecturar reduceCounterTime y luego va a ejecutarlo cada segundo
+            timer.schedule(reduceCounterTimer, 1000, 1000);
+            timer.schedule(checkPapersTimer, 0, 1);
+            timer.schedule(playClashRoyaleTimer, 0, 1);
         }
-    }
     
 }

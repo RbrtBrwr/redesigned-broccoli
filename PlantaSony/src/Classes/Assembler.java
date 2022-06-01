@@ -11,16 +11,18 @@ import java.util.logging.Logger;
  * @author rober
  */
 public class Assembler extends Thread{
-    private final ProductionLine cameraLine;
-    private final ProductionLine buttonLine;
-    private final ProductionLine pinLine;
-    private final ProductionLine screenLine;
-    private final ProductionLine phoneLine;
+    public boolean running = false;
     
-    private final int camerasNeeded = 3;
-    private final int buttonsNeeded = 3;
+    private final CameraProductionLine cameraLine;
+    private final ButtonProductionLine buttonLine;
+    private final PinProductionLine pinLine;
+    private final ScreenProductionLine screenLine;
+    private final AssemblyLine phoneLine;
+    
+    private final int camerasNeeded = 2;
+    private final int buttonsNeeded = 2;
     private final int pinsNeeded = 1;
-    private final int screensNeeded = 2;
+    private final int screensNeeded = 1;
     
     
     private final int assemblyTime;
@@ -28,9 +30,9 @@ public class Assembler extends Thread{
     
     public String whereTo;
     
-    Assembler(ProductionLine phoneLine, int assemblyTime,
-            ProductionLine cameraLine, ProductionLine buttonLine, ProductionLine pinLine, 
-            ProductionLine screenLine){
+    Assembler(AssemblyLine phoneLine, int assemblyTime,
+            CameraProductionLine cameraLine, ButtonProductionLine buttonLine, PinProductionLine pinLine, 
+            ScreenProductionLine screenLine){
         this.assemblyTime = assemblyTime;
         this.phoneLine = phoneLine;
         this.cameraLine = cameraLine;
@@ -49,7 +51,6 @@ public class Assembler extends Thread{
         this.pinLine.retrieveFromStock(pinsNeeded);
         this.cameraLine.retrieveFromStock(camerasNeeded);
         this.screenLine.retrieveFromStock(screensNeeded);
-        this.assemblersAssemble();
 
     }
     
@@ -62,15 +63,20 @@ public class Assembler extends Thread{
         } catch (InterruptedException ex) {
             Logger.getLogger(Assembler.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.getParts();
     }
 
+    public void stopRun(){
+        running = false;
+    }
     
     @Override 
     public void run(){
-        while (true){
-            this.timeForWork();
+        running = true;
+        while (running){
+            getParts();
+            assemblersAssemble();
         }
+        this.interrupt();
             
     }
 }
