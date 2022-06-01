@@ -29,6 +29,10 @@ public class Manager extends Thread{
         
     }
     
+    public void stopRun(){
+        this.interrupt();
+    }
+    
     public int getRandomInt(int min, int max){
         Random rand = new Random();
         int randomNumber = rand.nextInt((max - min) + 1) + min;
