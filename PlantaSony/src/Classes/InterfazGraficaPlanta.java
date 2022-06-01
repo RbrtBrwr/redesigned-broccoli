@@ -1310,6 +1310,15 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     public boolean checkInfinity(){
         return infinityCheck.isSelected();
     }
+    
+    public boolean setInfinity(int infinite){
+        infinityCheck.setSelected(infinite == 1);
+        return infinite == 0 || infinite == 1;
+    }
+    
+    public void setDayLengthSetter(int n){
+        dayLengthSetter.setValue(n);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JSONLoader;

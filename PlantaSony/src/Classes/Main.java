@@ -222,8 +222,74 @@ public class Main {
         
         jefe.start();
         gerente.start(); 
-        System.out.println(msecDia + "-------------------------------------------------");
     }
+
+    public void setFromJson(int[] params){
+//        Le paso como parametro un arreglo con los valores
+//0 - secs x dia
+//1 - dias entre despacho
+//2 - almacen ilimitado
+//3 - productores camaras
+//4 - productores botones
+//5 - productores pines
+//6 - productores pantallas
+//7 - ensambladores        
+
+        if (params[0] < 1){
+            JOptionPane.showMessageDialog(null, "El valor especificado en el archivo es invalido\nSe utilizo el default");
+            interfazGrafica.setDayLengthSetter(1);
+        } else {
+            interfazGrafica.setDayLengthSetter(params[0]);
+        }
+        
+        if (params[1] < 6){
+            JOptionPane.showMessageDialog(null, "En menos de 6 dias no produces ni un telefono\nSe utilizo el default");
+            interfazGrafica.setCountdown(30);
+        } else {
+            interfazGrafica.setCountdown(params[1]);
+        }
+        
+        if (!interfazGrafica.setInfinity(params[2])){
+            JOptionPane.showMessageDialog(null, "Input de stock infinito invalido\nNo se activo stock infinito");
+        }
+        
+        int pCam = params[3];
+        int pBut = params[4];
+        int pPin = params[5];
+        int pScr = params[6];
+        int ass = params[7];
+        boolean testTotal = pCam + pBut + pPin + pScr + ass > 15;
+        boolean testNull = pCam < 1 || pBut < 1 || pPin < 1 || pScr < 1 || ass < 1;
+        if (testTotal || testNull){
+            JOptionPane.showMessageDialog(null, "La suma de trabajadores no puede ser mas de 15\nNo pueden haber cero productores en una linea\nSe utilizaron valores default");
+            interfazGrafica.setNumeroProductoresCamaras(3);
+            interfazGrafica.setNumeroProductoresBotones(3);
+            interfazGrafica.setNumeroProductoresPines(3);
+            interfazGrafica.setNumeroProductoresPantallas(3);
+            interfazGrafica.setNumeroEnsambladores(3);
+        } else {
+            interfazGrafica.setNumeroProductoresCamaras(pCam);
+            interfazGrafica.setNumeroProductoresBotones(pBut);
+            interfazGrafica.setNumeroProductoresPines(pPin);
+            interfazGrafica.setNumeroProductoresPantallas(pScr);
+            interfazGrafica.setNumeroEnsambladores(ass);
+        }
+    }
+    
+    public void writeToJSON(){
+        int[] params = new int[8];
+        params[0] = interfazGrafica.getSegundosPorDia();
+//        params[1] = interfazGrafica.getCountdown() ??????????
+        params[2] = interfazGrafica.checkInfinity() ? 1 : 0;
+        params[3] = interfazGrafica.getNumeroProductoresCamaras();
+        params[4] = interfazGrafica.getNumeroProductoresBotones();
+        params[5] = interfazGrafica.getNumeroProductoresPines();
+        params[6] = interfazGrafica.getNumeroProductoresPantallas();
+        params[7] = interfazGrafica.getNumeroEnsambladores();
+    }
+    
+    
+// Estas no funcionan como quiero, quizas las saco y ya
     
     public static void terminateExec(){
 //        Esto se esta pausando, pero el timer no se frena ????
@@ -275,5 +341,7 @@ public class Main {
             
         }
     }
+    
+    
     
 }
