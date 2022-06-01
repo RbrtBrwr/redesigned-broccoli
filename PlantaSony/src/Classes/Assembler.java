@@ -30,6 +30,9 @@ public class Assembler extends Thread{
     
     public String whereTo;
     
+    public int salary;
+    public long eggingTime;
+    
     Assembler(AssemblyLine phoneLine, int assemblyTime,
             CameraProductionLine cameraLine, ButtonProductionLine buttonLine, PinProductionLine pinLine, 
             ScreenProductionLine screenLine){
@@ -39,6 +42,8 @@ public class Assembler extends Thread{
         this.buttonLine = buttonLine;
         this.pinLine = pinLine;
         this.screenLine = screenLine;
+        this.salary = 6;
+        this.eggingTime = 0;
     }
     
     public void timeForWork(){
@@ -73,8 +78,12 @@ public class Assembler extends Thread{
     public void run(){
         running = true;
         while (running){
+            long start = System.currentTimeMillis();
             getParts();
             assemblersAssemble();
+            long end = System.currentTimeMillis();
+                long difference = end - start - this.assemblyTime;
+                this.eggingTime += difference;
         }
         this.interrupt();
             

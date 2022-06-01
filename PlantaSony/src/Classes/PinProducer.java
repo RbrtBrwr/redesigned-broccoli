@@ -18,6 +18,8 @@ public class PinProducer extends Thread{
     protected long productionTime;
     public String currentStatus;
     public boolean working = false;
+    public int salary;
+    public long eggingTime;
     
     PinProducer(PinProductionLine productLine, int tiempoProduccion){
         this.productionTime = tiempoProduccion;
@@ -32,6 +34,7 @@ public class PinProducer extends Thread{
     public void run(){
         this.running = true;
         while (running){
+            long start = System.currentTimeMillis();
             this.currentStatus = "Ocioso";
             working = false;
             try {   
@@ -40,6 +43,9 @@ public class PinProducer extends Thread{
                 this.currentStatus = "Trabajando";
                 Thread.sleep(this.productionTime);
                 this.productLine.addToStock();
+                long end = System.currentTimeMillis();
+                long difference = end - start - this.productionTime;
+                this.eggingTime += difference;
             } catch (InterruptedException ex) {
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }
