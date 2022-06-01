@@ -46,8 +46,8 @@ public class Main {
     public static ButtonProducer[] productoresBotones = new ButtonProducer[11];
     public static PinProducer[] productoresPines = new PinProducer[11];
     public static Assembler[] ensambladores = new Assembler[11];
-    public static Boss jefe;
-    public static Manager gerente;
+    public static Boss jefe = new Boss(counter);;
+    public static Manager gerente = new Manager(counter, jefe);
 
     public static int numeroProductoresBotones;
     public static int numeroProductoresCamaras;
@@ -66,8 +66,8 @@ public class Main {
     public static int[] specsPro = new int[] {4,3,1,2};
     public static int[] specs10III = new int[] {2,2,1,1};
     
-    public static final int costoPro = 1050;
-    public static final int costo10III = 600;
+    public static final int COSTO_PRO = 1050;
+    public static final int COSTO_10_III = 600;
     
     public static int[] phoneSpecs;
     public static int phonePrice;
@@ -80,50 +80,41 @@ public class Main {
         interfazGrafica.setVisible(true);
 
 
-        maxCamaras = 20;
-        maxPantallas = 40;
-        maxBotones = 45;
-        maxPines = 15;
+//        maxCamaras = 20;
+//        maxPantallas = 40;
+//        maxBotones = 45;
+//        maxPines = 15;
         
 
-        camaras = new CameraProductionLine(maxCamaras, 0);
-        pantallas = new ScreenProductionLine(maxPantallas, 0);
-        botones = new ButtonProductionLine(maxBotones, 0);
-        pines = new PinProductionLine(maxPines, 0);
-        assemblyLine = new AssemblyLine(999, 0);
-        
-        segundosEnDia = 1;
-        msecDia = segundosEnDia * 1000;
-        
-        tiempoProduccionCamara = 3000;
-        tiempoProduccionBoton = 500;
-        tiempoProduccionPantalla = 500;
-        tiempoProduccionPines = 3000;
-        tiempoProduccionTelefono = 2000;
-        
-        counter = new Counter();
+//        camaras = new CameraProductionLine(maxCamaras, 0);
+//        pantallas = new ScreenProductionLine(maxPantallas, 0);
+//        botones = new ButtonProductionLine(maxBotones, 0);
+//        pines = new PinProductionLine(maxPines, 0);
+//        assemblyLine = new AssemblyLine(999, 0);
+//        
+////        segundosEnDia = 1;
+////        msecDia = segundosEnDia * 1000;
+//        
+//        tiempoProduccionCamara = 3000;
+//        tiempoProduccionBoton = 500;
+//        tiempoProduccionPantalla = 500;
+//        tiempoProduccionPines = 3000;
+//        tiempoProduccionTelefono = 2000;
 
-        productoresCamaras = new CameraProducer[11];
-        productoresPantallas = new ScreenProducer[11];
-        productoresBotones = new ButtonProducer[11];
-        productoresPines = new PinProducer[11];
-        ensambladores = new Assembler[11];
-        jefe = new Boss(counter);
-        gerente = new Manager(counter, jefe);
-        
-        numeroProductoresBotones = 2;
-        numeroProductoresCamaras = 3;
-        numeroProductoresPantallas = 4;
-        numeroProductoresPines = 3;
-        numeroEnsambladores = 3;
-        
-        startingDay = 1;
-        
-        interfazGrafica.setNumeroProductoresBotones(numeroProductoresBotones);
-        interfazGrafica.setNumeroProductoresCamaras(numeroProductoresCamaras);
-        interfazGrafica.setNumeroProductoresPantallas(numeroProductoresPantallas);
-        interfazGrafica.setNumeroProductoresPines(numeroProductoresPines);
-        interfazGrafica.setNumeroEnsambladores(numeroEnsambladores);
+//        
+//        numeroProductoresBotones = 2;
+//        numeroProductoresCamaras = 3;
+//        numeroProductoresPantallas = 4;
+//        numeroProductoresPines = 3;
+//        numeroEnsambladores = 3;
+//        
+//        startingDay = 1;
+//        
+//        interfazGrafica.setNumeroProductoresBotones(numeroProductoresBotones);
+//        interfazGrafica.setNumeroProductoresCamaras(numeroProductoresCamaras);
+//        interfazGrafica.setNumeroProductoresPantallas(numeroProductoresPantallas);
+//        interfazGrafica.setNumeroProductoresPines(numeroProductoresPines);
+//        interfazGrafica.setNumeroEnsambladores(numeroEnsambladores);
         interfazGrafica.setCurrentDay(startingDay);
         interfazGrafica.setCountdown(counter.daysRemaining);
         interfazGrafica.setBossSalary(jefe.salary);
@@ -133,7 +124,12 @@ public class Main {
     public static void getInputFromInterface(){
         if (checkValidInputs() && checkPlant()){
             executing = true;
+            
+            setSpeed();
+            setWorkTime();
+            setInfinity();
             startAllThreads(); 
+            
         }
     }
     
@@ -150,9 +146,26 @@ public class Main {
             JOptionPane.showMessageDialog(null, "No se pueden tener 0 productores en ninguna linea de produccion\nEl numero de empleados no puede exceder los 15");
             return false;
         }
-
-        
         return true;
+    }
+    
+    public static void setInfinity(){
+        if (interfazGrafica.checkInfinity()){
+            maxCamaras = 999;
+            maxPantallas = 999;
+            maxBotones = 999;
+            maxPines = 999;
+        } else {
+            maxCamaras = 20;
+            maxPantallas = 40;
+            maxBotones = 45;
+            maxPines = 15;
+        }
+        camaras = new CameraProductionLine(maxCamaras, 0);
+        pantallas = new ScreenProductionLine(maxPantallas, 0);
+        botones = new ButtonProductionLine(maxBotones, 0);
+        pines = new PinProductionLine(maxPines, 0);
+        assemblyLine = new AssemblyLine(999, 0);
     }
     
     public static boolean checkPlant(){
@@ -168,12 +181,24 @@ public class Main {
     public static void setPlantSpecs(String selectedPlant){
         if ("Xperia Pro-I".equals(selectedPlant)){
             phoneSpecs = specsPro;
-            phonePrice = costoPro;
+            phonePrice = COSTO_PRO;
             
         } else if ("Xperia 10 III".equals(selectedPlant)){
             phoneSpecs = specs10III;
-            phonePrice = costo10III;
+            phonePrice = COSTO_10_III;
         }
+    }
+    
+    public static void setSpeed(){
+        msecDia = interfazGrafica.getSegundosPorDia() * 1000;
+    }
+    
+    public static void setWorkTime(){
+        tiempoProduccionCamara = msecDia * 3;
+        tiempoProduccionBoton = msecDia / 2;
+        tiempoProduccionPantalla = msecDia / 2;
+        tiempoProduccionPines = msecDia * 3;
+        tiempoProduccionTelefono = msecDia * 3;
     }
     
     public static void startAllThreads(){
@@ -214,6 +239,7 @@ public class Main {
         
         jefe.start();
         gerente.start(); 
+        System.out.println(msecDia + "-------------------------------------------------");
     }
     
     public static void terminateExec(){
