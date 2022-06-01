@@ -71,7 +71,9 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         numeritoCamarasListas = new javax.swing.JTextField();
         jProgressBar2 = new javax.swing.JProgressBar();
         jPanel6 = new javax.swing.JPanel();
+        bossStatus = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
+        managerStatus = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         countdown = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
@@ -458,11 +460,17 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 193, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(bossStatus)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 79, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addComponent(bossStatus)
+                .addGap(31, 31, 31))
         );
 
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -471,11 +479,17 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addComponent(managerStatus)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 98, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
+                .addComponent(managerStatus)
+                .addGap(39, 39, 39))
         );
 
         jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -682,7 +696,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(0, 21, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
@@ -746,7 +760,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel18)
                             .addComponent(bossSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1124,9 +1138,18 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     public String getSelectedPlant(){
         return plantSelector.getSelectedItem().toString();
     }
+    
+    public void setBossStatus(String status){
+        this.bossStatus.setText(status);
+    }
+    
+    public void setManagerStatus(String status){
+        this.managerStatus.setText(status);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bossSalary;
+    private javax.swing.JLabel bossStatus;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JSlider cambiarNumeroEnsambladores;
     private javax.swing.JSlider cambiarNumeroProductoresBotones;
@@ -1168,6 +1191,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     private javax.swing.JProgressBar jProgressBar2;
     private javax.swing.JProgressBar jProgressBar3;
     private javax.swing.JProgressBar jProgressBar4;
+    private javax.swing.JLabel managerStatus;
     private javax.swing.JTextField mostradorNumEnsambladores;
     private javax.swing.JTextField mostradorNumProductoresBotones;
     private javax.swing.JTextField mostradorNumProductoresCamaras;
