@@ -30,14 +30,14 @@ public class Main {
     
     public static String selectedPlant = "";
     
-    public static int segundosEnDia = 1;
+    public static int segundosEnDia;
     public static int msecDia = segundosEnDia * 1000;
 
-    public static int tiempoProduccionCamara = 3000;
-    public static int tiempoProduccionBoton = 500;
-    public static int tiempoProduccionPantalla = 500;
-    public static int tiempoProduccionPines = 3000;
-    public static int tiempoProduccionTelefono = 2000;
+    public static int tiempoProduccionCamara;
+    public static int tiempoProduccionBoton;
+    public static int tiempoProduccionPantalla;
+    public static int tiempoProduccionPines;
+    public static int tiempoProduccionTelefono;
 
     public static Counter counter = new Counter();
 
@@ -61,6 +61,17 @@ public class Main {
     
     public static boolean executing = false;
     public static boolean pausado = false;
+    
+//    Camara, botones, pines, pantallas
+    public static int[] specsPro = new int[] {4,3,1,2};
+    public static int[] specs10III = new int[] {2,2,1,1};
+    
+    public static final int costoPro = 1050;
+    public static final int costo10III = 600;
+    
+    public static int[] phoneSpecs;
+    public static int phonePrice;
+    
     /**
      * @param args the command line arguments
      */
@@ -149,8 +160,20 @@ public class Main {
             JOptionPane.showMessageDialog(null, "Por favor seleccione una planta");
             return false;
         }
-        selectedPlant = interfazGrafica.getSelectedPlant();
+        setPlantSpecs(interfazGrafica.getSelectedPlant());
+        
         return true;
+    }
+    
+    public static void setPlantSpecs(String selectedPlant){
+        if ("Xperia Pro-I".equals(selectedPlant)){
+            phoneSpecs = specsPro;
+            phonePrice = costoPro;
+            
+        } else if ("Xperia 10 III".equals(selectedPlant)){
+            phoneSpecs = specs10III;
+            phonePrice = costo10III;
+        }
     }
     
     public static void startAllThreads(){
@@ -169,7 +192,7 @@ public class Main {
             productoresPines[i] = new PinProducer(pines, tiempoProduccionPines);
         }
         for (int i = 0; i < 11; i++){
-            ensambladores[i] = new Assembler(assemblyLine, tiempoProduccionTelefono, camaras, botones, pines, pantallas);
+            ensambladores[i] = new Assembler(assemblyLine, tiempoProduccionTelefono, phoneSpecs, camaras, botones, pines, pantallas);
         }
         
 //      Solo corro las que necesito
