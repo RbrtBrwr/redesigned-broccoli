@@ -20,6 +20,7 @@ public class Boss extends Thread{
     private final Counter counter;
     private final double  clashTime;
     private final double papersTime;
+    public boolean running;
     Timer timer = new Timer();
     
     public Boss(Counter counter){
@@ -28,6 +29,7 @@ public class Boss extends Thread{
         this.status = "Ocioso";
         this.counter = counter;
         this.clashTime = this.papersTime = 13.8888889;
+        this.running = false;
     }
 
 public void stopRun(){
@@ -69,10 +71,17 @@ public void stopRun(){
         
     }
     
+    public void checkStop(){
+        if(this.running = false){
+            checkPapersTimer.cancel();
+        }
+    }
+    
     TimerTask playClashRoyaleTimer = new TimerTask(){
         @Override
         public void run() {
             playCrashRoyale();
+            
         }   
     };
     
@@ -80,7 +89,7 @@ public void stopRun(){
         @Override
         public void run() {
             reduceCounter();
-        }   
+        }
     };
     
         TimerTask checkPapersTimer = new TimerTask(){
@@ -96,6 +105,8 @@ public void stopRun(){
             timer.schedule(reduceCounterTimer, 1000, 1000);
             timer.schedule(checkPapersTimer, 0, 1);
             timer.schedule(playClashRoyaleTimer, 0, 1);
+        
         }
+        
     
 }

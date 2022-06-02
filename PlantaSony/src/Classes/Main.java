@@ -30,6 +30,8 @@ public class Main {
     
     public static String selectedPlant = "";
     
+    public static int startingDays = 30;
+    
     public static int segundosEnDia = 1;
     public static int msecDia = segundosEnDia * 1000;
 
@@ -39,7 +41,7 @@ public class Main {
     public static int tiempoProduccionPines = 3000;
     public static int tiempoProduccionTelefono = 2000;
 
-    public static Counter counter = new Counter();
+    public static Counter counter = new Counter(startingDays);
 
     public static CameraProducer[] productoresCamaras = new CameraProducer[11];
     public static ScreenProducer[] productoresPantallas = new ScreenProducer[11];
@@ -90,7 +92,7 @@ public class Main {
         tiempoProduccionPines = 3000;
         tiempoProduccionTelefono = 2000;
         
-        counter = new Counter();
+        counter = new Counter(startingDays);
 
         productoresCamaras = new CameraProducer[11];
         productoresPantallas = new ScreenProducer[11];
@@ -196,8 +198,8 @@ public class Main {
     public static void terminateExec(){
 //        Esto se esta pausando, pero el timer no se frena ????
         executing = false;
-        jefe.stopRun();
-        gerente.stopRun();
+        jefe.timer.cancel();
+        gerente.timer.cancel();
         for (int i = 0; i < 11; i++){
             productoresBotones[i].stopRun();
             productoresCamaras[i].stopRun();

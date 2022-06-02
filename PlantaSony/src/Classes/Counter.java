@@ -16,8 +16,8 @@ public class Counter {
     public Semaphore accessCounter = new Semaphore(1);
     public int daysRemaining;
     
-    public Counter(){
-        this.daysRemaining = 30;
+    public Counter(int daysRemaining){
+        this.daysRemaining = daysRemaining;
     }
     
     public void setDaysRemaining(int days){
@@ -29,7 +29,7 @@ public class Counter {
             accessCounter.acquire();
             daysRemaining--;
             Main.interfazGrafica.setCountdown(daysRemaining);
-            System.out.println("QUEDAN " + daysRemaining + " DIAS");
+//            System.out.println("QUEDAN " + daysRemaining + " DIAS");
             accessCounter.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(Counter.class.getName()).log(Level.SEVERE, null, ex);
@@ -39,7 +39,7 @@ public class Counter {
     public void checkCounter(){
         try {
             accessCounter.acquire();
-            System.out.println("ESTOY VIENDO EL COUNTER");
+//            System.out.println("ESTOY VIENDO EL COUNTER");
         } catch (InterruptedException ex) {
             Logger.getLogger(Counter.class.getName()).log(Level.SEVERE, null, ex);
         }
