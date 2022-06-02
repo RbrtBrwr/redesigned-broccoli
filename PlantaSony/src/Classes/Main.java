@@ -17,6 +17,7 @@ import org.json.simple.parser.ParseException;
 public class Main {
 //    public static Semaphore assemblerRetrieveingSem = new Semaphore(1);
     public static InterfazGraficaPlanta interfazGrafica = new InterfazGraficaPlanta();
+    public static Dashboard dashboard = new Dashboard();
     
     public static int[] readJson;
     
@@ -64,7 +65,8 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        interfazGrafica.setVisible(true);
+        
+        dashboard.setVisible(true);
 
 
         maxCamaras = 20;
