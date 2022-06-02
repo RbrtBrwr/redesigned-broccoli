@@ -68,7 +68,7 @@ public class Main {
     public static ButtonProducer[] productoresBotones = new ButtonProducer[11];
     public static PinProducer[] productoresPines = new PinProducer[11];
     public static Assembler[] ensambladores = new Assembler[11];
-    public static Boss jefe = new Boss(counter);;
+    public static Boss jefe = new Boss(counter);
     public static Manager gerente = new Manager(counter, jefe);
 
     public static int numeroProductoresBotones;

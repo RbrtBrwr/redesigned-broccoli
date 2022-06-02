@@ -22,10 +22,11 @@ public class Boss extends Thread{
     private final double papersTime;
     public boolean running;
     Timer timer = new Timer();
+    public long dayDuration;
     
     public Boss(Counter counter){
         this.salary = 7;
-        this.counterReduceTime = 250;
+        this.counterReduceTime = 1000;
         this.status = "Ocioso";
         this.counter = counter;
         this.clashTime = this.papersTime = 13.8888889;
@@ -71,11 +72,6 @@ public void stopRun(){
         
     }
     
-    public void checkStop(){
-        if(this.running = false){
-            checkPapersTimer.cancel();
-        }
-    }
     
     TimerTask playClashRoyaleTimer = new TimerTask(){
         @Override
