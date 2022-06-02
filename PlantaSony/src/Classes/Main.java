@@ -4,7 +4,10 @@
  */
 package Classes;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.json.simple.parser.ParseException;
 
 
 /**
@@ -14,6 +17,8 @@ import javax.swing.JOptionPane;
 public class Main {
 //    public static Semaphore assemblerRetrieveingSem = new Semaphore(1);
     public static InterfazGraficaPlanta interfazGrafica = new InterfazGraficaPlanta();
+    
+    public static int[] readJson;
     
     public static int maxCamaras;
     public static int maxPantallas;
@@ -178,7 +183,7 @@ public class Main {
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override
             public void run(){
-//                JSONWriterReader.write();
+                jsonReaderWriter.write();
                 System.out.println("Exiting");
             }
         });
