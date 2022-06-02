@@ -715,7 +715,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
             }
         });
 
-        plantSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xperia Pro-I", "Xperia 10 III" }));
+        plantSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Xperia Pro-I", "Xperia 10 III" }));
         plantSelector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 plantSelectorActionPerformed(evt);
@@ -1130,7 +1130,12 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         if (Main.executing){
             plantSelector.setEditable(false);
         } else {
-            Main.selectedPlant = plantSelector.getSelectedItem().toString();
+            if ("Seleccionar".equals(plantSelector.getSelectedItem().toString())){
+                JOptionPane.showMessageDialog(null, "Por favor seleccione una planta");
+            } else {
+                Main.selectedPlant = plantSelector.getSelectedItem().toString();
+                
+            }
         }
         
     }//GEN-LAST:event_plantSelectorActionPerformed
