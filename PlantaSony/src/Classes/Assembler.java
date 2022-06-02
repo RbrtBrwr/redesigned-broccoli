@@ -19,21 +19,22 @@ public class Assembler extends Thread{
     private final ScreenProductionLine screenLine;
     private final AssemblyLine phoneLine;
     
-    private final int camerasNeeded = 2;
-    private final int buttonsNeeded = 2;
-    private final int pinsNeeded = 1;
-    private final int screensNeeded = 1;
+    private int camerasNeeded;
+    private int buttonsNeeded;
+    private int pinsNeeded;
+    private int screensNeeded;
     
     
     private final int assemblyTime;
     public String currentStatus;
     
     public String whereTo;
-    
     public int salary;
     public long eggingTime;
     
-    Assembler(AssemblyLine phoneLine, int assemblyTime,
+    public int[] phoneSpecs;
+    
+    Assembler(AssemblyLine phoneLine, int assemblyTime, int[] phoneSpecs,
             CameraProductionLine cameraLine, ButtonProductionLine buttonLine, PinProductionLine pinLine, 
             ScreenProductionLine screenLine){
         this.assemblyTime = assemblyTime;
@@ -42,8 +43,16 @@ public class Assembler extends Thread{
         this.buttonLine = buttonLine;
         this.pinLine = pinLine;
         this.screenLine = screenLine;
+        this.setPartsNeeded(phoneSpecs);
         this.salary = 6;
         this.eggingTime = 0;
+    }
+    
+    public void setPartsNeeded(int[] phoneSpecs){
+        camerasNeeded = phoneSpecs[0];
+        buttonsNeeded = phoneSpecs[1];
+        pinsNeeded = phoneSpecs[2];
+        screensNeeded = phoneSpecs[3];
     }
     
     public void timeForWork(){

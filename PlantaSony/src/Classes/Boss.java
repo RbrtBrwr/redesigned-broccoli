@@ -20,14 +20,17 @@ public class Boss extends Thread{
     private final Counter counter;
     private final double  clashTime;
     private final double papersTime;
+    public boolean running;
     Timer timer = new Timer();
+    public long dayDuration;
     
-    public Boss(Counter counter, long counterReduceTime, double clashTime){
+    public Boss(Counter counter){
+        
         this.salary = 7;
-        this.counterReduceTime = counterReduceTime;
+        this.counterReduceTime = Main.msecDia / 4;
         this.status = "Ocioso";
         this.counter = counter;
-        this.clashTime = this.papersTime = clashTime;
+        this.clashTime = this.papersTime = Main.msecDia / 72;
     }
     
     public void playCrashRoyale(){
@@ -65,10 +68,12 @@ public class Boss extends Thread{
         
     }
     
+    
     TimerTask playClashRoyaleTimer = new TimerTask(){
         @Override
         public void run() {
             playCrashRoyale();
+            
         }   
     };
     
@@ -76,7 +81,7 @@ public class Boss extends Thread{
         @Override
         public void run() {
             reduceCounter();
-        }   
+        }
     };
     
         TimerTask checkPapersTimer = new TimerTask(){
@@ -92,6 +97,8 @@ public class Boss extends Thread{
             timer.schedule(reduceCounterTimer, this.counterReduceTime, this.counterReduceTime);
             timer.schedule(checkPapersTimer, 0, 1);
             timer.schedule(playClashRoyaleTimer, 0, 1);
+        
         }
+        
     
 }
