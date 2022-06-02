@@ -733,6 +733,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
 
         jLabel20.setText("Segundos por Dia");
 
+        dayLengthSetter.setValue(1);
         dayLengthSetter.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 dayLengthSetterStateChanged(evt);
