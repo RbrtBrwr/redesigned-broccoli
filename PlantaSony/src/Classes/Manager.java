@@ -25,12 +25,12 @@ public class Manager extends Thread{
     public long counterCheckTime;
     public int daysBetweenDispatchs;
     
-    public Manager(Counter counter, Boss boss, long counterCheckTime, int daysBetweenDispatchs){
+    public Manager(Counter counter, Boss boss, int daysBetweenDispatchs){
         this.salary = 180;
         this.counter = counter;
         this.boss = boss;
         this.status = "Ocioso";
-        this.counterCheckTime = counterCheckTime;
+        this.counterCheckTime = Main.msecDia;
         this.daysBetweenDispatchs = daysBetweenDispatchs;
     }
     
@@ -44,7 +44,7 @@ public class Manager extends Thread{
     public void checkOnBoss(){
         this.status = "Chequeando al jefe";
         Main.interfazGrafica.setManagerStatus(this.status);
-        if(this.boss.status == "Jugando Clash Royale"){
+        if("Jugando Clash Royale".equals(this.boss.status)){
             this.boss.salary -= 2;
             Main.interfazGrafica.setBossSalary(this.boss.salary);
             System.out.println("TE CACHE MALDITO. Ahora te voy a pagar " + this.boss.salary);

@@ -24,12 +24,13 @@ public class Boss extends Thread{
     Timer timer = new Timer();
     public long dayDuration;
     
-    public Boss(Counter counter, long counterReduceTime, double clashTime){
+    public Boss(Counter counter){
+        
         this.salary = 7;
-        this.counterReduceTime = counterReduceTime;
+        this.counterReduceTime = Main.msecDia / 4;
         this.status = "Ocioso";
         this.counter = counter;
-        this.clashTime = this.papersTime = clashTime;
+        this.clashTime = this.papersTime = Main.msecDia / 72;
     }
     
     public void playCrashRoyale(){

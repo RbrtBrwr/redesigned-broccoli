@@ -64,7 +64,7 @@ public class Main {
     public static int tiempoProduccionPines;
     public static int tiempoProduccionTelefono;
 
-    public static Counter counter = new Counter(30);
+    public static Counter counter;
 
     public static CameraProducer[] productoresCamaras = new CameraProducer[11];
     public static ScreenProducer[] productoresPantallas = new ScreenProducer[11];
@@ -72,7 +72,7 @@ public class Main {
     public static PinProducer[] productoresPines = new PinProducer[11];
     public static Assembler[] ensambladores = new Assembler[11];
     public static Boss jefe = new Boss(counter);
-    public static Manager gerente = new Manager(counter, jefe);
+    public static Manager gerente = new Manager(counter, jefe, 30);
 
     public static int numeroProductoresBotones;
     public static int numeroProductoresCamaras;
@@ -83,9 +83,10 @@ public class Main {
     public static int totalTrabajadores;
 
     public static int startingDay = 1;
+    public static int resetCounter;
     
     public static boolean executing = false;
-    public static boolean pausado = false;
+    public static boolean paused = false;
     
 //    Camara, botones, pines, pantallas
     public static int[] specsPro = new int[] {4,3,1,2};
@@ -134,8 +135,8 @@ public class Main {
         productoresBotones = new ButtonProducer[11];
         productoresPines = new PinProducer[11];
         ensambladores = new Assembler[11];
-        jefe = new Boss(counter, msecDia, msecDia / 72);
-        gerente = new Manager(counter, jefe, msecDia, 30);
+        jefe = new Boss(counter);
+        gerente = new Manager(counter, jefe, 30);
         
         numeroProductoresBotones = 2;
         numeroProductoresCamaras = 3;
@@ -164,9 +165,18 @@ public class Main {
             setSpeed();
             setWorkTime();
             setInfinity();
+            initializeThreads();
             startAllThreads(); 
             
         }
+    }
+    public static void restartExec(){
+        paused = false;
+        executing = true;
+        setSpeed();
+        setWorkTime();
+        setInfinity();
+        startAllThreads(); 
     }
     
     public static boolean checkValidInputs(){
@@ -237,25 +247,21 @@ public class Main {
         tiempoProduccionTelefono = msecDia * 3;
     }
     
-    public static void startAllThreads(){
-        
-//      Inicializo el numero maximo de threads que puedo tener en cada arreglo
+    public static void initializeThreads(){
+    //      Inicializo el numero maximo de threads que puedo tener en cada arreglo
         for (int i = 0; i < 11; i++){
             productoresBotones[i] = new ButtonProducer(botones, tiempoProduccionBoton);
-        }
-        for (int i = 0; i < 11; i++){
             productoresCamaras[i] = new CameraProducer(camaras, tiempoProduccionCamara);
-        }
-        for (int i = 0; i < 11; i++){
             productoresPantallas[i] = new ScreenProducer(pantallas, tiempoProduccionPantalla);
-        }
-        for (int i = 0; i < 11; i++){
             productoresPines[i] = new PinProducer(pines, tiempoProduccionPines);
-        }
-        for (int i = 0; i < 11; i++){
             ensambladores[i] = new Assembler(assemblyLine, tiempoProduccionTelefono, phoneSpecs, camaras, botones, pines, pantallas);
         }
-        
+        jefe = new Boss(counter);
+        gerente = new Manager(counter, jefe, 30);
+    
+    }
+    
+    public static void startAllThreads(){     
 //      Solo corro las que necesito
         for (int i = 0; i < numeroProductoresBotones; i++){
             productoresBotones[i].start();
@@ -355,55 +361,18 @@ public class Main {
     
     public static void terminateExec(){
 //        Esto se esta pausando, pero el timer no se frena ????
-        executing = false;
-        jefe.timer.cancel();
-        gerente.timer.cancel();
+        
         for (int i = 0; i < 11; i++){
-            productoresBotones[i].stopRun();
             productoresCamaras[i].stopRun();
-            productoresPantallas[i].stopRun();
-            productoresPines[i].stopRun();
+            productoresBotones[i].stopRun();
+            productoresPantallas[i].stopRun(); 
+            productoresPines[i].stopRun(); 
             ensambladores[i].stopRun();
-            
         }
-        try {
-            counter.wait();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        executing = false;
+        paused = true;
+        initializeThreads();
+        counter = null;
     }
-    
-    public static void pauseExec(){
-        pausado = true;
-        try {
-            jefe.wait();
-            gerente.wait();
-            for (int i = 0; i < 11; i++){
-                    productoresBotones[i].wait();
-                    productoresCamaras[i].wait();
-                    productoresPantallas[i].wait();
-                    productoresPines[i].wait();
-                    ensambladores[i].wait();
-
-            }
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    public static void resumeExec(){
-        jefe.notify();
-        gerente.notify();
-        for (int i = 0; i < 11; i++){
-            productoresBotones[i].notify();
-            productoresCamaras[i].notify();
-            productoresPantallas[i].notify();
-            productoresPines[i].notify();
-            ensambladores[i].notify();
-            
-        }
-    }
-    
-    
     
 }
