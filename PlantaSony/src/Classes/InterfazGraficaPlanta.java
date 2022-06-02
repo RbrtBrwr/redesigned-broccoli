@@ -1322,6 +1322,10 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         this.countdown.setText(Integer.toString(n));
     }
     
+    public int getCountdown(){
+        return (Integer) countdownSetter.getValue();
+    }
+    
     //Salario jefe
     
     public void setBossSalary(int n){

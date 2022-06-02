@@ -34,7 +34,7 @@ public class CameraProductionLine {
             this.stock++;
             Main.interfazGrafica.setNumeroCamarasListas(this.stock);
             this.retrieveSem.release();
-            System.out.println(whereTo + ":" + this.stock);
+            System.out.println(whereTo + ":-------------------------------" + this.stock);
             this.stockSem.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(ButtonProductionLine.class.getName()).log(Level.SEVERE, null, ex);

@@ -105,56 +105,56 @@ public class Main {
         
         interfazGrafica.setVisible(true);
 
-
-
-        maxCamaras = 20;
-        maxPantallas = 40;
-        maxBotones = 45;
-        maxPines = 15;
-        
-
-        camaras = new CameraProductionLine(maxCamaras, 0);
-        pantallas = new ScreenProductionLine(maxPantallas, 0);
-        botones = new ButtonProductionLine(maxBotones, 0);
-        pines = new PinProductionLine(maxPines, 0);
-        assemblyLine = new AssemblyLine(999, 0);
-        
-        segundosEnDia = 1;
-        msecDia = segundosEnDia * 1000;
-        
-        tiempoProduccionCamara = 3000;
-        tiempoProduccionBoton = 500;
-        tiempoProduccionPantalla = 500;
-        tiempoProduccionPines = 3000;
-        tiempoProduccionTelefono = 2000;
-        
-        counter = new Counter(30);
-
-        productoresCamaras = new CameraProducer[11];
-        productoresPantallas = new ScreenProducer[11];
-        productoresBotones = new ButtonProducer[11];
-        productoresPines = new PinProducer[11];
-        ensambladores = new Assembler[11];
-        jefe = new Boss(counter);
-        gerente = new Manager(counter, jefe, 30);
-        
-        numeroProductoresBotones = 2;
-        numeroProductoresCamaras = 3;
-        numeroProductoresPantallas = 4;
-        numeroProductoresPines = 3;
-        numeroEnsambladores = 3;
-        
-        startingDay = 1;
-        
-        interfazGrafica.setNumeroProductoresBotones(numeroProductoresBotones);
-        interfazGrafica.setNumeroProductoresCamaras(numeroProductoresCamaras);
-        interfazGrafica.setNumeroProductoresPantallas(numeroProductoresPantallas);
-        interfazGrafica.setNumeroProductoresPines(numeroProductoresPines);
-        interfazGrafica.setNumeroEnsambladores(numeroEnsambladores);
-
-        interfazGrafica.setCurrentDay(startingDay);
-        interfazGrafica.setCountdown(counter.daysRemaining);
-        interfazGrafica.setBossSalary(jefe.salary);
+//
+//
+//        maxCamaras = 20;
+//        maxPantallas = 40;
+//        maxBotones = 45;
+//        maxPines = 15;
+//        
+//
+//        camaras = new CameraProductionLine(maxCamaras, 0);
+//        pantallas = new ScreenProductionLine(maxPantallas, 0);
+//        botones = new ButtonProductionLine(maxBotones, 0);
+//        pines = new PinProductionLine(maxPines, 0);
+//        assemblyLine = new AssemblyLine(999, 0);
+//        
+//        segundosEnDia = 1;
+//        msecDia = segundosEnDia * 1000;
+//        
+//        tiempoProduccionCamara = 3000;
+//        tiempoProduccionBoton = 500;
+//        tiempoProduccionPantalla = 500;
+//        tiempoProduccionPines = 3000;
+//        tiempoProduccionTelefono = 2000;
+//        
+//        counter = new Counter(30);
+//
+//        productoresCamaras = new CameraProducer[11];
+//        productoresPantallas = new ScreenProducer[11];
+//        productoresBotones = new ButtonProducer[11];
+//        productoresPines = new PinProducer[11];
+//        ensambladores = new Assembler[11];
+//        jefe = new Boss(counter);
+//        gerente = new Manager(counter, jefe, 30);
+//        
+//        numeroProductoresBotones = 2;
+//        numeroProductoresCamaras = 3;
+//        numeroProductoresPantallas = 4;
+//        numeroProductoresPines = 3;
+//        numeroEnsambladores = 3;
+//        
+//        startingDay = 1;
+//        
+//        interfazGrafica.setNumeroProductoresBotones(numeroProductoresBotones);
+//        interfazGrafica.setNumeroProductoresCamaras(numeroProductoresCamaras);
+//        interfazGrafica.setNumeroProductoresPantallas(numeroProductoresPantallas);
+//        interfazGrafica.setNumeroProductoresPines(numeroProductoresPines);
+//        interfazGrafica.setNumeroEnsambladores(numeroEnsambladores);
+//
+//        interfazGrafica.setCurrentDay(startingDay);
+//        interfazGrafica.setCountdown(counter.daysRemaining);
+//        interfazGrafica.setBossSalary(jefe.salary);
         
     }
     
@@ -166,6 +166,15 @@ public class Main {
             setWorkTime();
             setInfinity();
             initializeThreads();
+            interfazGrafica.setNumeroProductoresBotones(numeroProductoresBotones);
+            interfazGrafica.setNumeroProductoresCamaras(numeroProductoresCamaras);
+            interfazGrafica.setNumeroProductoresPantallas(numeroProductoresPantallas);
+            interfazGrafica.setNumeroProductoresPines(numeroProductoresPines);
+            interfazGrafica.setNumeroEnsambladores(numeroEnsambladores);
+
+            interfazGrafica.setCurrentDay(startingDay);
+            interfazGrafica.setCountdown(counter.daysRemaining);
+            interfazGrafica.setBossSalary(jefe.salary);
             startAllThreads(); 
             
         }
@@ -245,6 +254,9 @@ public class Main {
         tiempoProduccionPantalla = msecDia / 2;
         tiempoProduccionPines = msecDia * 3;
         tiempoProduccionTelefono = msecDia * 3;
+        System.out.println(tiempoProduccionTelefono);
+        System.out.println(tiempoProduccionCamara);
+        System.out.println("----------------------");
     }
     
     public static void initializeThreads(){
@@ -256,6 +268,7 @@ public class Main {
             productoresPines[i] = new PinProducer(pines, tiempoProduccionPines);
             ensambladores[i] = new Assembler(assemblyLine, tiempoProduccionTelefono, phoneSpecs, camaras, botones, pines, pantallas);
         }
+        counter = new Counter(interfazGrafica.getCountdown());
         jefe = new Boss(counter);
         gerente = new Manager(counter, jefe, 30);
     
@@ -361,6 +374,8 @@ public class Main {
     
     public static void terminateExec(){
 //        Esto se esta pausando, pero el timer no se frena ????
+        jefe.timer.cancel();
+        gerente.timer.cancel();
         
         for (int i = 0; i < 11; i++){
             productoresCamaras[i].stopRun();
@@ -372,6 +387,11 @@ public class Main {
         executing = false;
         paused = true;
         initializeThreads();
+        try {
+            counter.wait();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
         counter = null;
     }
     

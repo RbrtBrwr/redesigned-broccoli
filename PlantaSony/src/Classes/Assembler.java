@@ -61,9 +61,9 @@ public class Assembler extends Thread{
     
     public void getParts(){
         this.currentStatus = "Esperando Partes";
+        this.cameraLine.retrieveFromStock(camerasNeeded);
         this.buttonLine.retrieveFromStock(buttonsNeeded);
         this.pinLine.retrieveFromStock(pinsNeeded);
-        this.cameraLine.retrieveFromStock(camerasNeeded);
         this.screenLine.retrieveFromStock(screensNeeded);
 
     }
