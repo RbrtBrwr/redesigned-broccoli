@@ -16,8 +16,8 @@ public class Counter {
     public Semaphore accessCounter = new Semaphore(1);
     public int daysRemaining;
     
-    public Counter(){
-        this.daysRemaining = 30;
+    public Counter(int daysRemaining){
+        this.daysRemaining = daysRemaining;
     }
     
     public void setDaysRemaining(int days){

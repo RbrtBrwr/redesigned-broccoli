@@ -35,7 +35,7 @@ public class Main {
     public static int tiempoProduccionPines = 3000;
     public static int tiempoProduccionTelefono = 2000;
 
-    public static Counter counter = new Counter();
+    public static Counter counter = new Counter(30);
 
     public static CameraProducer[] productoresCamaras = new CameraProducer[11];
     public static ScreenProducer[] productoresPantallas = new ScreenProducer[11];
@@ -83,15 +83,15 @@ public class Main {
         tiempoProduccionPines = 3000;
         tiempoProduccionTelefono = 2000;
         
-        counter = new Counter();
+        counter = new Counter(30);
 
         productoresCamaras = new CameraProducer[11];
         productoresPantallas = new ScreenProducer[11];
         productoresBotones = new ButtonProducer[11];
         productoresPines = new PinProducer[11];
         ensambladores = new Assembler[11];
-        jefe = new Boss(counter);
-        gerente = new Manager(counter, jefe);
+        jefe = new Boss(counter, msecDia, msecDia / 72);
+        gerente = new Manager(counter, jefe, msecDia, 30);
         
         numeroProductoresBotones = 2;
         numeroProductoresCamaras = 3;
