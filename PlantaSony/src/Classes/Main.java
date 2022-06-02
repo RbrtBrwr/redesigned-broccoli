@@ -61,7 +61,9 @@ public class Main {
     public static int tiempoProduccionPines;
     public static int tiempoProduccionTelefono;
 
-    public static Counter counter = new Counter(startingDays);
+//    public static Counter counter = new Counter(startingDays);
+    public static Counter counter = new Counter();
+    
 
     public static CameraProducer[] productoresCamaras = new CameraProducer[11];
     public static ScreenProducer[] productoresPantallas = new ScreenProducer[11];
@@ -124,7 +126,8 @@ public class Main {
         tiempoProduccionPines = 3000;
         tiempoProduccionTelefono = 2000;
         
-        counter = new Counter(startingDays);
+//        counter = new Counter(startingDays);
+        counter = new Counter();
 
         productoresCamaras = new CameraProducer[11];
         productoresPantallas = new ScreenProducer[11];

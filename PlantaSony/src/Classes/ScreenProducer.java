@@ -19,10 +19,14 @@ public class ScreenProducer extends Thread{
     protected long productionTime;
     public String currentStatus;
     public boolean working = false;
+    public int salary;
+    public long eggingTime;
     
     ScreenProducer(ScreenProductionLine productLine, int tiempoProduccion){
         this.productionTime = tiempoProduccion;
         this.productLine = productLine;
+        this.salary = 3;
+        this.eggingTime = 0;
     }
     
     public void stopRun(){
@@ -33,6 +37,7 @@ public class ScreenProducer extends Thread{
     public void run(){
         running = true;
         while (running){
+            long start = System.currentTimeMillis();
             this.currentStatus = "Ocioso";
             working = false;
             try {   
@@ -41,6 +46,9 @@ public class ScreenProducer extends Thread{
                 this.currentStatus = "Trabajando";
                 Thread.sleep(this.productionTime);
                 this.productLine.addToStock();
+                long end = System.currentTimeMillis();
+                long difference = end - start - this.productionTime;
+                this.eggingTime += difference;
             } catch (InterruptedException ex) {
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }

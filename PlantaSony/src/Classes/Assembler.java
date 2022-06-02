@@ -29,6 +29,8 @@ public class Assembler extends Thread{
     public String currentStatus;
     
     public String whereTo;
+    public int salary;
+    public long eggingTime;
     
     public int[] phoneSpecs;
     
@@ -42,6 +44,8 @@ public class Assembler extends Thread{
         this.pinLine = pinLine;
         this.screenLine = screenLine;
         this.setPartsNeeded(phoneSpecs);
+        this.salary = 6;
+        this.eggingTime = 0;
     }
     
     public void setPartsNeeded(int[] phoneSpecs){
@@ -83,8 +87,12 @@ public class Assembler extends Thread{
     public void run(){
         running = true;
         while (running){
+            long start = System.currentTimeMillis();
             getParts();
             assemblersAssemble();
+            long end = System.currentTimeMillis();
+                long difference = end - start - this.assemblyTime;
+                this.eggingTime += difference;
         }
         this.interrupt();
             
