@@ -7,6 +7,7 @@ package Classes;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.json.simple.parser.ParseException;
 
 
 /**
@@ -36,6 +37,8 @@ public class Main {
     
     public static InterfazGraficaPlanta interfazGrafica = new InterfazGraficaPlanta();
     
+    public static int[] readJson;
+    
     public static int maxCamaras;
     public static int maxPantallas;
     public static int maxBotones;
@@ -61,9 +64,7 @@ public class Main {
     public static int tiempoProduccionPines;
     public static int tiempoProduccionTelefono;
 
-//    public static Counter counter = new Counter(startingDays);
-    public static Counter counter = new Counter();
-    
+    public static Counter counter = new Counter(30);
 
     public static CameraProducer[] productoresCamaras = new CameraProducer[11];
     public static ScreenProducer[] productoresPantallas = new ScreenProducer[11];
@@ -126,16 +127,15 @@ public class Main {
         tiempoProduccionPines = 3000;
         tiempoProduccionTelefono = 2000;
         
-//        counter = new Counter(startingDays);
-        counter = new Counter();
+        counter = new Counter(30);
 
         productoresCamaras = new CameraProducer[11];
         productoresPantallas = new ScreenProducer[11];
         productoresBotones = new ButtonProducer[11];
         productoresPines = new PinProducer[11];
         ensambladores = new Assembler[11];
-        jefe = new Boss(counter);
-        gerente = new Manager(counter, jefe);
+        jefe = new Boss(counter, msecDia, msecDia / 72);
+        gerente = new Manager(counter, jefe, msecDia, 30);
         
         numeroProductoresBotones = 2;
         numeroProductoresCamaras = 3;
@@ -275,6 +275,15 @@ public class Main {
         
         jefe.start();
         gerente.start(); 
+        
+        //Para guardar data cada vez que termine el programa
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
+            public void run(){
+                jsonReaderWriter.write();
+                System.out.println("Exiting");
+            }
+        });
     }
 
     public void setFromJson(int[] params){

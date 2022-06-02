@@ -24,17 +24,12 @@ public class Boss extends Thread{
     Timer timer = new Timer();
     public long dayDuration;
     
-    public Boss(Counter counter){
+    public Boss(Counter counter, long counterReduceTime, double clashTime){
         this.salary = 7;
-        this.counterReduceTime = 1000;
+        this.counterReduceTime = counterReduceTime;
         this.status = "Ocioso";
         this.counter = counter;
-        this.clashTime = this.papersTime = 13.8888889;
-        this.running = false;
-    }
-
-public void stopRun(){
-        this.interrupt();
+        this.clashTime = this.papersTime = clashTime;
     }
     
     public void playCrashRoyale(){
@@ -98,7 +93,7 @@ public void stopRun(){
     @Override
         public void run(){
             //Esto significa que va a esperar 1 segundo para ejecturar reduceCounterTime y luego va a ejecutarlo cada segundo
-            timer.schedule(reduceCounterTimer, 1000, 1000);
+            timer.schedule(reduceCounterTimer, this.counterReduceTime, this.counterReduceTime);
             timer.schedule(checkPapersTimer, 0, 1);
             timer.schedule(playClashRoyaleTimer, 0, 1);
         

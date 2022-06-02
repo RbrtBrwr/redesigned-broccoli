@@ -22,16 +22,16 @@ public class Manager extends Thread{
     public Boss boss;
     Timer timer = new Timer();
     public String status;
+    public long counterCheckTime;
+    public int daysBetweenDispatchs;
     
-    public Manager(Counter counter, Boss boss){
+    public Manager(Counter counter, Boss boss, long counterCheckTime, int daysBetweenDispatchs){
         this.salary = 180;
         this.counter = counter;
         this.boss = boss;
         this.status = "Ocioso";
-    }
-
-public void stopRun(){
-        this.interrupt();
+        this.counterCheckTime = counterCheckTime;
+        this.daysBetweenDispatchs = daysBetweenDispatchs;
     }
     
     public int getRandomInt(int min, int max){
@@ -102,9 +102,9 @@ public void stopRun(){
     
     @Override
     public void run(){
-        timer.schedule(checkCounterTimer, 0, 1000);
-        timer.schedule(checkOnBossTimer, 0, getRandomInt(500, 750));
-        timer.schedule(resetCounterAndDeliverPhones, 30000, 30000);
+        timer.schedule(checkCounterTimer, 0, this.counterCheckTime);
+        timer.schedule(checkOnBossTimer, 0, getRandomInt((int) (this.counterCheckTime / 48), (int) (this.counterCheckTime / 16)));
+        timer.schedule(resetCounterAndDeliverPhones, this.daysBetweenDispatchs * this.counterCheckTime, this.daysBetweenDispatchs * this.counterCheckTime);
     }
     
     
