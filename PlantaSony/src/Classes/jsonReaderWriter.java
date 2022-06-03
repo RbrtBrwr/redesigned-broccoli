@@ -12,6 +12,9 @@ import static java.lang.Boolean.parseBoolean;
 import static java.lang.Integer.parseInt;
 import static java.lang.Long.parseLong;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -23,33 +26,59 @@ import org.json.simple.parser.JSONParser;
 public class jsonReaderWriter {
     
     
-    public static void write(){
+    public static void write(Object[][] table){
+                JSONArray corridas = new JSONArray();
+        for (int i = 0; i < table.length; i++) {
+         Map corrida = new HashMap();
+        corrida.put("runNumber", String.valueOf(table[i][0]));
+        corrida.put("productionPlant", (String) table[i][1]);
+        corrida.put("employeeDistribution", String.valueOf(table[i][2]));
+        corrida.put("totalSalary", String.valueOf(table[i][3]));
+        corrida.put("totalEgging", String.valueOf(table[i][4]));
+        corrida.put("totalProduction", String.valueOf(table[i][5]));
+        corrida.put("totalRevenue", String.valueOf(table[i][6]));
+        corrida.put("throughput", String.valueOf(table[i][7]));
+        JSONObject corrida2 = new JSONObject(corrida);
+        JSONObject corridaObject = new JSONObject(); 
+        corridaObject.put("corrida", corrida2);
+        corridas.add(corridaObject);
             //First Employee
-        JSONObject employeeDetails = new JSONObject();
-        employeeDetails.put("firstName", "Lokesh");
-        employeeDetails.put("lastName", "Gupta");
-        employeeDetails.put("website", "howtodoinjava");
+//        JSONArray corridas = new JSONArray();
+//        for (int i = 0; i < table.length; i++) {
+//         JSONObject corrida = new JSONObject();
+//        corrida.put("runNumber", String.valueOf(table[i][0]));
+//        corrida.put("productionPlant", (String) table[i][1]);
+//        corrida.put("employeeDistribution", String.valueOf(table[i][2]));
+//        corrida.put("totalSalary", String.valueOf(table[i][3]));
+//        corrida.put("totalEgging", String.valueOf(table[i][4]));
+//        corrida.put("totalProduction", String.valueOf(table[i][5]));
+//        corrida.put("totalRevenue", String.valueOf(table[i][6]));
+//        corrida.put("throughput", String.valueOf(table[i][7]));
+//        JSONObject corridaObject = new JSONObject(); 
+//        corridaObject.put("corrida", corrida);
+//        corridas.add(corridaObject);
+        }
+        
          
-        JSONObject employeeObject = new JSONObject(); 
-        employeeObject.put("employee", employeeDetails);
+        
          
-        //Second Employee
-        JSONObject employeeDetails2 = new JSONObject();
-        employeeDetails2.put("firstName", "Brian");
-        employeeDetails2.put("lastName", "Schultz");
-        employeeDetails2.put("website", "example.com");
-         
-        JSONObject employeeObject2 = new JSONObject(); 
-        employeeObject2.put("employee", employeeDetails2);
-         
-        //Add employees to list
-        JSONArray employeeList = new JSONArray();
-        employeeList.add(employeeObject);
-        employeeList.add(employeeObject2);
+//        //Second Employee
+//        JSONObject employeeDetails2 = new JSONObject();
+//        employeeDetails2.put("firstName", "Brian");
+//        employeeDetails2.put("lastName", "Schultz");
+//        employeeDetails2.put("website", "example.com");
+//         
+//        JSONObject employeeObject2 = new JSONObject(); 
+//        employeeObject2.put("employee", employeeDetails2);
+//         
+//        //Add employees to list
+//        JSONArray corridas = new JSONArray();
+//        corridas.add(employeeObject);
+//        corridas.add(employeeObject2);
         //Write JSON file
-        try (FileWriter file = new FileWriter("corridas.json", true)) {
+        try (FileWriter file = new FileWriter("corridas.json", false)) {
             //We can write any JSONArray or JSONObject instance to the file
-            file.write(employeeList.toJSONString()); 
+            file.write(corridas.toJSONString()); 
             file.write(System.getProperty("line.separator"));
             file.flush();
  

@@ -120,23 +120,23 @@ public class Dashboard extends javax.swing.JFrame {
 
         lineChartThroughput.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         lineChartThroughput.setLayout(new java.awt.BorderLayout());
-        getContentPane().add(lineChartThroughput, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 680, 420, 310));
+        getContentPane().add(lineChartThroughput, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 680, 570, 310));
 
         barChartProduction.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         barChartProduction.setLayout(new java.awt.BorderLayout());
-        getContentPane().add(barChartProduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 420, 310));
+        getContentPane().add(barChartProduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, 540, 310));
 
         barChartSalary.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         barChartSalary.setLayout(new java.awt.BorderLayout());
-        getContentPane().add(barChartSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(1450, 330, 420, 310));
+        getContentPane().add(barChartSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(1440, 330, 480, 310));
 
         barChartEgging.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         barChartEgging.setLayout(new java.awt.BorderLayout());
-        getContentPane().add(barChartEgging, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 330, 420, 310));
+        getContentPane().add(barChartEgging, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 330, 550, 310));
 
         lineChartRevenue.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         lineChartRevenue.setLayout(new java.awt.BorderLayout());
-        getContentPane().add(lineChartRevenue, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 680, 420, 310));
+        getContentPane().add(lineChartRevenue, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 680, 580, 310));
 
         setSize(new java.awt.Dimension(1946, 1031));
         setLocationRelativeTo(null);

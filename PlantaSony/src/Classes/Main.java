@@ -111,7 +111,7 @@ public class Main {
     public static void main(String[] args) {
         
 //        interfazGrafica.setVisible(true);
-        dashboard.setVisible(true);
+        
         
         
 
@@ -172,6 +172,7 @@ public class Main {
         } catch (ParseException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
+        addX(table.length, table, saveCorrida());
         dashboard.showTable(table);
         dashboard.showBarChartProduction(table);
         dashboard.showBarChartEgging(table);
@@ -182,20 +183,47 @@ public class Main {
         
 
         interfazGrafica.setVisible(true);     
+        dashboard.setVisible(true);
 
     }
     
-    public static void saveCorrida(){
+    public static Object[][] addX(int n,  Object[][] arr, Object[] row)
+    {
+        int i;
+  
+        // create a new array of size n+1
+        Object[][] newarr = new Object[n + 1][8];
+  
+        // insert the elements from
+        // the old array into the new array
+        // insert all elements till n
+        // then insert x at n+1
+        for (i = 0; i < n; i++)
+            newarr[i] = arr[i];
+  
+        newarr[n] = row;
+  
+        return newarr;
+    }
+    
+    public static Object[] saveCorrida(){
         Object[] row = new Object[8];
         row[0] = corrida;
         row[1] = selectedPlant;
-//        row[2] = distributionChanged;
+        row[2] = distributionChanged;
         row[3] = salario_total_planta;
-//        row[4] = totalEgging;
-//        row[5] = totalProduction;
-//        row[6] = totalRevenue;
-//        row[7] = throughput;
+        row[4] = sumEgging();
+        row[5] = assemblyLine.stock;
+        row[6] = assemblyLine.stock * phonePrice;
+        row[7] = assemblyLine.stock / interfazGrafica.currentDay;
         
+        return row;
+        
+    }
+    
+    public static int sumEgging(){
+        int sum;
+        return sum = camaras.huevingTime + pantallas.huevingTime + botones.huevingTime + pines.huevingTime + assemblyLine.huevingTime;
     }
     
     
@@ -340,8 +368,10 @@ public class Main {
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override
             public void run(){
-                jsonReaderWriter.write();
+//                dashboard.setVisible(true);
                 System.out.println("Exiting");
+                table = addX(table.length, table, saveCorrida());
+                jsonReaderWriter.write(table);
             }
         });
     }
