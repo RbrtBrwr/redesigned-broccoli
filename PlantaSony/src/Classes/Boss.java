@@ -25,7 +25,6 @@ public class Boss extends Thread{
     public long dayDuration;
     
     public Boss(Counter counter){
-        
         this.salary = 7;
         this.counterReduceTime = Main.msecDia / 4;
         this.status = "Ocioso";
@@ -69,36 +68,50 @@ public class Boss extends Thread{
     }
     
     
-    TimerTask playClashRoyaleTimer = new TimerTask(){
-        @Override
-        public void run() {
-            playCrashRoyale();
-            
-        }   
-    };
-    
-    TimerTask reduceCounterTimer = new TimerTask(){
-        @Override
-        public void run() {
-            reduceCounter();
-        }
-    };
-    
-        TimerTask checkPapersTimer = new TimerTask(){
-        @Override
-        public void run() {
-            checkPapers();
-        }   
-    };
+//    TimerTask playClashRoyaleTimer = new TimerTask(){
+//        @Override
+//        public void run() {
+//            playCrashRoyale();
+//            
+//        }   
+//    };
+//    
+//    TimerTask reduceCounterTimer = new TimerTask(){
+//        @Override
+//        public void run() {
+//            reduceCounter();
+//        }
+//    };
+//    
+//        TimerTask checkPapersTimer = new TimerTask(){
+//        @Override
+//        public void run() {
+//            checkPapers();
+//        }   
+//    };
     
     @Override
-        public void run(){
-            //Esto significa que va a esperar 1 segundo para ejecturar reduceCounterTime y luego va a ejecutarlo cada segundo
-            timer.schedule(reduceCounterTimer, this.counterReduceTime, this.counterReduceTime);
-            timer.schedule(checkPapersTimer, 0, 1);
-            timer.schedule(playClashRoyaleTimer, 0, 1);
-        
+    public void run(){
+        running = true;
+        for (int i = 0; i < 36; i++){
+            checkPapers();
+            playCrashRoyale();
         }
+        reduceCounter();
+        
+        while (running){
+            for (int i = 0; i < 27; i++){
+                checkPapers();
+                playCrashRoyale();
+            }
+            reduceCounter();
+        }
+        //Esto significa que va a esperar 1 segundo para ejecturar reduceCounterTime y luego va a ejecutarlo cada segundo
+//        timer.schedule(reduceCounterTimer, this.counterReduceTime, this.counterReduceTime);
+//        timer.schedule(checkPapersTimer, 0, 1);
+//        timer.schedule(playClashRoyaleTimer, 0, 1);
+
+    }
         
     
 }
