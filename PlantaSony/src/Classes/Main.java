@@ -34,8 +34,11 @@ public class Main {
     public static int salario_total_gerente = 0;
     public static int salario_total_planta = 0;
     
+    public static int corrida;
+    
     
     public static InterfazGraficaPlanta interfazGrafica = new InterfazGraficaPlanta();
+    public static Dashboard dashboard = new Dashboard();
     
     
     public static int maxCamaras;
@@ -99,13 +102,130 @@ public class Main {
     public static int[] phoneSpecs;
     public static int phonePrice;
     
+    public static Object[][] table;
+    public static Object[] corridaDelMomento;
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         
+//        interfazGrafica.setVisible(true);
+        
+        
+        
+
+        
+
+
+        maxCamaras = 20;
+        maxPantallas = 40;
+        maxBotones = 45;
+        maxPines = 15;
+        
+
+        camaras = new CameraProductionLine(maxCamaras, 0);
+        pantallas = new ScreenProductionLine(maxPantallas, 0);
+        botones = new ButtonProductionLine(maxBotones, 0);
+        pines = new PinProductionLine(maxPines, 0);
+        assemblyLine = new AssemblyLine(999, 0);
+        
+        segundosEnDia = 1;
+        msecDia = segundosEnDia * 1000;
+        
+        tiempoProduccionCamara = 3000;
+        tiempoProduccionBoton = 500;
+        tiempoProduccionPantalla = 500;
+        tiempoProduccionPines = 3000;
+        tiempoProduccionTelefono = 2000;
+        
+        counter = new Counter(30);
+
+        productoresCamaras = new CameraProducer[11];
+        productoresPantallas = new ScreenProducer[11];
+        productoresBotones = new ButtonProducer[11];
+        productoresPines = new PinProducer[11];
+        ensambladores = new Assembler[11];
+        jefe = new Boss(counter);
+        gerente = new Manager(counter, jefe, 30);
+        
+        numeroProductoresBotones = 2;
+        numeroProductoresCamaras = 3;
+        numeroProductoresPantallas = 4;
+        numeroProductoresPines = 3;
+        numeroEnsambladores = 3;
+        
+        startingDay = 1;
+        
+        interfazGrafica.setNumeroProductoresBotones(numeroProductoresBotones);
+        interfazGrafica.setNumeroProductoresCamaras(numeroProductoresCamaras);
+        interfazGrafica.setNumeroProductoresPantallas(numeroProductoresPantallas);
+        interfazGrafica.setNumeroProductoresPines(numeroProductoresPines);
+        interfazGrafica.setNumeroEnsambladores(numeroEnsambladores);
+
+        interfazGrafica.setCurrentDay(startingDay);
+        interfazGrafica.setCountdown(counter.daysRemaining);
+        interfazGrafica.setBossSalary(jefe.salary);
+        
+        try {
+            table = jsonReaderWriter.read("corridas.json");
+        } catch (ParseException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        addX(table.length, table, saveCorrida());
+        dashboard.showTable(table);
+        dashboard.showBarChartProduction(table);
+        dashboard.showBarChartEgging(table);
+        dashboard.showBarChartSalary(table);
+        dashboard.showLineChartRevenue(table);
+        dashboard.showLineChartThroughput(table);
+        corrida = table.length + 1;
+        
+
         interfazGrafica.setVisible(true);     
+        dashboard.setVisible(true);
+
     }
+    
+    public static Object[][] addX(int n,  Object[][] arr, Object[] row)
+    {
+        int i;
+  
+        // create a new array of size n+1
+        Object[][] newarr = new Object[n + 1][8];
+  
+        // insert the elements from
+        // the old array into the new array
+        // insert all elements till n
+        // then insert x at n+1
+        for (i = 0; i < n; i++)
+            newarr[i] = arr[i];
+  
+        newarr[n] = row;
+  
+        return newarr;
+    }
+    
+    public static Object[] saveCorrida(){
+        Object[] row = new Object[8];
+        row[0] = corrida;
+        row[1] = selectedPlant;
+        row[2] = distributionChanged;
+        row[3] = salario_total_planta;
+        row[4] = sumEgging();
+        row[5] = assemblyLine.stock;
+        row[6] = assemblyLine.stock * phonePrice;
+        row[7] = assemblyLine.stock / interfazGrafica.currentDay;
+        
+        return row;
+        
+    }
+    
+    public static int sumEgging(){
+        int sum;
+        return sum = camaras.huevingTime + pantallas.huevingTime + botones.huevingTime + pines.huevingTime + assemblyLine.huevingTime;
+    }
+    
     
     public static void getInputFromInterface(){
         if (checkValidInputs() && checkPlant()){
@@ -248,8 +368,10 @@ public class Main {
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override
             public void run(){
-                jsonReaderWriter.write();
+//                dashboard.setVisible(true);
                 System.out.println("Exiting");
+                table = addX(table.length, table, saveCorrida());
+                jsonReaderWriter.write(table);
             }
         });
     }

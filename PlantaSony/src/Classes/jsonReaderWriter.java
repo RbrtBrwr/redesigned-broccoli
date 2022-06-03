@@ -10,6 +10,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import static java.lang.Boolean.parseBoolean;
 import static java.lang.Integer.parseInt;
+import static java.lang.Long.parseLong;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -20,33 +25,60 @@ import org.json.simple.parser.JSONParser;
  */
 public class jsonReaderWriter {
     
-    public static void write(){
+    
+    public static void write(Object[][] table){
+                JSONArray corridas = new JSONArray();
+        for (int i = 0; i < table.length; i++) {
+         Map corrida = new HashMap();
+        corrida.put("runNumber", String.valueOf(table[i][0]));
+        corrida.put("productionPlant", (String) table[i][1]);
+        corrida.put("employeeDistribution", String.valueOf(table[i][2]));
+        corrida.put("totalSalary", String.valueOf(table[i][3]));
+        corrida.put("totalEgging", String.valueOf(table[i][4]));
+        corrida.put("totalProduction", String.valueOf(table[i][5]));
+        corrida.put("totalRevenue", String.valueOf(table[i][6]));
+        corrida.put("throughput", String.valueOf(table[i][7]));
+        JSONObject corrida2 = new JSONObject(corrida);
+        JSONObject corridaObject = new JSONObject(); 
+        corridaObject.put("corrida", corrida2);
+        corridas.add(corridaObject);
             //First Employee
-        JSONObject employeeDetails = new JSONObject();
-        employeeDetails.put("firstName", "Lokesh");
-        employeeDetails.put("lastName", "Gupta");
-        employeeDetails.put("website", "howtodoinjava");
+//        JSONArray corridas = new JSONArray();
+//        for (int i = 0; i < table.length; i++) {
+//         JSONObject corrida = new JSONObject();
+//        corrida.put("runNumber", String.valueOf(table[i][0]));
+//        corrida.put("productionPlant", (String) table[i][1]);
+//        corrida.put("employeeDistribution", String.valueOf(table[i][2]));
+//        corrida.put("totalSalary", String.valueOf(table[i][3]));
+//        corrida.put("totalEgging", String.valueOf(table[i][4]));
+//        corrida.put("totalProduction", String.valueOf(table[i][5]));
+//        corrida.put("totalRevenue", String.valueOf(table[i][6]));
+//        corrida.put("throughput", String.valueOf(table[i][7]));
+//        JSONObject corridaObject = new JSONObject(); 
+//        corridaObject.put("corrida", corrida);
+//        corridas.add(corridaObject);
+        }
+        
          
-        JSONObject employeeObject = new JSONObject(); 
-        employeeObject.put("employee", employeeDetails);
+        
          
-        //Second Employee
-        JSONObject employeeDetails2 = new JSONObject();
-        employeeDetails2.put("firstName", "Brian");
-        employeeDetails2.put("lastName", "Schultz");
-        employeeDetails2.put("website", "example.com");
-         
-        JSONObject employeeObject2 = new JSONObject(); 
-        employeeObject2.put("employee", employeeDetails2);
-         
-        //Add employees to list
-        JSONArray employeeList = new JSONArray();
-        employeeList.add(employeeObject);
-        employeeList.add(employeeObject2);
+//        //Second Employee
+//        JSONObject employeeDetails2 = new JSONObject();
+//        employeeDetails2.put("firstName", "Brian");
+//        employeeDetails2.put("lastName", "Schultz");
+//        employeeDetails2.put("website", "example.com");
+//         
+//        JSONObject employeeObject2 = new JSONObject(); 
+//        employeeObject2.put("employee", employeeDetails2);
+//         
+//        //Add employees to list
+//        JSONArray corridas = new JSONArray();
+//        corridas.add(employeeObject);
+//        corridas.add(employeeObject2);
         //Write JSON file
-        try (FileWriter file = new FileWriter("corridas.json", true)) {
+        try (FileWriter file = new FileWriter("corridas.json", false)) {
             //We can write any JSONArray or JSONObject instance to the file
-            file.write(employeeList.toJSONString()); 
+            file.write(corridas.toJSONString()); 
             file.write(System.getProperty("line.separator"));
             file.flush();
  
@@ -114,35 +146,72 @@ public class jsonReaderWriter {
         
     }
         
-    public static void read(String file) throws org.json.simple.parser.ParseException{
+        public static Object[][] read(String file) throws org.json.simple.parser.ParseException{
+
         JSONParser jsonParser = new JSONParser();
+        Object[][] table = null;
+        
          
         try (FileReader reader = new FileReader(file))
         {
             Object obj = jsonParser.parse(reader);
             JSONArray run = (JSONArray) obj;
-            System.out.println(run);
-             
-            run.forEach( corrida -> parseCorridaObject( (JSONObject) corrida ) );
- 
+//            System.out.println(run.size());
+            
+            table = new Object[run.size()][8];
+            
+            for (int i = 0; i < run.size(); i++) {
+                table[i] = parseCorridaObject((JSONObject) run.get(i));
+            }
+            
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return table;
         }
         
-    private static void parseCorridaObject(JSONObject corrida) 
+        private static Object[] parseCorridaObject(JSONObject corrida) 
+
     {
+        
         JSONObject corridaObject = (JSONObject) corrida.get("corrida");
+        Object[] table = new Object[8];
          
         int runNumber = parseInt((String)(corridaObject.get("runNumber")));    
-        System.out.println(runNumber);
+//        System.out.println(runNumber);
+        table[0] = runNumber;
          
         String productionPlant = (String) corridaObject.get("productionPlant");  
-        System.out.println(productionPlant);
+//        System.out.println(productionPlant);
+        table[1] = productionPlant;
          
         boolean employeeDistribution = parseBoolean((String) corridaObject.get("employeeDistribution"));    
-        System.out.println(employeeDistribution);
+//        System.out.println(employeeDistribution);
+        table[2] = employeeDistribution;
+        
+        long totalSalary  = parseLong((String)(corridaObject.get("totalSalary")));    
+//        System.out.println(totalSalary);
+        table[3] = totalSalary;
+        
+        long totalEgging  = parseLong((String)(corridaObject.get("totalEgging")));    
+//        System.out.println(totalEgging);
+        table[4] = totalEgging;
+        
+        long totalProduction  = parseLong((String)(corridaObject.get("totalProduction")));    
+//        System.out.println(totalProduction);
+        table[5] = totalProduction;
+        
+        long totalRevenue  = parseLong((String)(corridaObject.get("totalRevenue")));    
+//        System.out.println(totalRevenue);
+        table[6] = totalRevenue;
+        
+        long throughput  = parseLong((String)(corridaObject.get("throughput")));    
+//        System.out.println(throughput);
+        table[7] = totalRevenue;
+        
+        return table;
+        
     }
 }
