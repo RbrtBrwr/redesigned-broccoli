@@ -15,10 +15,12 @@ import java.util.logging.Logger;
 public class PinProductionLine {
     protected int capacity;
     protected volatile int stock;
+    public volatile int huevingTime;
     
     public Semaphore capacitySem;
     public Semaphore stockSem = new Semaphore(1);
     public Semaphore retrieveSem = new Semaphore(0);
+    public Semaphore hueving = new Semaphore(1);
     
     public String whereTo = "Pin";
     
@@ -26,6 +28,16 @@ public class PinProductionLine {
         this.capacity = capacity;
         this.stock = stock;
         this.capacitySem = new Semaphore(capacity);
+    }
+    
+    public void updateHueving(long n){
+        try {
+            this.hueving.acquire();
+            this.huevingTime += n;
+            this.hueving.release();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(AssemblyLine.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void addToStock(){

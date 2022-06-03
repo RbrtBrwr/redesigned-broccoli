@@ -48,7 +48,7 @@ public class ScreenProducer extends Thread{
                 this.productLine.addToStock();
                 long end = System.currentTimeMillis();
                 long difference = end - start - this.productionTime;
-                this.eggingTime += difference;
+                this.productLine.updateHueving(difference);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }

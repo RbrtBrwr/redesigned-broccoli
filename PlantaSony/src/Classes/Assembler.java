@@ -88,7 +88,7 @@ public class Assembler extends Thread{
             assemblersAssemble();
             long end = System.currentTimeMillis();
                 long difference = end - start - this.assemblyTime;
-                this.eggingTime += difference;
+                this.phoneLine.updateHueving(difference);
         }
         this.interrupt();
             
