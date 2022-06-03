@@ -5,7 +5,7 @@
 package Classes;
 
 import java.util.Timer;
-import java.util.TimerTask;
+//import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -57,6 +57,7 @@ public class Boss extends Thread{
     public void reduceCounter(){
         this.status = "Reduciendo countdown";
         Main.interfazGrafica.setBossStatus(this.status);
+        Main.updateSalaries();
         try {
             this.counter.reduceCounter();
             Main.interfazGrafica.addDay();
@@ -67,6 +68,7 @@ public class Boss extends Thread{
         
     }
     
+   
     
 //    TimerTask playClashRoyaleTimer = new TimerTask(){
 //        @Override

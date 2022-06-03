@@ -94,6 +94,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         telefonosVendidosUltima3 = new javax.swing.JTextField();
+        salarioTotalPlanta = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -128,7 +129,8 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
 
         progressBarPines.setMaximum(15);
 
-        pinLineSalary.setText("1");
+        pinLineSalary.setEditable(false);
+        pinLineSalary.setText("0");
         pinLineSalary.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Salario"));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -148,11 +150,12 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                                         .addGap(8, 8, 8)
                                         .addComponent(numeritoPinesListos, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGap(18, 18, 18)
-                        .addComponent(progressBarPines, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(pinLineSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(pinLineSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)))
+                .addComponent(progressBarPines, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -166,7 +169,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                         .addComponent(cambiarNumeroProductoresPines, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(numeritoPinesListos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
+                        .addGap(18, 18, 18)
                         .addComponent(pinLineSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(progressBarPines, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
@@ -200,7 +203,8 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
 
         progressBarPantallas.setMaximum(40);
 
-        screenLineSalary.setText("1");
+        screenLineSalary.setEditable(false);
+        screenLineSalary.setText("0");
         screenLineSalary.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Salario"));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -270,7 +274,8 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
 
         progressBarBotones.setMaximum(45);
 
-        buttonLineSalary.setText("1");
+        buttonLineSalary.setEditable(false);
+        buttonLineSalary.setText("0");
         buttonLineSalary.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Salario"));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -346,7 +351,8 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
 
         progressBarCamaras.setMaximum(20);
 
-        cameraLineSalary.setText("1");
+        cameraLineSalary.setEditable(false);
+        cameraLineSalary.setText("0");
         cameraLineSalary.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Salario"));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -473,7 +479,8 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         mostradorNumEnsambladores.setText("1");
         mostradorNumEnsambladores.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Ensambladores"));
 
-        assemblyLineSalary.setText("1");
+        assemblyLineSalary.setEditable(false);
+        assemblyLineSalary.setText("0");
         assemblyLineSalary.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Salario"));
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -726,6 +733,11 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                 .addGap(57, 57, 57))
         );
 
+        salarioTotalPlanta.setEditable(false);
+        salarioTotalPlanta.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        salarioTotalPlanta.setText("0");
+        salarioTotalPlanta.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Salario Total"));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -733,7 +745,10 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(salarioTotalPlanta, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -779,7 +794,11 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                         .addGap(15, 15, 15)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(salarioTotalPlanta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1173,9 +1192,31 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     
     //Salario jefe
     
+    public void setManagerSalary(int n){
+        this.managerSalary.setText(Integer.toString(n));
+    }
     public void setBossSalary(int n){
         this.bossSalary.setText(Integer.toString(n));
     }
+    public void setAssemblySalary(int n){
+        this.assemblyLineSalary.setText(Integer.toString(n));
+    }
+    public void setButtonSalary(int n){
+        this.buttonLineSalary.setText(Integer.toString(n));
+    }
+    public void setScreenSalary(int n){
+        this.screenLineSalary.setText(Integer.toString(n));
+    }
+    public void setCameraSalary(int n){
+        this.cameraLineSalary.setText(Integer.toString(n));
+    }
+    public void setPinSalary(int n){
+        this.pinLineSalary.setText(Integer.toString(n));
+    }
+    public void setTotalSalary(int n){
+        this.salarioTotalPlanta.setText(Integer.toString(n));
+    }
+    
     
     public String getSelectedPlant(){
         return plantSelector.getSelectedItem().toString();
@@ -1202,6 +1243,8 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     public void setDayLengthSetter(int n){
         dayLengthSetter.setValue(n);
     }
+    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JSONLoader;
@@ -1254,6 +1297,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     private javax.swing.JProgressBar progressBarCamaras;
     private javax.swing.JProgressBar progressBarPantallas;
     private javax.swing.JProgressBar progressBarPines;
+    private javax.swing.JTextField salarioTotalPlanta;
     private javax.swing.JTextField screenLineSalary;
     private javax.swing.JButton startButton;
     private javax.swing.JButton stopButton;

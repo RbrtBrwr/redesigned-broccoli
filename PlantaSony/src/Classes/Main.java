@@ -103,59 +103,7 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        interfazGrafica.setVisible(true);
-
-//
-//
-//        maxCamaras = 20;
-//        maxPantallas = 40;
-//        maxBotones = 45;
-//        maxPines = 15;
-//        
-//
-//        camaras = new CameraProductionLine(maxCamaras, 0);
-//        pantallas = new ScreenProductionLine(maxPantallas, 0);
-//        botones = new ButtonProductionLine(maxBotones, 0);
-//        pines = new PinProductionLine(maxPines, 0);
-//        assemblyLine = new AssemblyLine(999, 0);
-//        
-//        segundosEnDia = 1;
-//        msecDia = segundosEnDia * 1000;
-//        
-//        tiempoProduccionCamara = 3000;
-//        tiempoProduccionBoton = 500;
-//        tiempoProduccionPantalla = 500;
-//        tiempoProduccionPines = 3000;
-//        tiempoProduccionTelefono = 2000;
-//        
-//        counter = new Counter(30);
-//
-//        productoresCamaras = new CameraProducer[11];
-//        productoresPantallas = new ScreenProducer[11];
-//        productoresBotones = new ButtonProducer[11];
-//        productoresPines = new PinProducer[11];
-//        ensambladores = new Assembler[11];
-//        jefe = new Boss(counter);
-//        gerente = new Manager(counter, jefe, 30);
-//        
-//        numeroProductoresBotones = 2;
-//        numeroProductoresCamaras = 3;
-//        numeroProductoresPantallas = 4;
-//        numeroProductoresPines = 3;
-//        numeroEnsambladores = 3;
-//        
-//        startingDay = 1;
-//        
-//        interfazGrafica.setNumeroProductoresBotones(numeroProductoresBotones);
-//        interfazGrafica.setNumeroProductoresCamaras(numeroProductoresCamaras);
-//        interfazGrafica.setNumeroProductoresPantallas(numeroProductoresPantallas);
-//        interfazGrafica.setNumeroProductoresPines(numeroProductoresPines);
-//        interfazGrafica.setNumeroEnsambladores(numeroEnsambladores);
-//
-//        interfazGrafica.setCurrentDay(startingDay);
-//        interfazGrafica.setCountdown(counter.daysRemaining);
-//        interfazGrafica.setBossSalary(jefe.salary);
-        
+        interfazGrafica.setVisible(true);     
     }
     
     public static void getInputFromInterface(){
@@ -393,6 +341,27 @@ public class Main {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
         counter = null;
+    }
+    
+    public static void updateSalaries(){
+        
+        salario_total_gerente += SALARIO_GERENTE;
+        salario_total_jefe += SALARIO_JEFE;
+        salario_total_linea_botones += SALARIO_PRODUCTOR_BOTONES * numeroProductoresBotones;
+        salario_total_linea_camaras += SALARIO_PRODUCTOR_CAMARAS * numeroProductoresCamaras;
+        salario_total_linea_ensamblaje += SALARIO_ENSAMBLADOR * numeroEnsambladores;
+        salario_total_linea_pantallas += SALARIO_PRODUCTOR_PANTALLAS * numeroProductoresPantallas;
+        salario_total_linea_pines += SALARIO_PRODUCTOR_PINES * numeroProductoresPines;
+        salario_total_planta = salario_total_gerente + salario_total_jefe + salario_total_linea_botones + salario_total_linea_camaras + salario_total_linea_ensamblaje + salario_total_linea_pantallas + salario_total_linea_pines;
+        
+        interfazGrafica.setManagerSalary(salario_total_gerente);
+        interfazGrafica.setBossSalary(salario_total_jefe);
+        interfazGrafica.setTotalSalary(salario_total_planta);
+        interfazGrafica.setAssemblySalary(salario_total_linea_ensamblaje);
+        interfazGrafica.setButtonSalary(salario_total_linea_botones);
+        interfazGrafica.setScreenSalary(salario_total_linea_pantallas);
+        interfazGrafica.setCameraSalary(salario_total_linea_camaras);
+        interfazGrafica.setPinSalary(salario_total_linea_pines);
     }
     
 }
