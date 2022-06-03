@@ -34,6 +34,8 @@ public class Main {
     public static int salario_total_gerente = 0;
     public static int salario_total_planta = 0;
     
+    public static int corrida;
+    
     
     public static InterfazGraficaPlanta interfazGrafica = new InterfazGraficaPlanta();
     public static Dashboard dashboard = new Dashboard();
@@ -99,14 +101,20 @@ public class Main {
     public static int[] phoneSpecs;
     public static int phonePrice;
     
+    public static Object[][] table;
+    public static Object[] corridaDelMomento;
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         
-        
+//        interfazGrafica.setVisible(true);
         dashboard.setVisible(true);
+        
+        
 
+        
 
 
         maxCamaras = 20;
@@ -158,7 +166,34 @@ public class Main {
         interfazGrafica.setCountdown(counter.daysRemaining);
         interfazGrafica.setBossSalary(jefe.salary);
         
+        try {
+            table = jsonReaderWriter.read("corridas.json");
+        } catch (ParseException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        dashboard.showTable(table);
+        dashboard.showBarChartProduction(table);
+        dashboard.showBarChartEgging(table);
+        dashboard.showBarChartSalary(table);
+        dashboard.showLineChartRevenue(table);
+        dashboard.showLineChartThroughput(table);
+        corrida = table.length + 1;
+        
     }
+    
+    public static void saveCorrida(){
+        Object[] row = new Object[8];
+        row[0] = corrida;
+        row[1] = selectedPlant;
+//        row[2] = distributionChanged;
+        row[3] = salario_total_planta;
+//        row[4] = totalEgging;
+//        row[5] = totalProduction;
+//        row[6] = totalRevenue;
+//        row[7] = throughput;
+        
+    }
+    
     
     public static void getInputFromInterface(){
         if (checkValidInputs() && checkPlant()){

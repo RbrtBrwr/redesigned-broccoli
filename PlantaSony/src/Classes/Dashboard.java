@@ -58,6 +58,11 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        lineChartThroughput = new javax.swing.JPanel();
+        barChartProduction = new javax.swing.JPanel();
+        barChartSalary = new javax.swing.JPanel();
+        barChartEgging = new javax.swing.JPanel();
+        lineChartRevenue = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 204, 0));
@@ -95,18 +100,43 @@ public class Dashboard extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Numero de corrida", "Planta", "Se cambio la distribucion de empleados?", "Costo total en salarios", "Tiempo ocioso total", "Produccion total", "Total ingresos", "Throughput"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Long.class, java.lang.Long.class, java.lang.Long.class, java.lang.Long.class, java.lang.Long.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, -1, -1));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 1710, 210));
+
+        lineChartThroughput.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lineChartThroughput.setLayout(new java.awt.BorderLayout());
+        getContentPane().add(lineChartThroughput, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 680, 420, 310));
+
+        barChartProduction.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        barChartProduction.setLayout(new java.awt.BorderLayout());
+        getContentPane().add(barChartProduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 420, 310));
+
+        barChartSalary.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        barChartSalary.setLayout(new java.awt.BorderLayout());
+        getContentPane().add(barChartSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(1450, 330, 420, 310));
+
+        barChartEgging.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        barChartEgging.setLayout(new java.awt.BorderLayout());
+        getContentPane().add(barChartEgging, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 330, 420, 310));
+
+        lineChartRevenue.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lineChartRevenue.setLayout(new java.awt.BorderLayout());
+        getContentPane().add(lineChartRevenue, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 680, 420, 310));
 
         setSize(new java.awt.Dimension(1946, 1031));
         setLocationRelativeTo(null);
@@ -147,8 +177,16 @@ public class Dashboard extends javax.swing.JFrame {
         });
     }
     
-    public void showTable(){
+
+    public void getValues(){
         
+    }
+    
+    public void showTable(Object[][] table){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        for (int i = 0; i < table.length; i++) {
+                    model.addRow(table[i]);
+        }
     }
     public void showPieChart(){
         
@@ -182,23 +220,23 @@ public class Dashboard extends javax.swing.JFrame {
 
     /*=============================================================================*/
     
-    public void showLineChart(){
+    public void showLineChartRevenue(Object[][] table){
         //create dataset for the graph
+        
          DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.setValue(200, "Amount", "january");
-        dataset.setValue(150, "Amount", "february");
-        dataset.setValue(18, "Amount", "march");
-        dataset.setValue(100, "Amount", "april");
-        dataset.setValue(80, "Amount", "may");
-        dataset.setValue(250, "Amount", "june");
+        for (int i = 0; i < table.length; i++) {
+            long amount = (long) table[i][6];
+            int corrida = (int) table[i][0];
+            dataset.setValue(amount, "Amount", "Corrida " + corrida);
+        }
         
         //create chart
-        JFreeChart linechart = ChartFactory.createLineChart("contribution","monthly","amount", 
+        JFreeChart linechart = ChartFactory.createLineChart("Ingresos","Corrida","Cantidad", 
                 dataset, PlotOrientation.VERTICAL, false,true,false);
         
         //create plot object
          CategoryPlot lineCategoryPlot = linechart.getCategoryPlot();
-       // lineCategoryPlot.setRangeGridlinePaint(Color.BLUE);
+        lineCategoryPlot.setRangeGridlinePaint(Color.BLUE);
         lineCategoryPlot.setBackgroundPaint(Color.white);
         
         //create render object to change the moficy the line properties like color
@@ -208,9 +246,40 @@ public class Dashboard extends javax.swing.JFrame {
         
          //create chartPanel to display chart(graph)
         ChartPanel lineChartPanel = new ChartPanel(linechart);
-//        panelLineChart.removeAll();
-//        panelLineChart.add(lineChartPanel, BorderLayout.CENTER);
-//        panelLineChart.validate();
+        lineChartRevenue.removeAll();
+        lineChartRevenue.add(lineChartPanel, BorderLayout.CENTER);
+        lineChartRevenue.validate();
+    }
+    
+    public void showLineChartThroughput(Object[][] table){
+        //create dataset for the graph
+        
+         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        for (int i = 0; i < table.length; i++) {
+            long amount = (long) table[i][7];
+            int corrida = (int) table[i][0];
+            dataset.setValue(amount, "Amount", "Corrida " + corrida);
+        }
+        
+        //create chart
+        JFreeChart linechart = ChartFactory.createLineChart("Throughput","Corrida","Cantidad", 
+                dataset, PlotOrientation.VERTICAL, false,true,false);
+        
+        //create plot object
+         CategoryPlot lineCategoryPlot = linechart.getCategoryPlot();
+        lineCategoryPlot.setRangeGridlinePaint(Color.BLUE);
+        lineCategoryPlot.setBackgroundPaint(Color.white);
+        
+        //create render object to change the moficy the line properties like color
+        LineAndShapeRenderer lineRenderer = (LineAndShapeRenderer) lineCategoryPlot.getRenderer();
+        Color lineChartColor = new Color(204,0,51);
+        lineRenderer.setSeriesPaint(0, lineChartColor);
+        
+         //create chartPanel to display chart(graph)
+        ChartPanel lineChartPanel = new ChartPanel(linechart);
+        lineChartThroughput.removeAll();
+        lineChartThroughput.add(lineChartPanel, BorderLayout.CENTER);
+        lineChartThroughput.validate();
     }
 
     /*========================================================================================*/
@@ -242,38 +311,90 @@ public class Dashboard extends javax.swing.JFrame {
 
     /*========================================================================================*/
     
-    public void showBarChart(){
+    public void showBarChartProduction(Object[][] table){
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.setValue(200, "Amount", "january");
-        dataset.setValue(150, "Amount", "february");
-        dataset.setValue(18, "Amount", "march");
-        dataset.setValue(100, "Amount", "april");
-        dataset.setValue(80, "Amount", "may");
-        dataset.setValue(250, "Amount", "june");
+        for (int i = 0; i < table.length; i++) {
+            long amount = (long) table[i][5];
+            int corrida = (int) table[i][0];
+            dataset.setValue(amount, "Amount", "Corrida " + corrida);
+        }
         
-        JFreeChart chart = ChartFactory.createBarChart("contribution","monthly","amount", 
+        JFreeChart chart = ChartFactory.createBarChart("Produccion","Corrida","Cantidad", 
                 dataset, PlotOrientation.VERTICAL, false,true,false);
         
         CategoryPlot categoryPlot = chart.getCategoryPlot();
-        //categoryPlot.setRangeGridlinePaint(Color.BLUE);
+        categoryPlot.setRangeGridlinePaint(Color.BLUE);
         categoryPlot.setBackgroundPaint(Color.WHITE);
         BarRenderer renderer = (BarRenderer) categoryPlot.getRenderer();
         Color clr3 = new Color(204,0,51);
         renderer.setSeriesPaint(0, clr3);
         
         ChartPanel barpChartPanel = new ChartPanel(chart);
-        jPanel1.removeAll();
-        jPanel1.add(barpChartPanel, BorderLayout.CENTER);
-        jPanel1.validate();
+        barChartProduction.removeAll();
+        barChartProduction.add(barpChartPanel, BorderLayout.CENTER);
+        barChartProduction.validate();
+    }
+    
+        public void showBarChartSalary(Object[][] table){
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+            for (int i = 0; i < table.length; i++) {
+            long amount = (long) table[i][3];
+            int corrida = (int) table[i][0];
+            dataset.setValue(amount, "Amount", "Corrida " + corrida);
+            }
+     
+        JFreeChart chart = ChartFactory.createBarChart("Costo total salarios","Corrida","Cantidad", 
+                dataset, PlotOrientation.VERTICAL, false,true,false);
+        
+        CategoryPlot categoryPlot = chart.getCategoryPlot();
+        categoryPlot.setRangeGridlinePaint(Color.BLUE);
+        categoryPlot.setBackgroundPaint(Color.WHITE);
+        BarRenderer renderer = (BarRenderer) categoryPlot.getRenderer();
+        Color clr3 = new Color(204,0,51);
+        renderer.setSeriesPaint(0, clr3);
+        
+        ChartPanel barpChartPanel = new ChartPanel(chart);
+        barChartSalary.removeAll();
+        barChartSalary.add(barpChartPanel, BorderLayout.CENTER);
+        barChartSalary.validate();
+    }
+        
+        public void showBarChartEgging(Object[][] table){
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        for (int i = 0; i < table.length; i++) {
+            long amount = (long) table[i][4];
+            int corrida = (int) table[i][0];
+            dataset.setValue(amount, "Amount", "Corrida " + corrida);
+            }
+        
+        JFreeChart chart = ChartFactory.createBarChart("Tiempo ocioso total","Corrida","Cantidad", 
+                dataset, PlotOrientation.VERTICAL, false,true,false);
+        
+        CategoryPlot categoryPlot = chart.getCategoryPlot();
+        categoryPlot.setRangeGridlinePaint(Color.BLUE);
+        categoryPlot.setBackgroundPaint(Color.WHITE);
+        BarRenderer renderer = (BarRenderer) categoryPlot.getRenderer();
+        Color clr3 = new Color(204,0,51);
+        renderer.setSeriesPaint(0, clr3);
+        
+        ChartPanel barpChartPanel = new ChartPanel(chart);
+        barChartEgging.removeAll();
+        barChartEgging.add(barpChartPanel, BorderLayout.CENTER);
+        barChartEgging.validate();
         
         
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel HelloGeb;
+    private javax.swing.JPanel barChartEgging;
+    private javax.swing.JPanel barChartProduction;
+    private javax.swing.JPanel barChartSalary;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JPanel lineChartRevenue;
+    private javax.swing.JPanel lineChartThroughput;
     // End of variables declaration//GEN-END:variables
 }

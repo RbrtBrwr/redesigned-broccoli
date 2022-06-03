@@ -10,6 +10,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import static java.lang.Boolean.parseBoolean;
 import static java.lang.Integer.parseInt;
+import static java.lang.Long.parseLong;
+import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -19,6 +21,7 @@ import org.json.simple.parser.JSONParser;
  * @author ponsa
  */
 public class jsonReaderWriter {
+    
     
     public static void write(){
             //First Employee
@@ -127,35 +130,70 @@ public class jsonReaderWriter {
         
     }
         
-        public static void read(String file) throws org.json.simple.parser.ParseException{
+        public static Object[][] read(String file) throws org.json.simple.parser.ParseException{
         JSONParser jsonParser = new JSONParser();
+        Object[][] table = null;
+        
          
         try (FileReader reader = new FileReader(file))
         {
             Object obj = jsonParser.parse(reader);
             JSONArray run = (JSONArray) obj;
-            System.out.println(run);
-             
-            run.forEach( corrida -> parseCorridaObject( (JSONObject) corrida ) );
- 
+//            System.out.println(run.size());
+            
+            table = new Object[run.size()][8];
+            
+            for (int i = 0; i < run.size(); i++) {
+                table[i] = parseCorridaObject((JSONObject) run.get(i));
+            }
+            
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return table;
         }
         
-        private static void parseCorridaObject(JSONObject corrida) 
+        private static Object[] parseCorridaObject(JSONObject corrida) 
     {
+        
         JSONObject corridaObject = (JSONObject) corrida.get("corrida");
+        Object[] table = new Object[8];
          
         int runNumber = parseInt((String)(corridaObject.get("runNumber")));    
-        System.out.println(runNumber);
+//        System.out.println(runNumber);
+        table[0] = runNumber;
          
         String productionPlant = (String) corridaObject.get("productionPlant");  
-        System.out.println(productionPlant);
+//        System.out.println(productionPlant);
+        table[1] = productionPlant;
          
         boolean employeeDistribution = parseBoolean((String) corridaObject.get("employeeDistribution"));    
-        System.out.println(employeeDistribution);
+//        System.out.println(employeeDistribution);
+        table[2] = employeeDistribution;
+        
+        long totalSalary  = parseLong((String)(corridaObject.get("totalSalary")));    
+//        System.out.println(totalSalary);
+        table[3] = totalSalary;
+        
+        long totalEgging  = parseLong((String)(corridaObject.get("totalEgging")));    
+//        System.out.println(totalEgging);
+        table[4] = totalEgging;
+        
+        long totalProduction  = parseLong((String)(corridaObject.get("totalProduction")));    
+//        System.out.println(totalProduction);
+        table[5] = totalProduction;
+        
+        long totalRevenue  = parseLong((String)(corridaObject.get("totalRevenue")));    
+//        System.out.println(totalRevenue);
+        table[6] = totalRevenue;
+        
+        long throughput  = parseLong((String)(corridaObject.get("throughput")));    
+//        System.out.println(throughput);
+        table[7] = totalRevenue;
+        
+        return table;
+        
     }
 }
