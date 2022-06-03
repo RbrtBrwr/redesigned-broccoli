@@ -40,7 +40,6 @@ public class Main {
     public static InterfazGraficaPlanta interfazGrafica = new InterfazGraficaPlanta();
     public static Dashboard dashboard = new Dashboard();
     
-    public static int[] readJson;
     
     public static int maxCamaras;
     public static int maxPantallas;
@@ -90,10 +89,12 @@ public class Main {
     
     public static boolean executing = false;
     public static boolean paused = false;
+    public static boolean distributionChanged = false;
     
 //    Camara, botones, pines, pantallas
     public static int[] specsPro = new int[] {4,3,1,2};
     public static int[] specs10III = new int[] {2,2,1,1};
+    public static int[] readJson = new int[] {0,0,0,0,0,0,0,0};
     
     public static final int COSTO_PRO = 1050;
     public static final int COSTO_10_III = 600;
@@ -179,6 +180,9 @@ public class Main {
         dashboard.showLineChartThroughput(table);
         corrida = table.length + 1;
         
+
+        interfazGrafica.setVisible(true);     
+
     }
     
     public static void saveCorrida(){
@@ -203,6 +207,15 @@ public class Main {
             setWorkTime();
             setInfinity();
             initializeThreads();
+            interfazGrafica.setNumeroProductoresBotones(numeroProductoresBotones);
+            interfazGrafica.setNumeroProductoresCamaras(numeroProductoresCamaras);
+            interfazGrafica.setNumeroProductoresPantallas(numeroProductoresPantallas);
+            interfazGrafica.setNumeroProductoresPines(numeroProductoresPines);
+            interfazGrafica.setNumeroEnsambladores(numeroEnsambladores);
+
+            interfazGrafica.setCurrentDay(startingDay);
+            interfazGrafica.setCountdown(counter.daysRemaining);
+            interfazGrafica.setBossSalary(jefe.salary);
             startAllThreads(); 
             
         }
@@ -282,6 +295,9 @@ public class Main {
         tiempoProduccionPantalla = msecDia / 2;
         tiempoProduccionPines = msecDia * 3;
         tiempoProduccionTelefono = msecDia * 3;
+        System.out.println(tiempoProduccionTelefono);
+        System.out.println(tiempoProduccionCamara);
+        System.out.println("----------------------");
     }
     
     public static void initializeThreads(){
@@ -293,6 +309,7 @@ public class Main {
             productoresPines[i] = new PinProducer(pines, tiempoProduccionPines);
             ensambladores[i] = new Assembler(assemblyLine, tiempoProduccionTelefono, phoneSpecs, camaras, botones, pines, pantallas);
         }
+        counter = new Counter(interfazGrafica.getCountdown());
         jefe = new Boss(counter);
         gerente = new Manager(counter, jefe, 30);
     
@@ -329,7 +346,7 @@ public class Main {
         });
     }
 
-    public void setFromJson(int[] params){
+    public static void setFromJson(int[] params){
 //        Le paso como parametro un arreglo con los valores
 //0 - secs x dia
 //1 - dias entre despacho
@@ -398,6 +415,8 @@ public class Main {
     
     public static void terminateExec(){
 //        Esto se esta pausando, pero el timer no se frena ????
+        jefe.timer.cancel();
+        gerente.timer.cancel();
         
         for (int i = 0; i < 11; i++){
             productoresCamaras[i].stopRun();
@@ -409,7 +428,33 @@ public class Main {
         executing = false;
         paused = true;
         initializeThreads();
+        try {
+            counter.wait();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
         counter = null;
+    }
+    
+    public static void updateSalaries(){
+        
+        salario_total_gerente += SALARIO_GERENTE;
+        salario_total_jefe += SALARIO_JEFE;
+        salario_total_linea_botones += SALARIO_PRODUCTOR_BOTONES * numeroProductoresBotones;
+        salario_total_linea_camaras += SALARIO_PRODUCTOR_CAMARAS * numeroProductoresCamaras;
+        salario_total_linea_ensamblaje += SALARIO_ENSAMBLADOR * numeroEnsambladores;
+        salario_total_linea_pantallas += SALARIO_PRODUCTOR_PANTALLAS * numeroProductoresPantallas;
+        salario_total_linea_pines += SALARIO_PRODUCTOR_PINES * numeroProductoresPines;
+        salario_total_planta = salario_total_gerente + salario_total_jefe + salario_total_linea_botones + salario_total_linea_camaras + salario_total_linea_ensamblaje + salario_total_linea_pantallas + salario_total_linea_pines;
+        
+        interfazGrafica.setManagerSalary(salario_total_gerente);
+        interfazGrafica.setBossSalary(salario_total_jefe);
+        interfazGrafica.setTotalSalary(salario_total_planta);
+        interfazGrafica.setAssemblySalary(salario_total_linea_ensamblaje);
+        interfazGrafica.setButtonSalary(salario_total_linea_botones);
+        interfazGrafica.setScreenSalary(salario_total_linea_pantallas);
+        interfazGrafica.setCameraSalary(salario_total_linea_camaras);
+        interfazGrafica.setPinSalary(salario_total_linea_pines);
     }
     
 }
