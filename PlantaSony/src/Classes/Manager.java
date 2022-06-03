@@ -77,7 +77,7 @@ public class Manager extends Thread{
         this.status = "Despachando telefonos";
         Main.interfazGrafica.setManagerStatus(this.status);
         //Aqui simplemente guardariamos el numero de telefonos que se hicieron ese dia en el CSV y seteamos a 0 para el nuevo dia
-        Main.interfazGrafica.setNumeroTelefonos(0);
+//        Main.interfazGrafica.setNumeroTelefonos(0);
     }
     
     TimerTask checkOnBossTimer = new TimerTask(){

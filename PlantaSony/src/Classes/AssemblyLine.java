@@ -46,7 +46,7 @@ public class AssemblyLine {
             this.stockSem.acquire();
             this.stock++;
 
-//            Main.interfazGrafica.setNumeroTelefonos(this.stock);
+            Main.interfazGrafica.setNumeroTelefonos(this.stock);
 
             this.retrieveSem.release();
             System.out.println(whereTo + ":" + this.stock);

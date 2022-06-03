@@ -22,7 +22,6 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     private final Semaphore semaforoNumeroTelefonos = new Semaphore(1);
     public int currentDay = 1;
     
-    private final Semaphore semaforoEdicionInterfaz = new Semaphore(1);
     /**
      * Creates new form InterfazGraficaPlanta
      */
@@ -1151,273 +1150,254 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     }
     
     public int getSegundosPorDia(){
+        System.out.println("EgetSegundosPorDia");
         return (Integer) dayLengthSetter.getValue();
     }
 //    NUMERO DE PRODUCTORES
     public void setNumeroProductoresPines(int n){
+        System.out.println("EsetNumeroProductoresPines");
         this.mostradorNumProductoresPines.setText(Integer.toString(n));
-        this.cambiarNumeroProductoresPines.setValue(n);
+        this.cambiarNumeroProductoresPines.setValue(n);        
+        System.out.println("SsetNumeroProductoresPines");
+
+        
     }
     
     public void setNumeroProductoresPantallas(int n){
+        System.out.println("EsetNumeroProductoresPantallas");
         this.mostradorNumProductoresPantallas.setText(Integer.toString(n));
-        this.cambiarNumeroProductoresPantallas.setValue(n);
+        this.cambiarNumeroProductoresPantallas.setValue(n);        
+        System.out.println("SsetNumeroProductoresPantallas");
     }
     
     public void setNumeroProductoresBotones(int n){
+        System.out.println("EsetNumeroProductoresBotones");
         this.mostradorNumProductoresBotones.setText(Integer.toString(n));
-        this.cambiarNumeroEnsambladores.setValue(n);
+        this.cambiarNumeroEnsambladores.setValue(n);        
+        System.out.println("SsetNumeroProductoresBotones");
     }
     
     public void setNumeroProductoresCamaras(int n){
+        System.out.println("EsetNumeroProductoresCamaras");
         this.mostradorNumProductoresCamaras.setText(Integer.toString(n));
-        this.cambiarNumeroProductoresCamaras.setValue(n);
+        this.cambiarNumeroProductoresCamaras.setValue(n);        
+        System.out.println("SsetNumeroProductoresCamaras");
     }
     
     public void setNumeroEnsambladores(int n){
+        System.out.println("EsetNumeroEnsambladores");
         this.mostradorNumEnsambladores.setText(Integer.toString(n));
-        this.cambiarNumeroEnsambladores.setValue(n);
+        this.cambiarNumeroEnsambladores.setValue(n);        
+        System.out.println("SsetNumeroEnsambladores");
     }
     public int getNumeroProductoresPines(){
+        System.out.println("EgetNumeroProductoresPines");
         return Integer.parseInt(this.mostradorNumProductoresPines.getText());
     }
     
     public int getNumeroProductoresPantallas(){
+        System.out.println("EgetNumeroProductoresPantallas");
         return Integer.parseInt(this.mostradorNumProductoresPantallas.getText());
     }
     
     public int getNumeroProductoresBotones(){
+        System.out.println("EgetNumeroProductoresBotones");
         return Integer.parseInt(this.mostradorNumProductoresBotones.getText());
     }
     
     public int getNumeroProductoresCamaras(){
+        System.out.println("EgetNumeroProductoresCamaras");
         return Integer.parseInt(this.mostradorNumProductoresCamaras.getText());
     }
     
     public int getNumeroEnsambladores(){
+        System.out.println("EgetNumeroEnsambladores");
         return Integer.parseInt(this.mostradorNumEnsambladores.getText());
     }
     
     
 //    NUMERO PARTES LISTAS
     public void setNumeroPinesListos(int n){
-        try {
-            semaforoEdicionInterfaz.acquire();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        System.out.println("EsetNumeroPinesListos");
+
         try {
             semaforoNumeroPines.acquire();
-            this.numeritoPinesListos.setText(Integer.toString(n));
+//            this.numeritoPinesListos.setText(Integer.toString(n));
             this.progressBarPines.setValue(n);
             semaforoNumeroPines.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        semaforoEdicionInterfaz.release();
+        }        
+        System.out.println("SsetNumeroPinesListos");
     }
     
     public void setNumeroBotonesListos(int n){
-        try {
-            semaforoEdicionInterfaz.acquire();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        System.out.println("EsetNumeroBotonesListos");
+
         try {
             semaforoNumeroBotones.acquire();
-            this.numeritoBotonesListos.setText(Integer.toString(n));
+//            this.numeritoBotonesListos.setText(Integer.toString(n));
             this.progressBarBotones.setValue(n);
             semaforoNumeroBotones.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        semaforoEdicionInterfaz.release();
+        }        
+        System.out.println("SsetNumeroBotonesListos");
     }
     
     public void setNumeroCamarasListas(int n){
-        try {
-            semaforoEdicionInterfaz.acquire();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        System.out.println("EsetNumeroCamarasListas");
+
         try {
             semaforoNumeroCamaras.acquire();
-            this.numeritoCamarasListas.setText(Integer.toString(n));
+//            this.numeritoCamarasListas.setText(Integer.toString(n));
             this.progressBarCamaras.setValue(n);
             semaforoNumeroCamaras.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        semaforoEdicionInterfaz.release();
+        }        
+        System.out.println("SsetNumeroCamarasListas");
     }
     
     public void setNumeroPantallasListas(int n){
+        System.out.println("EsetNumeroPantallasListas");
+
         try {
-            semaforoEdicionInterfaz.acquire();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
+
             semaforoNumeroPantallas.acquire();
-            this.numeritoPantallasListas.setText(Integer.toString(n));
+//            this.numeritoPantallasListas.setText(Integer.toString(n));
             this.progressBarPantallas.setValue(n);
             semaforoNumeroPantallas.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        semaforoEdicionInterfaz.release();
+        }        
+        System.out.println("SsetNumeroPantallasListas");
     }
     
     public void setNumeroTelefonos(int n){
-        try {
-            semaforoEdicionInterfaz.acquire();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        System.out.println("EsetNumeroTelefonos");
+
         try {
             semaforoNumeroTelefonos.acquire();
+            System.out.println("antesa");
+            System.out.println(n);
             this.numeritoTelefonos.setText(Integer.toString(n));
+            System.out.println("despues");
             semaforoNumeroTelefonos.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        semaforoEdicionInterfaz.release();
+        }        
+        System.out.println("SsetNumeroTelefonos");
     }
     
     //Setear dias que pasan
     
     public void setCurrentDay(int n){
-        this.dayCounter.setText(Integer.toString(n));
+        System.out.println("EsetCurrentDay");
+        this.dayCounter.setText(Integer.toString(n));        
+        System.out.println("SsetCurrentDay");
     }
     
     public void addDay(){
+        System.out.println("EaddDay");
         int newCurrentDay = Integer.parseInt(this.dayCounter.getText());
         newCurrentDay++;
-        this.dayCounter.setText(Integer.toString(newCurrentDay));
+        this.dayCounter.setText(Integer.toString(newCurrentDay));        
+        System.out.println("SaddDay");
     }
     
     //Countdown
     
     public void setCountdown(int n){
-        this.countdown.setText(Integer.toString(n));
+        System.out.println("EsetCountdown");
+        this.countdown.setText(Integer.toString(n));        
+        System.out.println("SsetCountdown");
     }
     
     public int getCountdown(){
-        return (Integer) countdownSetter.getValue();
+        System.out.println("EgetCountdown");
+        int returnValue = 0;
+        returnValue =  (Integer) countdownSetter.getValue();
+        return returnValue;      
     }
     
     //Salario jefe
     
     public void setManagerSalary(int n){
-        try {
-            semaforoEdicionInterfaz.acquire();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.managerSalary.setText(Integer.toString(n));
-        semaforoEdicionInterfaz.release();
+        System.out.println("EsetManagerSalary");
+        this.managerSalary.setText(Integer.toString(n));        
+        System.out.println("SsetManagerSalary");
     }
     public void setBossSalary(int n){
-        try {
-            semaforoEdicionInterfaz.acquire();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.bossSalary.setText(Integer.toString(n));
-        semaforoEdicionInterfaz.release();
+        System.out.println("EsetBossSalary");
+        this.bossSalary.setText(Integer.toString(n));        
+        System.out.println("SsetBossSalary");
     }
     public void setAssemblySalary(int n){
-        try {
-            semaforoEdicionInterfaz.acquire();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.assemblyLineSalary.setText(Integer.toString(n));
-        semaforoEdicionInterfaz.release();
+        System.out.println("EsetAssemblySalary");
+        this.assemblyLineSalary.setText(Integer.toString(n));        
+        System.out.println("SsetAssemblySalary");
     }
     public void setButtonSalary(int n){
-        try {
-            semaforoEdicionInterfaz.acquire();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.buttonLineSalary.setText(Integer.toString(n));
-        semaforoEdicionInterfaz.release();
+        System.out.println("EsetButtonSalary");
+        this.buttonLineSalary.setText(Integer.toString(n));        
+        System.out.println("SsetButtonSalary");
     }
     public void setScreenSalary(int n){
-        try {
-            semaforoEdicionInterfaz.acquire();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.screenLineSalary.setText(Integer.toString(n));
-        semaforoEdicionInterfaz.release();
+        System.out.println("EsetScreenSalary");
+        this.screenLineSalary.setText(Integer.toString(n));        
+        System.out.println("SsetScreenSalary");
     }
     public void setCameraSalary(int n){
-        try {
-            semaforoEdicionInterfaz.acquire();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.cameraLineSalary.setText(Integer.toString(n));
-        semaforoEdicionInterfaz.release();
+        System.out.println("EsetCameraSalary");
+        this.cameraLineSalary.setText(Integer.toString(n));        
+        System.out.println("SsetCameraSalary");
     }
     public void setPinSalary(int n){
-        try {
-            semaforoEdicionInterfaz.acquire();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.pinLineSalary.setText(Integer.toString(n));
-        semaforoEdicionInterfaz.release();
+        System.out.println("EsetPinSalary");
+        this.pinLineSalary.setText(Integer.toString(n));        
+        System.out.println("SsetPinSalary");
     }
     public void setTotalSalary(int n){
-        try {
-            semaforoEdicionInterfaz.acquire();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.salarioTotalPlanta.setText(Integer.toString(n));
-        semaforoEdicionInterfaz.release();
+        System.out.println("EsetTotalSalary");
+        this.salarioTotalPlanta.setText(Integer.toString(n));        
+        System.out.println("SsetTotalSalary");
     }
     
     
     public String getSelectedPlant(){
+        System.out.println("EgetSelectedPlant");
         return plantSelector.getSelectedItem().toString();
     }
     
 
     public void setBossStatus(String status){
-        try {
-            semaforoEdicionInterfaz.acquire();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.bossStatus.setText(status);
-        semaforoEdicionInterfaz.release();
+        System.out.println("EsetBossStatus");
+        this.bossStatus.setText(status);        
+        System.out.println("SsetBossStatus");
     }
     
     public void setManagerStatus(String status){
-        try {
-            semaforoEdicionInterfaz.acquire();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.managerStatus.setText(status);
-        semaforoEdicionInterfaz.release();
+        System.out.println("EsetManagerStatus");
+        this.managerStatus.setText(status);        
+        System.out.println("SsetManagerStatus");
     }
 
     public boolean checkInfinity(){
+        System.out.println("EcheckInfinity");
         return infinityCheck.isSelected();
     }
     
     public boolean setInfinity(int infinite){
+        System.out.println("EsetInfinity");
         infinityCheck.setSelected(infinite == 1);
         return infinite == 0 || infinite == 1;
     }
     
     public void setDayLengthSetter(int n){
+        System.out.println("EsetDayLengthSetter");
         dayLengthSetter.setValue(n);
+        System.out.println("SsetDayLengthSetter");
     }
     
 
