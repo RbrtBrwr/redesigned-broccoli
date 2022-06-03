@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+import org.json.simple.parser.ParseException;
 
 /**
  *
@@ -143,13 +144,10 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                         .addGap(36, 36, 36)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(mostradorNumProductoresPines, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cambiarNumeroProductoresPines, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cambiarNumeroProductoresPines, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(8, 8, 8)
-                                        .addComponent(numeritoPinesListos, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGap(8, 8, 8)
+                                .addComponent(numeritoPinesListos, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
@@ -562,6 +560,11 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         });
 
         JSONLoader.setText("Leer Settings de JSON");
+        JSONLoader.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JSONLoaderActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -860,7 +863,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         int numeroPrev = Main.numeroProductoresCamaras;
         this.mostradorNumProductoresCamaras.setText(Integer.toString(cambiarNumeroProductoresCamaras.getValue()));
         int numeroActual = this.getNumeroProductoresCamaras();
-        if (Main.checkValidInputs()){
+        if (Main.executing && Main.checkValidInputs()){
             if (numeroPrev > numeroActual){
                 for (int i = numeroActual; i < numeroPrev; i++){
                     try{
@@ -888,7 +891,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         int numeroPrev = Main.numeroProductoresBotones;
         this.mostradorNumProductoresBotones.setText(Integer.toString(cambiarNumeroProductoresBotones.getValue()));
         int numeroActual = this.getNumeroProductoresBotones();
-        if (Main.checkValidInputs()){
+        if (Main.executing && Main.checkValidInputs()){
             if (numeroPrev > numeroActual){
                 for (int i = numeroActual; i < numeroPrev; i++){
                     try{
@@ -916,7 +919,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         int numeroPrev = Main.numeroProductoresPantallas;
         this.mostradorNumProductoresPantallas.setText(Integer.toString(cambiarNumeroProductoresPantallas.getValue()));
         int numeroActual = this.getNumeroProductoresPantallas();
-        if (Main.checkValidInputs()){
+        if (Main.executing && Main.checkValidInputs()){
             if (numeroPrev > numeroActual){
                 for (int i = numeroActual; i < numeroPrev; i++){
                     try{
@@ -944,7 +947,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         int numeroPrev = Main.numeroProductoresPines;
         this.mostradorNumProductoresPines.setText(Integer.toString(cambiarNumeroProductoresPines.getValue()));
         int numeroActual = this.getNumeroProductoresPines();
-        if (Main.checkValidInputs()){
+        if (Main.executing && Main.checkValidInputs()){
             if (numeroPrev > numeroActual){
                 for (int i = numeroActual; i < numeroPrev; i++){
                     try{
@@ -1036,6 +1039,15 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     private void numeritoTelefonosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeritoTelefonosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_numeritoTelefonosActionPerformed
+
+    private void JSONLoaderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JSONLoaderActionPerformed
+        try {
+            jsonReaderWriter.readExternal("initialSettings.json");
+        } catch (ParseException ex) {
+            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Main.setFromJson(Main.readJson);
+    }//GEN-LAST:event_JSONLoaderActionPerformed
 
     /**
      * @param args the command line arguments

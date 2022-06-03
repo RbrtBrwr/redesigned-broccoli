@@ -1066,6 +1066,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Leer Settings de JSON"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JSONLoaderActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

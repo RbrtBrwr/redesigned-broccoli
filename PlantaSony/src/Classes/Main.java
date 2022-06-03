@@ -37,7 +37,6 @@ public class Main {
     
     public static InterfazGraficaPlanta interfazGrafica = new InterfazGraficaPlanta();
     
-    public static int[] readJson;
     
     public static int maxCamaras;
     public static int maxPantallas;
@@ -92,6 +91,7 @@ public class Main {
 //    Camara, botones, pines, pantallas
     public static int[] specsPro = new int[] {4,3,1,2};
     public static int[] specs10III = new int[] {2,2,1,1};
+    public static int[] readJson = new int[] {0,0,0,0,0,0,0,0};
     
     public static final int COSTO_PRO = 1050;
     public static final int COSTO_10_III = 600;
@@ -254,7 +254,7 @@ public class Main {
         });
     }
 
-    public void setFromJson(int[] params){
+    public static void setFromJson(int[] params){
 //        Le paso como parametro un arreglo con los valores
 //0 - secs x dia
 //1 - dias entre despacho
