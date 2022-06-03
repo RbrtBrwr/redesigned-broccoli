@@ -87,6 +87,7 @@ public class Main {
     
     public static boolean executing = false;
     public static boolean paused = false;
+    public static boolean distributionChanged = false;
     
 //    Camara, botones, pines, pantallas
     public static int[] specsPro = new int[] {4,3,1,2};

@@ -875,6 +875,9 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                 }
             }
             Main.numeroProductoresCamaras = numeroActual;
+            if (Main.executing){
+                Main.distributionChanged = true;
+            }
         } else {
             this.mostradorNumProductoresCamaras.setText(Integer.toString(numeroPrev));
             this.cambiarNumeroProductoresCamaras.setValue(numeroPrev);
@@ -900,6 +903,9 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                 }
             }
             Main.numeroProductoresBotones = numeroActual;
+            if (Main.executing){
+                Main.distributionChanged = true;
+            }
         } else {
             this.mostradorNumProductoresBotones.setText(Integer.toString(numeroPrev));
             this.cambiarNumeroProductoresBotones.setValue(numeroPrev);
@@ -925,6 +931,9 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                 }
             }
             Main.numeroProductoresPantallas = numeroActual;
+            if (Main.executing){
+                Main.distributionChanged = true;
+            }
         } else {
             this.mostradorNumProductoresPantallas.setText(Integer.toString(numeroPrev));
             this.cambiarNumeroProductoresPantallas.setValue(numeroPrev);
@@ -950,6 +959,9 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                 }
             }
             Main.numeroProductoresPines = numeroActual;
+            if (Main.executing){
+                Main.distributionChanged = true;
+            }
         } else {
             this.mostradorNumProductoresPines.setText(Integer.toString(numeroPrev));
             this.cambiarNumeroProductoresPines.setValue(numeroPrev);

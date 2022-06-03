@@ -127,7 +127,7 @@ public class jsonReaderWriter {
         
     }
         
-        public static void read(String file) throws org.json.simple.parser.ParseException{
+    public static void read(String file) throws org.json.simple.parser.ParseException{
         JSONParser jsonParser = new JSONParser();
          
         try (FileReader reader = new FileReader(file))
@@ -145,7 +145,7 @@ public class jsonReaderWriter {
         }
         }
         
-        private static void parseCorridaObject(JSONObject corrida) 
+    private static void parseCorridaObject(JSONObject corrida) 
     {
         JSONObject corridaObject = (JSONObject) corrida.get("corrida");
          

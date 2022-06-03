@@ -55,10 +55,6 @@ public class Assembler extends Thread{
         screensNeeded = phoneSpecs[3];
     }
     
-    public void timeForWork(){
-        this.getParts();
-    }
-    
     public void getParts(){
         this.currentStatus = "Esperando Partes";
         this.cameraLine.retrieveFromStock(camerasNeeded);
