@@ -1,0 +1,17 @@
+[
+    {"corrida":
+                {
+                    "secsInDay":"1000",
+                    "daysBetweenDispatchs":"30",
+                    "unlimitedStock":"0",
+                    "cantidadInicialProductores":
+                        {
+                            "cantidadProductoresPines":"2",
+                            "cantidadProductoresPantallas":"2",
+                            "cantidadProductoresCamaras":"3",
+                            "cantidadProductoresBotones":"3"            
+                        },
+                    "cantidadEnsambladores":"5"
+                }
+    }
+]
