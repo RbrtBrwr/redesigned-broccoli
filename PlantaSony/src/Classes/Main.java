@@ -354,7 +354,7 @@ public class Main {
         }
         
         jefe.start();
-//        gerente.start(); 
+        gerente.start(); 
         
         //Para guardar data cada vez que termine el programa
         Runtime.getRuntime().addShutdownHook(new Thread() {
