@@ -32,6 +32,7 @@ public class PinProductionLine {
     
     public void updateHueving(long n){
         try {
+            System.out.println("AQUI ES hueving pin");
             this.hueving.acquire();
             this.huevingTime += n;
             this.hueving.release();

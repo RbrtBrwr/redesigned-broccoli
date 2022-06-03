@@ -32,9 +32,11 @@ public class ButtonProductionLine{
     
     public void updateHueving(long n){
         try {
+            System.out.println("AQUI ES hueving bopt");
             this.hueving.acquire();
             this.huevingTime += n;
             this.hueving.release();
+
         } catch (InterruptedException ex) {
             Logger.getLogger(AssemblyLine.class.getName()).log(Level.SEVERE, null, ex);
         }

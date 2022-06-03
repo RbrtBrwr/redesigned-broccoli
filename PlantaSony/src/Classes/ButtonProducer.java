@@ -31,12 +31,12 @@ public class ButtonProducer extends Thread{
     public void stopRun(){
         running = false;
     }
-    
     @Override 
     public void run(){
         running = true;
         while (running){
             long start = System.currentTimeMillis();
+            System.out.println("volvio a entras");
             this.currentStatus = "Ocioso";
             working = false;
             try {   
@@ -48,6 +48,7 @@ public class ButtonProducer extends Thread{
                 long end = System.currentTimeMillis();
                 long difference = end - start - this.productionTime;
                 this.productLine.updateHueving(difference);
+                System.out.println("salio hueving bot");
             } catch (InterruptedException ex) {
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }

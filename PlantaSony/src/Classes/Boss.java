@@ -5,6 +5,7 @@
 package Classes;
 
 import java.util.Timer;
+import java.util.concurrent.Semaphore;
 //import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +24,8 @@ public class Boss extends Thread{
     public boolean running;
     Timer timer = new Timer();
     public long dayDuration;
+    
+    public Semaphore salarySem = new Semaphore(1);
     
     public Boss(Counter counter){
         this.salary = 7;
@@ -57,8 +60,10 @@ public class Boss extends Thread{
     public void reduceCounter(){
         this.status = "Reduciendo countdown";
         Main.interfazGrafica.setBossStatus(this.status);
-        Main.updateSalaries();
         try {
+            salarySem.acquire();
+            Main.updateSalaries();
+            salarySem.release();
             this.counter.reduceCounter();
             Main.interfazGrafica.addDay();
             Thread.sleep(this.counterReduceTime);

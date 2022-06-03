@@ -32,6 +32,7 @@ public class AssemblyLine {
     
     public void updateHueving(long n){
         try {
+            System.out.println("AQUI ES hueving ass");
             this.hueving.acquire();
             this.huevingTime += n;
             this.hueving.release();
@@ -45,7 +46,7 @@ public class AssemblyLine {
             this.stockSem.acquire();
             this.stock++;
 
-            Main.interfazGrafica.setNumeroTelefonos(this.stock);
+//            Main.interfazGrafica.setNumeroTelefonos(this.stock);
 
             this.retrieveSem.release();
             System.out.println(whereTo + ":" + this.stock);

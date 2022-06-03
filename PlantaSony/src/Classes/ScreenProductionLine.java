@@ -32,6 +32,7 @@ public class ScreenProductionLine {
     
     public void updateHueving(long n){
         try {
+            System.out.println("AQUI ES hueving screen");
             this.hueving.acquire();
             this.huevingTime += n;
             this.hueving.release();

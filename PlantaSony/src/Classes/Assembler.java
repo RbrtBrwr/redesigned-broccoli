@@ -57,10 +57,20 @@ public class Assembler extends Thread{
     
     public void getParts(){
         this.currentStatus = "Esperando Partes";
+                    System.out.println("AQUI ES CAMAD");
+
         this.cameraLine.retrieveFromStock(camerasNeeded);
+                    System.out.println("AQUI ES BOT");
+
         this.buttonLine.retrieveFromStock(buttonsNeeded);
+                    System.out.println("AQUI ESPIN" );
+
         this.pinLine.retrieveFromStock(pinsNeeded);
+                    System.out.println("AQUI ESDCREEN");
+
         this.screenLine.retrieveFromStock(screensNeeded);
+                    System.out.println("AQUI ESTOFO");
+
 
     }
     

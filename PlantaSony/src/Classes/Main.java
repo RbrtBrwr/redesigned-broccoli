@@ -111,13 +111,7 @@ public class Main {
     public static void main(String[] args) {
         
 //        interfazGrafica.setVisible(true);
-        
-        
-        
-
-        
-
-
+//        
         maxCamaras = 20;
         maxPantallas = 40;
         maxBotones = 45;
@@ -139,8 +133,6 @@ public class Main {
         tiempoProduccionPines = 3000;
         tiempoProduccionTelefono = 2000;
         
-        counter = new Counter(30);
-
         productoresCamaras = new CameraProducer[11];
         productoresPantallas = new ScreenProducer[11];
         productoresBotones = new ButtonProducer[11];
@@ -148,6 +140,8 @@ public class Main {
         ensambladores = new Assembler[11];
         jefe = new Boss(counter);
         gerente = new Manager(counter, jefe, 30);
+
+        counter = new Counter(30);
         
         numeroProductoresBotones = 2;
         numeroProductoresCamaras = 3;
@@ -183,7 +177,7 @@ public class Main {
         
 
         interfazGrafica.setVisible(true);     
-        dashboard.setVisible(true);
+//        dashboard.setVisible(true);
 
     }
     
@@ -314,7 +308,7 @@ public class Main {
     }
     
     public static void setSpeed(){
-        msecDia = interfazGrafica.getSegundosPorDia() * 1000;
+        msecDia = interfazGrafica.getSegundosPorDia() * 100;
     }
     
     public static void setWorkTime(){
@@ -323,9 +317,7 @@ public class Main {
         tiempoProduccionPantalla = msecDia / 2;
         tiempoProduccionPines = msecDia * 3;
         tiempoProduccionTelefono = msecDia * 3;
-        System.out.println(tiempoProduccionTelefono);
-        System.out.println(tiempoProduccionCamara);
-        System.out.println("----------------------");
+
     }
     
     public static void initializeThreads(){
@@ -410,15 +402,8 @@ public class Main {
         int pPin = params[5];
         int pScr = params[6];
         int ass = params[7];
-        System.out.println(pCam + "cam");
-        System.out.println(pBut+ "but");
-        System.out.println(pPin + "pin");
-        System.out.println(pScr+"scr");
-        System.out.println(ass+"ass");
         boolean testTotal = pCam + pBut + pPin + pScr + ass > 15;
         boolean testNull = pCam < 1 || pBut < 1 || pPin < 1 || pScr < 1 || ass < 1;
-        System.out.println("total" + testTotal);
-        System.out.println("null"+testNull);
         if (testTotal || testNull){
             JOptionPane.showMessageDialog(null, "La suma de trabajadores no puede ser mas de 15\nNo pueden haber cero productores en una linea\nSe utilizaron valores default");
             interfazGrafica.setNumeroProductoresCamaras(3);
@@ -435,17 +420,17 @@ public class Main {
         }
     }
     
-    public void writeToJSON(){
-        int[] params = new int[8];
-        params[0] = interfazGrafica.getSegundosPorDia();
+//    public void writeToJSON(){
+//        int[] params = new int[8];
+//        params[0] = interfazGrafica.getSegundosPorDia();
 //        params[1] = interfazGrafica.getCountdown() ??????????
-        params[2] = interfazGrafica.checkInfinity() ? 1 : 0;
-        params[3] = interfazGrafica.getNumeroProductoresCamaras();
-        params[4] = interfazGrafica.getNumeroProductoresBotones();
-        params[5] = interfazGrafica.getNumeroProductoresPines();
-        params[6] = interfazGrafica.getNumeroProductoresPantallas();
-        params[7] = interfazGrafica.getNumeroEnsambladores();
-    }
+//        params[2] = interfazGrafica.checkInfinity() ? 1 : 0;
+//        params[3] = interfazGrafica.getNumeroProductoresCamaras();
+//        params[4] = interfazGrafica.getNumeroProductoresBotones();
+//        params[5] = interfazGrafica.getNumeroProductoresPines();
+//        params[6] = interfazGrafica.getNumeroProductoresPantallas();
+//        params[7] = interfazGrafica.getNumeroEnsambladores();
+//    }
     
     
 // Estas no funcionan como quiero, quizas las saco y ya

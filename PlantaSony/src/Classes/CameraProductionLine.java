@@ -32,6 +32,7 @@ public class CameraProductionLine {
     
     public void updateHueving(long n){
         try {
+            System.out.println("AQUI ES hueving cam");
             this.hueving.acquire();
             this.huevingTime += n;
             this.hueving.release();
@@ -57,6 +58,7 @@ public class CameraProductionLine {
         
         try {
             this.retrieveSem.acquire(numNeeded);
+            System.out.println("acquired");
             this.stockSem.acquire();
             this.stock -= numNeeded;
             Main.interfazGrafica.setNumeroCamarasListas(this.stock);

@@ -45,8 +45,13 @@ public class Manager extends Thread{
         this.status = "Chequeando al jefe";
         Main.interfazGrafica.setManagerStatus(this.status);
         if("Jugando Clash Royale".equals(this.boss.status)){
+            try {
+                this.boss.salarySem.acquire();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
+            }
             this.boss.salary -= 2;
-            Main.interfazGrafica.setBossSalary(this.boss.salary);
+            this.boss.salarySem.release();
             System.out.println("TE CACHE MALDITO. Ahora te voy a pagar " + this.boss.salary);
         }
         try {

@@ -8,7 +8,6 @@ import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -22,6 +21,8 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     private final Semaphore semaforoNumeroPines = new Semaphore(1);
     private final Semaphore semaforoNumeroTelefonos = new Semaphore(1);
     public int currentDay = 1;
+    
+    private final Semaphore semaforoEdicionInterfaz = new Semaphore(1);
     /**
      * Creates new form InterfazGraficaPlanta
      */
@@ -129,6 +130,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         });
 
         progressBarPines.setMaximum(15);
+        progressBarPines.setOrientation(1);
 
         pinLineSalary.setEditable(false);
         pinLineSalary.setText("0");
@@ -200,6 +202,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         });
 
         progressBarPantallas.setMaximum(40);
+        progressBarPantallas.setOrientation(1);
 
         screenLineSalary.setEditable(false);
         screenLineSalary.setText("0");
@@ -271,6 +274,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         });
 
         progressBarBotones.setMaximum(45);
+        progressBarBotones.setOrientation(1);
 
         buttonLineSalary.setEditable(false);
         buttonLineSalary.setText("0");
@@ -348,6 +352,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         });
 
         progressBarCamaras.setMaximum(20);
+        progressBarCamaras.setOrientation(1);
 
         cameraLineSalary.setEditable(false);
         cameraLineSalary.setText("0");
@@ -404,18 +409,18 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bossStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bossStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addComponent(bossSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addGap(67, 67, 67)
+                .addComponent(bossSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addComponent(bossStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bossSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -433,21 +438,21 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addComponent(managerStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(managerStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(managerSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addGap(67, 67, 67)
+                .addComponent(managerSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(managerStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(managerSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Ensamblaje de Telefonos"));
@@ -860,6 +865,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     }//GEN-LAST:event_mostradorNumProductoresCamarasActionPerformed
 
     private void cambiarNumeroProductoresCamarasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_cambiarNumeroProductoresCamarasStateChanged
+        
         if (Main.executing){
             int numeroPrev = Main.numeroProductoresCamaras;
             this.mostradorNumProductoresCamaras.setText(Integer.toString(cambiarNumeroProductoresCamaras.getValue()));
@@ -879,14 +885,21 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                     }
                 }
                 Main.numeroProductoresCamaras = numeroActual;
-                if (Main.executing){
-                    Main.distributionChanged = true;
-                }
+                Main.distributionChanged = true;
             } else {
                 this.mostradorNumProductoresCamaras.setText(Integer.toString(numeroPrev));
                 this.cambiarNumeroProductoresCamaras.setValue(numeroPrev);
             }
-            
+        } else {
+            int numeroPrev = Main.numeroProductoresCamaras;
+            this.mostradorNumProductoresCamaras.setText(Integer.toString(cambiarNumeroProductoresCamaras.getValue()));
+            int numeroActual = this.getNumeroProductoresCamaras();
+            if (Main.checkValidInputs()){
+                Main.numeroProductoresCamaras = numeroActual;
+            } else {
+                this.mostradorNumProductoresCamaras.setText(Integer.toString(numeroPrev));
+                this.cambiarNumeroProductoresCamaras.setValue(numeroPrev);
+            }
         }
     }//GEN-LAST:event_cambiarNumeroProductoresCamarasStateChanged
 
@@ -910,14 +923,22 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                     }
                 }
                 Main.numeroProductoresBotones = numeroActual;
-                if (Main.executing){
-                    Main.distributionChanged = true;
-                }
+                Main.distributionChanged = true;
             } else {
                 this.mostradorNumProductoresBotones.setText(Integer.toString(numeroPrev));
                 this.cambiarNumeroProductoresBotones.setValue(numeroPrev);
             }
             
+        } else {
+            int numeroPrev = Main.numeroProductoresBotones;
+            this.mostradorNumProductoresBotones.setText(Integer.toString(cambiarNumeroProductoresBotones.getValue()));
+            int numeroActual = this.getNumeroProductoresBotones();
+            if (Main.checkValidInputs()){
+                Main.numeroProductoresBotones = numeroActual;
+            } else {
+                this.mostradorNumProductoresBotones.setText(Integer.toString(numeroPrev));
+                this.cambiarNumeroProductoresBotones.setValue(numeroPrev);
+            }
         }
     }//GEN-LAST:event_cambiarNumeroProductoresBotonesStateChanged
 
@@ -941,14 +962,24 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                     }
                 }
                 Main.numeroProductoresPantallas = numeroActual;
-                if (Main.executing){
-                    Main.distributionChanged = true;
-                }
+                Main.distributionChanged = true;
+
             } else {
                 this.mostradorNumProductoresPantallas.setText(Integer.toString(numeroPrev));
                 this.cambiarNumeroProductoresPantallas.setValue(numeroPrev);
             }
             
+        } else {
+            int numeroPrev = Main.numeroProductoresPantallas;
+            this.mostradorNumProductoresPantallas.setText(Integer.toString(cambiarNumeroProductoresPantallas.getValue()));
+            int numeroActual = this.getNumeroProductoresPantallas();
+            if (Main.checkValidInputs()){
+                Main.numeroProductoresPantallas = numeroActual;
+
+            } else {
+                this.mostradorNumProductoresPantallas.setText(Integer.toString(numeroPrev));
+                this.cambiarNumeroProductoresPantallas.setValue(numeroPrev);
+            }
         }
     }//GEN-LAST:event_cambiarNumeroProductoresPantallasStateChanged
 
@@ -972,14 +1003,24 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                     }
                 }
                 Main.numeroProductoresPines = numeroActual;
-                if (Main.executing){
-                    Main.distributionChanged = true;
-                }
+                Main.distributionChanged = true;
+
             } else {
                 this.mostradorNumProductoresPines.setText(Integer.toString(numeroPrev));
                 this.cambiarNumeroProductoresPines.setValue(numeroPrev);
             }
             
+        } else {
+            int numeroPrev = Main.numeroProductoresPines;
+            this.mostradorNumProductoresPines.setText(Integer.toString(cambiarNumeroProductoresPines.getValue()));
+            int numeroActual = this.getNumeroProductoresPines();
+            if (Main.checkValidInputs()){
+                Main.numeroProductoresPines = numeroActual;
+
+            } else {
+                this.mostradorNumProductoresPines.setText(Integer.toString(numeroPrev));
+                this.cambiarNumeroProductoresPines.setValue(numeroPrev);
+            }
         }
     }//GEN-LAST:event_cambiarNumeroProductoresPinesStateChanged
 
@@ -1043,10 +1084,21 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
                     }
                 }
                 Main.numeroEnsambladores = numeroActual;
+                Main.distributionChanged = true;
             } else {
                 this.mostradorNumEnsambladores.setText(Integer.toString(numeroPrev));
                 this.cambiarNumeroEnsambladores.setValue(numeroPrev);
             }  
+        } else {
+            int numeroPrev = Main.numeroEnsambladores;
+            this.mostradorNumEnsambladores.setText(Integer.toString(cambiarNumeroEnsambladores.getValue()));
+            int numeroActual = this.getNumeroEnsambladores();
+            if (Main.checkValidInputs()){
+                Main.numeroEnsambladores = numeroActual;
+            } else {
+                this.mostradorNumEnsambladores.setText(Integer.toString(numeroPrev));
+                this.cambiarNumeroEnsambladores.setValue(numeroPrev);
+            } 
         }
     }//GEN-LAST:event_cambiarNumeroEnsambladoresStateChanged
 
@@ -1150,53 +1202,78 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
 //    NUMERO PARTES LISTAS
     public void setNumeroPinesListos(int n){
         try {
+            semaforoEdicionInterfaz.acquire();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
             semaforoNumeroPines.acquire();
             this.numeritoPinesListos.setText(Integer.toString(n));
-            this.progressBarPines.setOrientation(SwingConstants.VERTICAL);
             this.progressBarPines.setValue(n);
             semaforoNumeroPines.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
         }
+        semaforoEdicionInterfaz.release();
     }
     
     public void setNumeroBotonesListos(int n){
         try {
+            semaforoEdicionInterfaz.acquire();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
             semaforoNumeroBotones.acquire();
             this.numeritoBotonesListos.setText(Integer.toString(n));
-            this.progressBarBotones.setOrientation(SwingConstants.VERTICAL);
             this.progressBarBotones.setValue(n);
             semaforoNumeroBotones.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
         }
+        semaforoEdicionInterfaz.release();
     }
     
     public void setNumeroCamarasListas(int n){
         try {
+            semaforoEdicionInterfaz.acquire();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
             semaforoNumeroCamaras.acquire();
             this.numeritoCamarasListas.setText(Integer.toString(n));
-            this.progressBarCamaras.setOrientation(SwingConstants.VERTICAL);
             this.progressBarCamaras.setValue(n);
             semaforoNumeroCamaras.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
         }
+        semaforoEdicionInterfaz.release();
     }
     
     public void setNumeroPantallasListas(int n){
         try {
+            semaforoEdicionInterfaz.acquire();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
             semaforoNumeroPantallas.acquire();
             this.numeritoPantallasListas.setText(Integer.toString(n));
-            this.progressBarPantallas.setOrientation(SwingConstants.VERTICAL);
             this.progressBarPantallas.setValue(n);
             semaforoNumeroPantallas.release();
         } catch (InterruptedException ex) {
             Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
         }
+        semaforoEdicionInterfaz.release();
     }
     
     public void setNumeroTelefonos(int n){
+        try {
+            semaforoEdicionInterfaz.acquire();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
+        }
         try {
             semaforoNumeroTelefonos.acquire();
             this.numeritoTelefonos.setText(Integer.toString(n));
@@ -1204,6 +1281,7 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
         } catch (InterruptedException ex) {
             Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
         }
+        semaforoEdicionInterfaz.release();
     }
     
     //Setear dias que pasan
@@ -1231,28 +1309,76 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     //Salario jefe
     
     public void setManagerSalary(int n){
+        try {
+            semaforoEdicionInterfaz.acquire();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.managerSalary.setText(Integer.toString(n));
+        semaforoEdicionInterfaz.release();
     }
     public void setBossSalary(int n){
+        try {
+            semaforoEdicionInterfaz.acquire();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.bossSalary.setText(Integer.toString(n));
+        semaforoEdicionInterfaz.release();
     }
     public void setAssemblySalary(int n){
+        try {
+            semaforoEdicionInterfaz.acquire();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.assemblyLineSalary.setText(Integer.toString(n));
+        semaforoEdicionInterfaz.release();
     }
     public void setButtonSalary(int n){
+        try {
+            semaforoEdicionInterfaz.acquire();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.buttonLineSalary.setText(Integer.toString(n));
+        semaforoEdicionInterfaz.release();
     }
     public void setScreenSalary(int n){
+        try {
+            semaforoEdicionInterfaz.acquire();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.screenLineSalary.setText(Integer.toString(n));
+        semaforoEdicionInterfaz.release();
     }
     public void setCameraSalary(int n){
+        try {
+            semaforoEdicionInterfaz.acquire();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.cameraLineSalary.setText(Integer.toString(n));
+        semaforoEdicionInterfaz.release();
     }
     public void setPinSalary(int n){
+        try {
+            semaforoEdicionInterfaz.acquire();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.pinLineSalary.setText(Integer.toString(n));
+        semaforoEdicionInterfaz.release();
     }
     public void setTotalSalary(int n){
+        try {
+            semaforoEdicionInterfaz.acquire();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.salarioTotalPlanta.setText(Integer.toString(n));
+        semaforoEdicionInterfaz.release();
     }
     
     
@@ -1262,11 +1388,23 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     
 
     public void setBossStatus(String status){
+        try {
+            semaforoEdicionInterfaz.acquire();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.bossStatus.setText(status);
+        semaforoEdicionInterfaz.release();
     }
     
     public void setManagerStatus(String status){
+        try {
+            semaforoEdicionInterfaz.acquire();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(InterfazGraficaPlanta.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.managerStatus.setText(status);
+        semaforoEdicionInterfaz.release();
     }
 
     public boolean checkInfinity(){

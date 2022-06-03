@@ -247,6 +247,7 @@
             <Component class="javax.swing.JProgressBar" name="progressBarPines">
               <Properties>
                 <Property name="maximum" type="int" value="15"/>
+                <Property name="orientation" type="int" value="1"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="pinLineSalary">
@@ -376,6 +377,7 @@
             <Component class="javax.swing.JProgressBar" name="progressBarPantallas">
               <Properties>
                 <Property name="maximum" type="int" value="40"/>
+                <Property name="orientation" type="int" value="1"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="screenLineSalary">
@@ -508,6 +510,7 @@
             <Component class="javax.swing.JProgressBar" name="progressBarBotones">
               <Properties>
                 <Property name="maximum" type="int" value="45"/>
+                <Property name="orientation" type="int" value="1"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="buttonLineSalary">
@@ -639,6 +642,7 @@
             <Component class="javax.swing.JProgressBar" name="progressBarCamaras">
               <Properties>
                 <Property name="maximum" type="int" value="20"/>
+                <Property name="orientation" type="int" value="1"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="cameraLineSalary">
@@ -676,13 +680,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="bossStatus" max="32767" attributes="0"/>
+                      <Component id="bossStatus" pref="221" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-                      <Component id="bossSalary" min="-2" pref="56" max="-2" attributes="0"/>
-                      <EmptySpace pref="106" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                      <Component id="bossSalary" min="-2" pref="80" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -690,7 +694,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="bossStatus" min="-2" pref="34" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="bossSalary" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -737,13 +741,13 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="managerStatus" max="32767" attributes="0"/>
+                      <Component id="managerStatus" pref="216" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                      <Component id="managerSalary" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="90" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                      <Component id="managerSalary" min="-2" pref="81" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -752,9 +756,9 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="managerStatus" min="-2" pref="39" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="managerSalary" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="managerSalary" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
