@@ -860,114 +860,126 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     }//GEN-LAST:event_mostradorNumProductoresCamarasActionPerformed
 
     private void cambiarNumeroProductoresCamarasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_cambiarNumeroProductoresCamarasStateChanged
-        int numeroPrev = Main.numeroProductoresCamaras;
-        this.mostradorNumProductoresCamaras.setText(Integer.toString(cambiarNumeroProductoresCamaras.getValue()));
-        int numeroActual = this.getNumeroProductoresCamaras();
-        if (Main.executing && Main.checkValidInputs()){
-            if (numeroPrev > numeroActual){
-                for (int i = numeroActual; i < numeroPrev; i++){
-                    try{
-                        Main.productoresCamaras[i].stopRun();
-                    } catch (NullPointerException ex){
-                        System.out.println("whoops");
+        if (Main.executing){
+            int numeroPrev = Main.numeroProductoresCamaras;
+            this.mostradorNumProductoresCamaras.setText(Integer.toString(cambiarNumeroProductoresCamaras.getValue()));
+            int numeroActual = this.getNumeroProductoresCamaras();
+            if (Main.checkValidInputs()){
+                if (numeroPrev > numeroActual){
+                    for (int i = numeroActual; i < numeroPrev; i++){
+                        try{
+                            Main.productoresCamaras[i].stopRun();
+                        } catch (NullPointerException ex){
+                            System.out.println("whoops");
+                        }
+                    }
+                } else {
+                    for (int i = numeroPrev + 1; i < numeroActual; i++){
+                        Main.productoresCamaras[i].start();
                     }
                 }
-            } else {
-                for (int i = numeroPrev + 1; i < numeroActual; i++){
-                    Main.productoresCamaras[i].start();
+                Main.numeroProductoresCamaras = numeroActual;
+                if (Main.executing){
+                    Main.distributionChanged = true;
                 }
+            } else {
+                this.mostradorNumProductoresCamaras.setText(Integer.toString(numeroPrev));
+                this.cambiarNumeroProductoresCamaras.setValue(numeroPrev);
             }
-            Main.numeroProductoresCamaras = numeroActual;
-            if (Main.executing){
-                Main.distributionChanged = true;
-            }
-        } else {
-            this.mostradorNumProductoresCamaras.setText(Integer.toString(numeroPrev));
-            this.cambiarNumeroProductoresCamaras.setValue(numeroPrev);
+            
         }
     }//GEN-LAST:event_cambiarNumeroProductoresCamarasStateChanged
 
     private void cambiarNumeroProductoresBotonesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_cambiarNumeroProductoresBotonesStateChanged
-        int numeroPrev = Main.numeroProductoresBotones;
-        this.mostradorNumProductoresBotones.setText(Integer.toString(cambiarNumeroProductoresBotones.getValue()));
-        int numeroActual = this.getNumeroProductoresBotones();
-        if (Main.executing && Main.checkValidInputs()){
-            if (numeroPrev > numeroActual){
-                for (int i = numeroActual; i < numeroPrev; i++){
-                    try{
-                        Main.productoresBotones[i].stopRun();
-                    } catch (NullPointerException ex){
-                        System.out.println("whoops");
+        if (Main.executing){
+            int numeroPrev = Main.numeroProductoresBotones;
+            this.mostradorNumProductoresBotones.setText(Integer.toString(cambiarNumeroProductoresBotones.getValue()));
+            int numeroActual = this.getNumeroProductoresBotones();
+            if (Main.checkValidInputs()){
+                if (numeroPrev > numeroActual){
+                    for (int i = numeroActual; i < numeroPrev; i++){
+                        try{
+                            Main.productoresBotones[i].stopRun();
+                        } catch (NullPointerException ex){
+                            System.out.println("whoops");
+                        }
+                    }
+                } else {
+                    for (int i = numeroPrev + 1; i < numeroActual; i++){
+                        Main.productoresBotones[i].start();
                     }
                 }
-            } else {
-                for (int i = numeroPrev + 1; i < numeroActual; i++){
-                    Main.productoresBotones[i].start();
+                Main.numeroProductoresBotones = numeroActual;
+                if (Main.executing){
+                    Main.distributionChanged = true;
                 }
+            } else {
+                this.mostradorNumProductoresBotones.setText(Integer.toString(numeroPrev));
+                this.cambiarNumeroProductoresBotones.setValue(numeroPrev);
             }
-            Main.numeroProductoresBotones = numeroActual;
-            if (Main.executing){
-                Main.distributionChanged = true;
-            }
-        } else {
-            this.mostradorNumProductoresBotones.setText(Integer.toString(numeroPrev));
-            this.cambiarNumeroProductoresBotones.setValue(numeroPrev);
+            
         }
     }//GEN-LAST:event_cambiarNumeroProductoresBotonesStateChanged
 
     private void cambiarNumeroProductoresPantallasStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_cambiarNumeroProductoresPantallasStateChanged
-        int numeroPrev = Main.numeroProductoresPantallas;
-        this.mostradorNumProductoresPantallas.setText(Integer.toString(cambiarNumeroProductoresPantallas.getValue()));
-        int numeroActual = this.getNumeroProductoresPantallas();
-        if (Main.executing && Main.checkValidInputs()){
-            if (numeroPrev > numeroActual){
-                for (int i = numeroActual; i < numeroPrev; i++){
-                    try{
-                        Main.productoresPantallas[i].stopRun();
-                    } catch (NullPointerException ex){
-                        System.out.println("whoops");
+        if (Main.executing){
+            int numeroPrev = Main.numeroProductoresPantallas;
+            this.mostradorNumProductoresPantallas.setText(Integer.toString(cambiarNumeroProductoresPantallas.getValue()));
+            int numeroActual = this.getNumeroProductoresPantallas();
+            if (Main.checkValidInputs()){
+                if (numeroPrev > numeroActual){
+                    for (int i = numeroActual; i < numeroPrev; i++){
+                        try{
+                            Main.productoresPantallas[i].stopRun();
+                        } catch (NullPointerException ex){
+                            System.out.println("whoops");
+                        }
+                    }
+                } else {
+                    for (int i = numeroPrev + 1; i < numeroActual; i++){
+                        Main.productoresPantallas[i].start();
                     }
                 }
-            } else {
-                for (int i = numeroPrev + 1; i < numeroActual; i++){
-                    Main.productoresPantallas[i].start();
+                Main.numeroProductoresPantallas = numeroActual;
+                if (Main.executing){
+                    Main.distributionChanged = true;
                 }
+            } else {
+                this.mostradorNumProductoresPantallas.setText(Integer.toString(numeroPrev));
+                this.cambiarNumeroProductoresPantallas.setValue(numeroPrev);
             }
-            Main.numeroProductoresPantallas = numeroActual;
-            if (Main.executing){
-                Main.distributionChanged = true;
-            }
-        } else {
-            this.mostradorNumProductoresPantallas.setText(Integer.toString(numeroPrev));
-            this.cambiarNumeroProductoresPantallas.setValue(numeroPrev);
+            
         }
     }//GEN-LAST:event_cambiarNumeroProductoresPantallasStateChanged
 
     private void cambiarNumeroProductoresPinesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_cambiarNumeroProductoresPinesStateChanged
-        int numeroPrev = Main.numeroProductoresPines;
-        this.mostradorNumProductoresPines.setText(Integer.toString(cambiarNumeroProductoresPines.getValue()));
-        int numeroActual = this.getNumeroProductoresPines();
-        if (Main.executing && Main.checkValidInputs()){
-            if (numeroPrev > numeroActual){
-                for (int i = numeroActual; i < numeroPrev; i++){
-                    try{
-                        Main.productoresPines[i].stopRun();
-                    } catch (NullPointerException ex){
-                        System.out.println("whoops");
+        if (Main.executing){
+            int numeroPrev = Main.numeroProductoresPines;
+            this.mostradorNumProductoresPines.setText(Integer.toString(cambiarNumeroProductoresPines.getValue()));
+            int numeroActual = this.getNumeroProductoresPines();
+            if (Main.checkValidInputs()){
+                if (numeroPrev > numeroActual){
+                    for (int i = numeroActual; i < numeroPrev; i++){
+                        try{
+                            Main.productoresPines[i].stopRun();
+                        } catch (NullPointerException ex){
+                            System.out.println("whoops");
+                        }
+                    }
+                } else {
+                    for (int i = numeroPrev + 1; i < numeroActual; i++){
+                        Main.productoresPines[i].start();
                     }
                 }
-            } else {
-                for (int i = numeroPrev + 1; i < numeroActual; i++){
-                    Main.productoresPines[i].start();
+                Main.numeroProductoresPines = numeroActual;
+                if (Main.executing){
+                    Main.distributionChanged = true;
                 }
+            } else {
+                this.mostradorNumProductoresPines.setText(Integer.toString(numeroPrev));
+                this.cambiarNumeroProductoresPines.setValue(numeroPrev);
             }
-            Main.numeroProductoresPines = numeroActual;
-            if (Main.executing){
-                Main.distributionChanged = true;
-            }
-        } else {
-            this.mostradorNumProductoresPines.setText(Integer.toString(numeroPrev));
-            this.cambiarNumeroProductoresPines.setValue(numeroPrev);
+            
         }
     }//GEN-LAST:event_cambiarNumeroProductoresPinesStateChanged
 
@@ -1012,27 +1024,29 @@ public class InterfazGraficaPlanta extends javax.swing.JFrame {
     }//GEN-LAST:event_countdownSetterStateChanged
 
     private void cambiarNumeroEnsambladoresStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_cambiarNumeroEnsambladoresStateChanged
-        int numeroPrev = Main.numeroEnsambladores;
-        this.mostradorNumEnsambladores.setText(Integer.toString(cambiarNumeroEnsambladores.getValue()));
-        int numeroActual = this.getNumeroEnsambladores();
-        if (Main.checkValidInputs()){
-            if (numeroPrev > numeroActual){
-                for (int i = numeroActual; i < numeroPrev; i++){
-                    try{
-                        Main.ensambladores[i].stopRun();
-                    } catch (NullPointerException ex){
-                        System.out.println("whoops");
+        if (Main.executing){
+            int numeroPrev = Main.numeroEnsambladores;
+            this.mostradorNumEnsambladores.setText(Integer.toString(cambiarNumeroEnsambladores.getValue()));
+            int numeroActual = this.getNumeroEnsambladores();
+            if (Main.checkValidInputs()){
+                if (numeroPrev > numeroActual){
+                    for (int i = numeroActual; i < numeroPrev; i++){
+                        try{
+                            Main.ensambladores[i].stopRun();
+                        } catch (NullPointerException ex){
+                            System.out.println("whoops");
+                        }
+                    }
+                } else {
+                    for (int i = numeroPrev + 1; i < numeroActual; i++){
+                        Main.ensambladores[i].start();
                     }
                 }
+                Main.numeroEnsambladores = numeroActual;
             } else {
-                for (int i = numeroPrev + 1; i < numeroActual; i++){
-                    Main.ensambladores[i].start();
-                }
-            }
-            Main.numeroEnsambladores = numeroActual;
-        } else {
-            this.mostradorNumEnsambladores.setText(Integer.toString(numeroPrev));
-            this.cambiarNumeroEnsambladores.setValue(numeroPrev);
+                this.mostradorNumEnsambladores.setText(Integer.toString(numeroPrev));
+                this.cambiarNumeroEnsambladores.setValue(numeroPrev);
+            }  
         }
     }//GEN-LAST:event_cambiarNumeroEnsambladoresStateChanged
 

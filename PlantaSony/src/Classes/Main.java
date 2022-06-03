@@ -288,8 +288,15 @@ public class Main {
         int pPin = params[5];
         int pScr = params[6];
         int ass = params[7];
+        System.out.println(pCam + "cam");
+        System.out.println(pBut+ "but");
+        System.out.println(pPin + "pin");
+        System.out.println(pScr+"scr");
+        System.out.println(ass+"ass");
         boolean testTotal = pCam + pBut + pPin + pScr + ass > 15;
         boolean testNull = pCam < 1 || pBut < 1 || pPin < 1 || pScr < 1 || ass < 1;
+        System.out.println("total" + testTotal);
+        System.out.println("null"+testNull);
         if (testTotal || testNull){
             JOptionPane.showMessageDialog(null, "La suma de trabajadores no puede ser mas de 15\nNo pueden haber cero productores en una linea\nSe utilizaron valores default");
             interfazGrafica.setNumeroProductoresCamaras(3);
