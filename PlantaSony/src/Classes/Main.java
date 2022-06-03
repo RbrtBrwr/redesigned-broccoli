@@ -213,9 +213,9 @@ public class Main {
         row[2] = distributionChanged;
         row[3] = salario_total_planta;
         row[4] = sumEgging();
-        row[5] = assemblyLine.stock;
-        row[6] = assemblyLine.stock * phonePrice;
-        row[7] = assemblyLine.stock / interfazGrafica.currentDay;
+        row[5] = assemblyLine.totalPhones;
+        row[6] = assemblyLine.totalPhones * phonePrice;
+        row[7] = assemblyLine.totalPhones / interfazGrafica.currentDay;
         
         return row;
         

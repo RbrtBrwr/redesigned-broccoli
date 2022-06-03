@@ -80,7 +80,7 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(1446, Short.MAX_VALUE)
+                .addContainerGap(1186, Short.MAX_VALUE)
                 .addComponent(HelloGeb)
                 .addGap(119, 119, 119))
         );
@@ -92,9 +92,9 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(31, 31, 31))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1760, 80));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1500, 80));
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 0));
+        jPanel2.setBackground(new java.awt.Color(204, 0, 51));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 160, 940));
 
@@ -116,29 +116,29 @@ public class Dashboard extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 1550, 210));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 1340, 210));
 
         lineChartThroughput.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         lineChartThroughput.setLayout(new java.awt.BorderLayout());
-        getContentPane().add(lineChartThroughput, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 570, 580, 210));
+        getContentPane().add(lineChartThroughput, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 560, 580, 200));
 
         barChartProduction.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         barChartProduction.setLayout(new java.awt.BorderLayout());
-        getContentPane().add(barChartProduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 470, 210));
+        getContentPane().add(barChartProduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 390, 210));
 
         barChartSalary.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         barChartSalary.setLayout(new java.awt.BorderLayout());
-        getContentPane().add(barChartSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(1300, 310, 390, 210));
+        getContentPane().add(barChartSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 310, 360, 210));
 
         barChartEgging.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         barChartEgging.setLayout(new java.awt.BorderLayout());
-        getContentPane().add(barChartEgging, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 310, 490, 210));
+        getContentPane().add(barChartEgging, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 310, 400, 210));
 
         lineChartRevenue.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         lineChartRevenue.setLayout(new java.awt.BorderLayout());
-        getContentPane().add(lineChartRevenue, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 570, 590, 200));
+        getContentPane().add(lineChartRevenue, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 560, 590, 200));
 
-        setSize(new java.awt.Dimension(1730, 821));
+        setSize(new java.awt.Dimension(1513, 821));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

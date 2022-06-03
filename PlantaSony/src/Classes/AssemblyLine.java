@@ -21,6 +21,7 @@ public class AssemblyLine {
     public Semaphore stockSem = new Semaphore(1);
     public Semaphore retrieveSem = new Semaphore(0);
     public Semaphore hueving = new Semaphore(1);
+    public int totalPhones;
     
     public String whereTo = "Assembled";
     
@@ -44,6 +45,7 @@ public class AssemblyLine {
         try {
             this.stockSem.acquire();
             this.stock++;
+            this.totalPhones++;
 
             Main.interfazGrafica.setNumeroTelefonos(this.stock);
 
