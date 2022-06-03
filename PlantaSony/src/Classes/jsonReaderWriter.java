@@ -70,7 +70,7 @@ public class jsonReaderWriter {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        }
+    }
     
     private static void parseRunCharactObject(JSONObject corrida) 
     {
@@ -84,50 +84,37 @@ public class jsonReaderWriter {
         System.out.println(daysBetweenDispatchs);
         Main.readJson[1] = daysBetweenDispatchs;
         
-        JSONObject cantidadMaximaObject = (JSONObject) corridaObject.get("cantidadMaxima");
-        
-        int cantidadMaximaPines = parseInt((String) cantidadMaximaObject.get("cantidadMaximaPines"));
-        System.out.println(cantidadMaximaPines);
-        Main.readJson[2] = cantidadMaximaPines;
-        
-        int cantidadMaximaPantallas = parseInt((String) cantidadMaximaObject.get("cantidadMaximaPantallas"));
-        System.out.println(cantidadMaximaPantallas);
-        Main.readJson[3] = cantidadMaximaPantallas;
-        
-        int cantidadMaximaCamaras = parseInt((String) cantidadMaximaObject.get("cantidadMaximaCamaras"));
-        System.out.println(cantidadMaximaCamaras);
-        Main.readJson[4] = cantidadMaximaCamaras;
-        
-        int cantidadMaximaBotones = parseInt((String) cantidadMaximaObject.get("cantidadMaximaBotones"));
-        System.out.println(cantidadMaximaBotones);
-        Main.readJson[5] = cantidadMaximaBotones;
+        int unlimitedStock = parseInt((String) corridaObject.get("unlimitedStock"));  
+        System.out.println(unlimitedStock);
+        Main.readJson[2] = unlimitedStock;
         
         JSONObject cantidadInicialProductoresObject = (JSONObject) corridaObject.get("cantidadInicialProductores");
         
-        int cantidadProductoresPines = parseInt((String) cantidadInicialProductoresObject.get("cantidadProductoresPines"));
-        System.out.println(cantidadProductoresPines);
-        Main.readJson[6] = cantidadProductoresPines;
-        
-        int cantidadProductoresPantallas = parseInt((String) cantidadInicialProductoresObject.get("cantidadProductoresPantallas"));
-        System.out.println(cantidadProductoresPantallas);
-        Main.readJson[7] = cantidadProductoresPantallas;
-        
         int cantidadProductoresCamaras = parseInt((String) cantidadInicialProductoresObject.get("cantidadProductoresCamaras"));
         System.out.println(cantidadProductoresCamaras);
-        Main.readJson[8] = cantidadProductoresCamaras;
+        Main.readJson[3] = cantidadProductoresCamaras;
         
         int cantidadProductoresBotones = parseInt((String) cantidadInicialProductoresObject.get("cantidadProductoresBotones"));
         System.out.println(cantidadProductoresBotones);
-        Main.readJson[9] = cantidadProductoresBotones;
+        Main.readJson[4] = cantidadProductoresBotones;
+        
+        int cantidadProductoresPines = parseInt((String) cantidadInicialProductoresObject.get("cantidadProductoresPines"));
+        System.out.println(cantidadProductoresPines);
+        Main.readJson[5] = cantidadProductoresPines;
+        
+        int cantidadProductoresPantallas = parseInt((String) cantidadInicialProductoresObject.get("cantidadProductoresPantallas"));
+        System.out.println(cantidadProductoresPantallas);
+        Main.readJson[6] = cantidadProductoresPantallas;
+        
         
         int cantidadEnsambladores = parseInt((String) corridaObject.get("cantidadEnsambladores"));  
         System.out.println(cantidadEnsambladores);
-        Main.readJson[10] = cantidadEnsambladores;
+        Main.readJson[7] = cantidadEnsambladores;
         
         
     }
         
-        public static void read(String file) throws org.json.simple.parser.ParseException{
+    public static void read(String file) throws org.json.simple.parser.ParseException{
         JSONParser jsonParser = new JSONParser();
          
         try (FileReader reader = new FileReader(file))
@@ -145,7 +132,7 @@ public class jsonReaderWriter {
         }
         }
         
-        private static void parseCorridaObject(JSONObject corrida) 
+    private static void parseCorridaObject(JSONObject corrida) 
     {
         JSONObject corridaObject = (JSONObject) corrida.get("corrida");
          

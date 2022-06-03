@@ -55,15 +55,11 @@ public class Assembler extends Thread{
         screensNeeded = phoneSpecs[3];
     }
     
-    public void timeForWork(){
-        this.getParts();
-    }
-    
     public void getParts(){
         this.currentStatus = "Esperando Partes";
+        this.cameraLine.retrieveFromStock(camerasNeeded);
         this.buttonLine.retrieveFromStock(buttonsNeeded);
         this.pinLine.retrieveFromStock(pinsNeeded);
-        this.cameraLine.retrieveFromStock(camerasNeeded);
         this.screenLine.retrieveFromStock(screensNeeded);
 
     }
@@ -92,7 +88,7 @@ public class Assembler extends Thread{
             assemblersAssemble();
             long end = System.currentTimeMillis();
                 long difference = end - start - this.assemblyTime;
-                this.eggingTime += difference;
+                this.phoneLine.updateHueving(difference);
         }
         this.interrupt();
             
